@@ -1,4 +1,4 @@
-# loopsandgraphs.com
+# loopsandgraphs.dev
 
 This repository contains the **Loops and Graphs** agent execution framework: a control guide for coding agents that replaces per-step human approval with deterministic checks inside a planned graph.
 

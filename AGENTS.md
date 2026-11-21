@@ -2,7 +2,7 @@
 
 **Version:** 0.1.0  
 **Canonical source:** `https://github.com/awdemos/loopsandgraphs`  
-**Site:** `https://loopsandgraphs.com`
+**Site:** `https://loopsandgraphs.dev`
 
 ## What this file is
 
