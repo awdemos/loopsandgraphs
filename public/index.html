@@ -449,7 +449,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">AGENTS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.2/AGENTS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.8/AGENTS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -457,13 +457,22 @@
   <article class="article" id="framework">
     <div class="article-inner">
 
-      <p>You check every step your agents take. Not because you want to, but because nothing else does. Getting out of that chair takes two things, and almost everyone builds only one of them.</p>
+      <p>Right now you check almost everything your agent does. Not because you want to, but because if you don't, mistakes get through. The whole point of this framework is to move that checking from your brain into the system, so you only step in at the end.</p>
 
-      <h2>A loop is a check that can fail</h2>
+      <h2>A loop checks its own work</h2>
 
-      <p>Strip everything else away and a loop is four parts: produce, check, correct, repeat until green.</p>
+      <p>A loop is one small job that checks its own answer and fixes itself when the answer is wrong. Picture a student doing a math problem, checking the answer key, and redoing the problem if the answer is wrong. The student does not need the teacher standing there. The answer key does the checking.</p>
 
-      <p>The check is the whole thing. Without something that can fail the work while you are out of the room, you do not have a loop. You have a scheduler.</p>
+      <p>Every loop follows the same four steps:</p>
+
+      <ol>
+        <li><strong>Do the work.</strong> Write the code, run the search, build the report.</li>
+        <li><strong>Check the result.</strong> Compare it to something that can say yes or no.</li>
+        <li><strong>Fix it if the check fails.</strong> Change only what the check caught.</li>
+        <li><strong>Repeat until the check passes.</strong> Try again, up to three times.</li>
+      </ol>
+
+      <p>The check is the whole point. If the loop cannot fail on its own, it is not checking anything. It is just running steps. A real check is something like "the tests pass" or "the type checker reports no errors." "Does it look right?" is not a check. "The model feels confident" is not a check. "No error message appeared" is not a check either, because silence is not the same as correct.</p>
 
       <div class="check-grid">
         <div class="check-card green">
@@ -492,13 +501,13 @@
         </div>
       </div>
 
-      <p>That last one catches careful people. Absence of an error is not evidence of correctness. Build a loop on it and you get a system that confidently repeats a mistake until the budget runs out, with a clean log the whole way.</p>
+      <p>Why set it up this way? Because a loop with a real check can run while you are doing something else. A loop without one only looks automatic. It will happily repeat the same mistake until it runs out of time or money, leaving you a clean log of a wrong answer.</p>
 
-      <h2>The ceiling nobody warns you about</h2>
+      <h2>One loop cannot see the whole job</h2>
 
-      <p>A loop makes one unit of work better. That is its entire job, and it is very good at it.</p>
+      <p>A loop is great at making one small job correct. It cannot decide which jobs exist, which can run at the same time, or what order makes sense. That is a different problem.</p>
 
-      <p>It cannot decide which units exist, or their order, or notice that two of the five steps never needed to wait for each other. So you get a very good agent running the wrong three steps, in the wrong order, one at a time. Every step is correct. The result is still slow and still wrong-shaped, and tuning the loop will not fix it, because the fault is not inside any unit.</p>
+      <p>For example, an agent might write five perfect functions in the wrong order, or redo step three five times while step four sits waiting for no reason. Every loop did its job. The overall plan did not. That is why loops need a graph above them.</p>
 
       <h2>The graph is the layer above</h2>
 
@@ -704,7 +713,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">AGENTS.md</span> — Loops and Graphs v0.1.2</span>
+  <span><span class="file">AGENTS.md</span> — Loops and Graphs v0.1.8</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/AGENTS.md">AGENTS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>

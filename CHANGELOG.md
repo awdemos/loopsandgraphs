@@ -2,6 +2,30 @@
 
 Semantic versioning: the control rules in `AGENTS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.8] — 2026-11-21
+
+- Rewrote the loop explanation in plain language with a concrete student-and-answer-key example and numbered steps.
+- Explained why a loop needs a check that can actually fail.
+- Simplified the "one loop cannot see the whole job" transition.
+- Fixed stale v0.1.2 references in the quickstart command, footer, and README.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  AGENTS.md
+a56dbd83e558683da0722c995b5767fa46e76e9af3cbfd212f80afe57860caa3  SKILL.md
+de8d7213a8690af9c99300205299605ca61f95b62e9710429be9f49fbcfb631a  index.html
+79392c15cb70b7c9ec2510f7a4abddfd24219019660d588303a41364dcb460da  README.md
+d44ad4b2ad43a3b99a09b557410f75a8bdc1c08747cc49025e1b67f72321933c  sbom.spdx.json
+de8d7213a8690af9c99300205299605ca61f95b62e9710429be9f49fbcfb631a  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+```
+
+Verify the release with `git tag -v v0.1.8`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.7] — 2026-11-21
 
 - Redesigned the planned-graph diagram with smoother layout, consistent node styling, and a legend explaining forward, correction, and learning edges.

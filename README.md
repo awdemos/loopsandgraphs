@@ -82,7 +82,7 @@ Confidence is the weakest gate input because it is the only one the model can in
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.2/AGENTS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.8/AGENTS.md
 ```
 
 Place `AGENTS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
@@ -116,7 +116,7 @@ If no `AGENTS.md` is present but the user asks you to apply Loops and Graphs, us
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.6
+git tag -v v0.1.8
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -125,4 +125,4 @@ Releases follow semantic versioning. The control rules in `AGENTS.md` are the st
 
 ## Version
 
-0.1.7 — redesigned the planned-graph diagram for clarity and added a legend; clarified the surrounding explanation of what a planned graph is and why it matters.
+0.1.8 — rewrote the loop explanation in plain language with a concrete example and numbered steps; fixed stale version references in the quickstart and footer.
