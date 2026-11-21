@@ -1,8 +1,8 @@
 # Agent Control Guide: Loops and Graphs
 
 **Version:** 0.1.0  
-**Canonical source:** `https://github.com/awdemos/adversarial-review`  
-**Site:** `https://adversarial-review.com`
+**Canonical source:** `https://github.com/awdemos/loopsandgraphs`  
+**Site:** `https://loopsandgraphs.com`
 
 ## What this file is
 

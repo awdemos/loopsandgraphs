@@ -1,6 +1,6 @@
 ---
 name: agent-control-guide
-description: Use when planning or executing non-trivial agent work, designing autonomous pipelines, or when the user wants to stop babysitting intermediate steps. Enforces the Loops and Graphs control framework from the adversarial-review.com agent control guide.
+description: Use when planning or executing non-trivial agent work, designing autonomous pipelines, or when the user wants to stop babysitting intermediate steps. Enforces the Loops and Graphs control framework from the loopsandgraphs.com agent control guide.
 ---
 
 # Agent Control Guide: Loops and Graphs
