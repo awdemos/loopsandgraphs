@@ -69,9 +69,9 @@ Confidence is the weakest gate input because it is the only one the model can in
 
 ## Files
 
-- `AGENTS.md` — the agent-readable control guide. Drop this into any repo to tell agents how to plan, split, check, gate, and return work.
+- `LOOPS_AND_GRAPHS.md` — the agent-readable control guide. Drop this into any repo to tell agents how to plan, split, check, gate, and return work.
 - `SKILL.md` — installable Kimi skill that activates the framework in any project.
-- `docs/DESIGN-v0.1.md` — the human-readable design spec behind `AGENTS.md`.
+- `docs/DESIGN-v0.1.md` — the human-readable design spec behind `LOOPS_AND_GRAPHS.md`.
 - `index.html` — the landing page source.
 - `public/index.html` — the deployed landing page asset.
 - `wrangler.toml` — Cloudflare Workers deployment config.
@@ -82,10 +82,10 @@ Confidence is the weakest gate input because it is the only one the model can in
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.8/AGENTS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.9/LOOPS_AND_GRAPHS.md
 ```
 
-Place `AGENTS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
+Place `LOOPS_AND_GRAPHS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
 
 ## Install the skill
 
@@ -107,22 +107,22 @@ This copies `index.html` to `public/index.html` and runs `wrangler deploy`.
 
 ## For AI agents reading this
 
-If a repo contains this `AGENTS.md`, its rules are binding. Read it before planning non-trivial work.
+If a repo contains this `LOOPS_AND_GRAPHS.md`, its rules are binding. Read it before planning non-trivial work.
 
-If no `AGENTS.md` is present but the user asks you to apply Loops and Graphs, use the protocol in `SKILL.md`.
+If no `LOOPS_AND_GRAPHS.md` is present but the user asks you to apply Loops and Graphs, use the protocol in `SKILL.md`.
 
 ## Provenance
 
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.8
+git tag -v v0.1.9
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
 
-Releases follow semantic versioning. The control rules in `AGENTS.md` are the stable API; examples, wording, and the website may tighten in patch releases.
+Releases follow semantic versioning. The control rules in `LOOPS_AND_GRAPHS.md` are the stable API; examples, wording, and the website may tighten in patch releases.
 
 ## Version
 
-0.1.8 — rewrote the loop explanation in plain language with a concrete example and numbered steps; fixed stale version references in the quickstart and footer.
+0.1.9 — renamed `AGENTS.md` to `LOOPS_AND_GRAPHS.md` so it does not overwrite an existing `AGENTS.md`; updated all references and quickstart commands.

@@ -2,7 +2,7 @@
 
 **Version:** 0.1.0  
 **Status:** design spec / first pass  
-**Companion:** `AGENTS.md` in the repo root is the agent-facing control guide derived from this document.
+**Companion:** `LOOPS_AND_GRAPHS.md` in the repo root is the agent-facing control guide derived from this document.
 
 ---
 
@@ -219,6 +219,6 @@ Return the failing unit only. Do not return the whole batch. Re-verify only the 
 
 ## 10. Companion documents
 
-- `AGENTS.md`: the agent-readable control guide derived from this spec.
+- `LOOPS_AND_GRAPHS.md`: the agent-readable control guide derived from this spec.
 - `SKILL.md`: installable Kimi skill that activates this guide in any repo.
 - `CHANGELOG.md`: version history.

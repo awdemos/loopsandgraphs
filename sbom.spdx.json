@@ -5,9 +5,9 @@
   "name": "loopsandgraphs.dev",
   "documentNamespace": "https://loopsandgraphs.dev/sbom.spdx.json",
   "creationInfo": {
-    "created": "2026-11-21T21:30:00Z",
+    "created": "2026-11-21T22:00:00Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.8",
+      "Tool: loopsandgraphs-release-process-0.1.9",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.8",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.9",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,15 +24,15 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "de8d7213a8690af9c99300205299605ca61f95b62e9710429be9f49fbcfb631a"
+          "checksumValue": "1fa645da2d6d3e25abd53b3d8cc2459b47843b07a35b92bf57256d931b69a7d4"
         }
       ]
     }
   ],
   "files": [
     {
-      "SPDXID": "SPDXRef-File-AGENTS",
-      "fileName": "./AGENTS.md",
+      "SPDXID": "SPDXRef-File-Guide",
+      "fileName": "./LOOPS_AND_GRAPHS.md",
       "fileTypes": ["TEXT", "SOURCE"],
       "checksums": [
         {
@@ -50,7 +50,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "a56dbd83e558683da0722c995b5767fa46e76e9af3cbfd212f80afe57860caa3"
+          "checksumValue": "82732670465821c10dafa1b72c54ad2777e7cdaf216f87262ef30ae4d85018e2"
         }
       ],
       "licenseConcluded": "MIT",
@@ -63,7 +63,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "de8d7213a8690af9c99300205299605ca61f95b62e9710429be9f49fbcfb631a"
+          "checksumValue": "1fa645da2d6d3e25abd53b3d8cc2459b47843b07a35b92bf57256d931b69a7d4"
         }
       ],
       "licenseConcluded": "MIT",
@@ -76,7 +76,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "79392c15cb70b7c9ec2510f7a4abddfd24219019660d588303a41364dcb460da"
+          "checksumValue": "349274813ee08cb1c7b12a3f18ce60c242bf78c25c01eeaac5eb90a0d7a9f0fd"
         }
       ],
       "licenseConcluded": "MIT",
@@ -89,7 +89,20 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "de8d7213a8690af9c99300205299605ca61f95b62e9710429be9f49fbcfb631a"
+          "checksumValue": "1fa645da2d6d3e25abd53b3d8cc2459b47843b07a35b92bf57256d931b69a7d4"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-design",
+      "fileName": "./docs/DESIGN-v0.1.md",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46"
         }
       ],
       "licenseConcluded": "MIT",
@@ -143,7 +156,7 @@
     },
     {
       "spdxElementId": "SPDXRef-Package-website",
-      "relatedSpdxElement": "SPDXRef-File-AGENTS",
+      "relatedSpdxElement": "SPDXRef-File-Guide",
       "relationshipType": "CONTAINS"
     },
     {
@@ -164,6 +177,11 @@
     {
       "spdxElementId": "SPDXRef-Package-website",
       "relatedSpdxElement": "SPDXRef-File-public-index",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-design",
       "relationshipType": "CONTAINS"
     },
     {

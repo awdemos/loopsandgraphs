@@ -10,7 +10,7 @@ description: Use when planning or executing non-trivial agent work, designing au
 - The user asks for a multi-step implementation, refactor, audit, or review.
 - The user wants agents to run autonomously and only approve the final step.
 - The user asks how to structure agent work, reduce babysitting, or design checks and gates.
-- The repo contains `AGENTS.md` derived from the Loops and Graphs framework.
+- The repo contains `LOOPS_AND_GRAPHS.md` derived from the Loops and Graphs framework.
 
 ## Protocol
 

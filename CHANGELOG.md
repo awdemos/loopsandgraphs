@@ -1,6 +1,30 @@
 # Changelog
 
-Semantic versioning: the control rules in `AGENTS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
+Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
+
+## [0.1.9] — 2026-11-21
+
+- Renamed `AGENTS.md` to `LOOPS_AND_GRAPHS.md` so the control guide does not overwrite a user's existing `AGENTS.md`.
+- Updated all references in `index.html`, `README.md`, `SKILL.md`, `docs/DESIGN-v0.1.md`, and the SBOM.
+- Updated quickstart commands to download `LOOPS_AND_GRAPHS.md`.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  LOOPS_AND_GRAPHS.md
+82732670465821c10dafa1b72c54ad2777e7cdaf216f87262ef30ae4d85018e2  SKILL.md
+1fa645da2d6d3e25abd53b3d8cc2459b47843b07a35b92bf57256d931b69a7d4  index.html
+349274813ee08cb1c7b12a3f18ce60c242bf78c25c01eeaac5eb90a0d7a9f0fd  README.md
+d49955505432f58ea2b8da83f398ac4458ee7b08972bb6332686f2b4e0684d1e  sbom.spdx.json
+1fa645da2d6d3e25abd53b3d8cc2459b47843b07a35b92bf57256d931b69a7d4  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46  docs/DESIGN-v0.1.md
+```
+
+Verify the release with `git tag -v v0.1.9`; the signed tag covers every file in the release, including this changelog.
 
 ## [0.1.8] — 2026-11-21
 
