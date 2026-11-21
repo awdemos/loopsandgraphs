@@ -1,10 +1,12 @@
 # loopsandgraphs.dev
 
-A control framework for AI coding agents. It replaces per-step human approval with deterministic checks inside a planned graph, so you only approve the final merge.
+A gentler way to run AI coding agents. It replaces per-step human approval with deterministic checks inside a planned graph, so you only approve the final merge.
 
 ## Why this exists
 
-AI coding agents write code fast, but they still stop at every step waiting for you to check their work. That does not scale. Loops and Graphs gives the agent a clear plan and a checklist instead. The agent verifies its own work, runs independent steps in parallel, and only brings you in for the highest-consequence decision.
+AI coding agents write code fast, but speed without structure still lands on your desk. They stop at every step waiting for you to check their work, and that does not scale. Loops and Graphs gives the agent a clear plan and a checklist instead. The agent verifies its own work, runs independent steps in parallel, and only brings you in for the highest-consequence decision.
+
+This matters because a check that can fail is the only thing that lets an agent work without you watching. A planned graph is the only thing that keeps independent work from waiting in line. And a gate is not a judge voting on what to do next; it is just a pass-fail question based on evidence.
 
 ## What you gain
 

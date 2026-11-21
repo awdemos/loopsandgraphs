@@ -196,6 +196,13 @@
     max-width: 60ch;
     margin-block-end: var(--space-6);
   }
+  .why {
+    font-size: clamp(1rem, .9rem + .4vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 65ch;
+    margin-block-end: var(--space-6);
+  }
 
   .actions {
     display: flex;
@@ -403,9 +410,10 @@
 <main>
 
   <section class="hero">
-    <span class="kicker">Control framework for AI coding agents</span>
+    <span class="kicker">Agent execution framework</span>
     <h1>Loops and <span class="accent">Graphs</span></h1>
-    <p class="pitch">Loops and Graphs is a control framework for AI coding agents. It replaces constant supervision with a clear plan: every task passes a check, independent steps run in parallel, and you only approve the final merge.</p>
+    <p class="pitch">AI coding agents are fast, but speed without structure still lands on your desk. Loops and Graphs gives agents a plan and a checklist so they can verify their own work. Each task passes a clear check, independent steps run at the same time, and failures are corrected one piece at a time. You stay in control of the final decision, not every intermediate step.</p>
+    <p class="why">This matters because a check that can fail is the only thing that lets an agent work without you watching. A planned graph is the only thing that keeps independent work from waiting in line. And a gate is not a judge voting on what to do next; it is just a pass-fail question based on evidence.</p>
 
     <div class="actions">
       <a class="btn btn-primary" href="https://github.com/awdemos/loopsandgraphs/blob/main/AGENTS.md">Read AGENTS.md</a>
