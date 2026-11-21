@@ -1,0 +1,59 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "loopsandgraphs.dev",
+  "documentNamespace": "https://loopsandgraphs.dev/sbom.spdx.json",
+  "creationInfo": {
+    "created": "2026-11-21T20:30:00Z",
+    "creators": [
+      "Tool: loopsandgraphs-release-process-0.1.1",
+      "Person: Andrew White <andrew@awdemos.com>"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-website",
+      "name": "loopsandgraphs.dev-website",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.1",
+      "filesAnalyzed": true,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "supplier": "Person: Andrew White",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2cb5e1fe54e913ee888dd55f6e99490b7f27baaee1dc61b23bc758bf1357a948"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-index",
+      "fileName": "./index.html",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2cb5e1fe54e913ee888dd55f6e99490b7f27baaee1dc61b23bc758bf1357a948"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-Package-website",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-index",
+      "relationshipType": "CONTAINS"
+    }
+  ]
+}
