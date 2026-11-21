@@ -6,7 +6,7 @@ A gentler way to run AI coding agents. It replaces per-step human approval with 
 
 AI coding agents can draft code fast, but without checks and a plan they still need you to review every step. That means context switching, repeated interruptions, and the risk that something slips through while you are tired.
 
-Loops and Graphs changes the job description. You write the checklist once, and the agent verifies its own work. Independent tasks run in parallel, failures are corrected one piece at a time, and you only approve the final merge. The result: fewer interruptions, faster delivery, and fewer errors making it to production.
+Loops and Graphs changes the job description. You write the checklist once: every task must pass a concrete check, like a test suite or type check, before it moves on. Independent tasks run in parallel, failures are corrected one piece at a time, and you only approve the final merge. The result: fewer interruptions, faster delivery, and fewer errors making it to production.
 
 ## What you gain
 
@@ -116,7 +116,7 @@ If no `AGENTS.md` is present but the user asks you to apply Loops and Graphs, us
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.5
+git tag -v v0.1.6
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -125,4 +125,4 @@ Releases follow semantic versioning. The control rules in `AGENTS.md` are the st
 
 ## Version
 
-0.1.5 — added planned-graph diagram and clarified the concept on the landing page.
+0.1.6 — clarified "a check" as concrete pass-fail checks like tests or type checks.

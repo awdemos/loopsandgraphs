@@ -2,6 +2,27 @@
 
 Semantic versioning: the control rules in `AGENTS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.6] — 2026-11-21
+
+- Clarified what "a check" means in the hero and README: concrete, pass-fail checks like a test suite or type check.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  AGENTS.md
+a56dbd83e558683da0722c995b5767fa46e76e9af3cbfd212f80afe57860caa3  SKILL.md
+bf17baa7af0a81220bca77e7f60049c4317a599170e19a90f5bf070450934509  index.html
+74dd212b423651147db2ca4e47791b361494a1e875a89521781512430922977c  README.md
+4baa41d150c496c27572256d689c3093a748038ef18789d473a5e4caa2273d29  sbom.spdx.json
+bf17baa7af0a81220bca77e7f60049c4317a599170e19a90f5bf070450934509  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+```
+
+Verify the release with `git tag -v v0.1.6`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.5] — 2026-11-21
 
 - Added a visual diagram of a planned graph to the landing page.
@@ -116,6 +137,7 @@ Initial draft:
 - Added `SKILL.md`: installable Kimi skill wrapper for the framework.
 - Added `README.md`, `CHANGELOG.md`, `LICENSE` (MIT), and `site/index.html`.
 
+[0.1.6]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.6
 [0.1.5]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.5
 [0.1.4]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.4
 [0.1.3]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.3

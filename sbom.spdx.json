@@ -7,7 +7,7 @@
   "creationInfo": {
     "created": "2026-11-21T21:00:00Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.5",
+      "Tool: loopsandgraphs-release-process-0.1.6",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.5",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.6",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
