@@ -2,6 +2,28 @@
 
 Semantic versioning: the control rules in `AGENTS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.4] — 2026-11-21
+
+- Updated `deploy.sh` to copy `og-image.png` into `public/` before deploying.
+- Added `public/og-image.png` so the social-preview image is served from the Worker.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  AGENTS.md
+a56dbd83e558683da0722c995b5767fa46e76e9af3cbfd212f80afe57860caa3  SKILL.md
+5b07011d947c95a830cec14fbfd257d28a4eede4e3b31469a9abe732450df12a  index.html
+a00511562c0a062d5eb846d0e292ee472aca64e7ee012d2ab2109db30806da22  README.md
+6c4ab1694ac75badc0432b1d67b54cc55126840d60f0092ddaa9dbbeb523cce8  sbom.spdx.json
+5b07011d947c95a830cec14fbfd257d28a4eede4e3b31469a9abe732450df12a  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+```
+
+Verify the release with `git tag -v v0.1.4`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.3] — 2026-11-21
 
 - Updated `AGENTS.md` version header to match the release.
@@ -71,6 +93,7 @@ Initial draft:
 - Added `SKILL.md`: installable Kimi skill wrapper for the framework.
 - Added `README.md`, `CHANGELOG.md`, `LICENSE` (MIT), and `site/index.html`.
 
+[0.1.4]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.4
 [0.1.3]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.3
 [0.1.2]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.2
 [0.1.1]: https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.1

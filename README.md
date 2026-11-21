@@ -114,7 +114,7 @@ If no `AGENTS.md` is present but the user asks you to apply Loops and Graphs, us
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.3
+git tag -v v0.1.4
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -123,4 +123,4 @@ Releases follow semantic versioning. The control rules in `AGENTS.md` are the st
 
 ## Version
 
-0.1.3 — audit fixes: consistent versioning, .gitignore, deploy script, OG image, and updated SBOM.
+0.1.4 — deploy script now copies OG image; release checksums refreshed.
