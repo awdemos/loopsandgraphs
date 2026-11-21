@@ -204,6 +204,30 @@
     margin-block-end: var(--space-6);
   }
 
+  .diagram {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    padding: var(--space-5);
+    margin-block-end: var(--space-6);
+  }
+  .diagram svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+  .diagram figcaption {
+    margin-block-start: var(--space-4);
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.6;
+    text-align: center;
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
   .actions {
     display: flex;
     flex-wrap: wrap;
@@ -413,7 +437,7 @@
     <span class="kicker">Agent execution framework</span>
     <h1>Loops and <span class="accent">Graphs</span></h1>
     <p class="pitch">AI coding agents can draft code fast, but without checks and a plan they still need you to review every step. Loops and Graphs changes that. You write the checklist once, and the agent verifies its own work. Independent tasks run in parallel, failures are corrected one piece at a time, and you only approve the final merge. The result: fewer interruptions, faster delivery, and fewer errors making it to production.</p>
-    <p class="why">A check that can fail is the only thing that lets an agent work without you watching. A planned graph is the only thing that keeps independent work from waiting in line. And a gate is not a judge voting; it is just a pass-fail question based on evidence.</p>
+    <p class="why">A check that can fail is the only thing that lets an agent work without you watching. A planned graph is a map of which tasks depend on which, so independent work can run at the same time instead of waiting in line. And a gate is not a judge voting; it is just a pass-fail question based on evidence.</p>
 
     <div class="actions">
       <a class="btn btn-primary" href="https://github.com/awdemos/loopsandgraphs/blob/main/AGENTS.md">Read AGENTS.md</a>
@@ -480,7 +504,70 @@
 
       <p>A graph is the shape of the work: what runs, what runs at the same time, what waits, what never runs at all, and where results go back.</p>
 
-      <p>Two things and nothing else. A node is a unit of work: one bounded job, one input in, one output out. An edge is a dependency: this node's output feeds that node's input.</p>
+      <p>Two things and nothing else. A node is a unit of work: one bounded job, one input in, one output out. An edge is a dependency: this node's output feeds that node's input. A planned graph is simply that map drawn before the work starts.</p>
+
+      <figure class="diagram" aria-labelledby="diagram-caption">
+        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: splitter divides work, two workers run in parallel, a code node merges results, a gate checks them, and outputs either return for correction or continue to the merge.">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="#a2a1ad"/>
+            </marker>
+            <marker id="arrow-accent" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="#ff7a5c"/>
+            </marker>
+            <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="#f87171"/>
+            </marker>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- title -->
+          <text x="450" y="40" text-anchor="middle" fill="#eceaf0" font-size="22" font-weight="600">A planned graph</text>
+
+          <!-- nodes -->
+          <rect x="60" y="90" width="130" height="50" rx="10" fill="#17171f" stroke="#ff5c38" stroke-width="2"/>
+          <text x="125" y="121" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Splitter</text>
+
+          <rect x="280" y="70" width="130" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
+          <text x="345" y="101" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Worker A</text>
+
+          <rect x="280" y="150" width="130" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
+          <text x="345" y="181" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Worker B</text>
+
+          <rect x="500" y="110" width="130" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
+          <text x="565" y="141" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Code node</text>
+
+          <rect x="720" y="110" width="110" height="50" rx="10" fill="#17171f" stroke="#ff5c38" stroke-width="2"/>
+          <text x="775" y="141" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Gate</text>
+
+          <rect x="720" y="240" width="110" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
+          <text x="775" y="271" text-anchor="middle" fill="#a2a1ad" font-size="14" font-weight="600">Merge</text>
+
+          <!-- edges -->
+          <line x1="190" y1="115" x2="280" y2="95" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="190" y1="115" x2="280" y2="175" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="410" y1="95" x2="500" y2="135" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="410" y1="175" x2="500" y2="135" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="630" y1="135" x2="720" y2="135" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="775" y1="160" x2="775" y2="240" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <!-- correction edge -->
+          <path d="M 720 145 Q 620 145 620 175 L 410 175" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-red)"/>
+          <text x="560" y="210" text-anchor="middle" fill="#f87171" font-size="12">Correction edge</text>
+
+          <!-- learning edge -->
+          <path d="M 775 110 Q 775 60 125 60 L 125 90" fill="none" stroke="#ff7a5c" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-accent)"/>
+          <text x="450" y="55" text-anchor="middle" fill="#ff7a5c" font-size="12">Learning edge</text>
+
+          <!-- annotations -->
+          <text x="235" y="85" text-anchor="middle" fill="#8b8896" font-size="11">runs in parallel</text>
+          <text x="775" y="320" text-anchor="middle" fill="#8b8896" font-size="12">Only opens if the gate passes</text>
+        </svg>
+        <figcaption id="diagram-caption">The splitter divides work into bounded units. Independent workers run at the same time. The code node merges their outputs. The gate runs a deterministic check. If it fails, only that unit loops back. If it passes, the result feeds forward and may also feed back as a constraint for future splits.</figcaption>
+      </figure>
 
       <div class="callout">
         <p>The mistake behind every unnecessary wait is treating "and then" as an edge. <em>Summarize the file and then check the weather</em> has no edge between them. The weather does not consume the summary. Those are two independent nodes that a linear script chained, and the chaining came from the order you typed them.</p>

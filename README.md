@@ -34,10 +34,12 @@ The check is the whole point. A test suite that exits 0 is a check. A diff conta
 
 ### Graphs decide which units exist and how they connect
 
-A graph is the shape of the work:
+A graph is a map of the work you draw before the agent starts:
 
 - A **node** is one bounded unit of work: one input in, one output out.
 - An **edge** is a real dependency: the second node consumes the first node's output.
+
+A planned graph simply makes those dependencies visible. When two nodes have no edge between them, they can run at the same time. When they do have an edge, they wait in the correct order.
 
 "And then" is not an edge. Two steps typed in order are not dependent unless the second reads the first's output. Removing that false serialism is often the largest speedup.
 
@@ -114,7 +116,7 @@ If no `AGENTS.md` is present but the user asks you to apply Loops and Graphs, us
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.4
+git tag -v v0.1.5
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -123,4 +125,4 @@ Releases follow semantic versioning. The control rules in `AGENTS.md` are the st
 
 ## Version
 
-0.1.4 — deploy script now copies OG image; release checksums refreshed.
+0.1.5 — added planned-graph diagram and clarified the concept on the landing page.
