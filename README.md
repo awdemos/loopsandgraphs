@@ -7,7 +7,7 @@ This repository contains the **Loops and Graphs** agent execution framework: a c
 - `AGENTS.md` — the agent-readable control guide. Drop this into any repo to tell agents how to plan, split, check, gate, and return work.
 - `SKILL.md` — installable Kimi skill that activates the framework in any project.
 - `docs/DESIGN-v0.1.md` — the human-readable design spec behind `AGENTS.md`.
-- `site/index.html` — the landing page (served via GitHub Pages).
+- `index.html` — the landing page (served via GitHub Pages).
 - `CHANGELOG.md` — version history.
 - `LICENSE` — MIT.
 
