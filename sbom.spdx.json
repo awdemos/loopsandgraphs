@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.1",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.2",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "2cb5e1fe54e913ee888dd55f6e99490b7f27baaee1dc61b23bc758bf1357a948"
+          "checksumValue": "da7505c7794c25825236283a7c3d884e8bc9feae4f568f87429aec7c6a7a774c"
         }
       ]
     }
@@ -37,7 +37,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "2cb5e1fe54e913ee888dd55f6e99490b7f27baaee1dc61b23bc758bf1357a948"
+          "checksumValue": "da7505c7794c25825236283a7c3d884e8bc9feae4f568f87429aec7c6a7a774c"
         }
       ],
       "licenseConcluded": "MIT",
