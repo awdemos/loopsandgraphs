@@ -95,12 +95,13 @@ Then say **"run this with loops and graphs"** or **"plan this as a graph"** in a
 
 ## Deploy the site
 
-The site is served by a Cloudflare Worker. After editing `index.html`, copy it to `public/index.html` and deploy:
+The site is served by a Cloudflare Worker. Run the deploy script after editing `index.html`:
 
 ```sh
-cp index.html public/index.html
-wrangler deploy
+./deploy.sh
 ```
+
+This copies `index.html` to `public/index.html` and runs `wrangler deploy`.
 
 ## For AI agents reading this
 
@@ -113,7 +114,7 @@ If no `AGENTS.md` is present but the user asks you to apply Loops and Graphs, us
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.2
+git tag -v v0.1.3
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -122,4 +123,4 @@ Releases follow semantic versioning. The control rules in `AGENTS.md` are the st
 
 ## Version
 
-0.1.2 — README rewrite with benefits and architecture for new users.
+0.1.3 — audit fixes: consistent versioning, .gitignore, deploy script, OG image, and updated SBOM.

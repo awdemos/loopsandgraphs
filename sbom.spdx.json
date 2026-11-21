@@ -5,9 +5,9 @@
   "name": "loopsandgraphs.dev",
   "documentNamespace": "https://loopsandgraphs.dev/sbom.spdx.json",
   "creationInfo": {
-    "created": "2026-11-21T20:30:00Z",
+    "created": "2026-11-21T21:00:00Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.1",
+      "Tool: loopsandgraphs-release-process-0.1.3",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.2",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.3",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "da7505c7794c25825236283a7c3d884e8bc9feae4f568f87429aec7c6a7a774c"
+          "checksumValue": "5b07011d947c95a830cec14fbfd257d28a4eede4e3b31469a9abe732450df12a"
         }
       ]
     }
@@ -37,7 +37,20 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "da7505c7794c25825236283a7c3d884e8bc9feae4f568f87429aec7c6a7a774c"
+          "checksumValue": "5b07011d947c95a830cec14fbfd257d28a4eede4e3b31469a9abe732450df12a"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-ogimage",
+      "fileName": "./og-image.png",
+      "fileTypes": ["BINARY"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae"
         }
       ],
       "licenseConcluded": "MIT",
@@ -53,6 +66,11 @@
     {
       "spdxElementId": "SPDXRef-Package-website",
       "relatedSpdxElement": "SPDXRef-File-index",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-ogimage",
       "relationshipType": "CONTAINS"
     }
   ]

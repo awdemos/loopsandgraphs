@@ -1,0 +1,10 @@
+# Wrangler local state
+.wrangler/
+
+# Secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db

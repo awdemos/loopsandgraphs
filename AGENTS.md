@@ -1,6 +1,6 @@
 # Agent Control Guide: Loops and Graphs
 
-**Version:** 0.1.0  
+**Version:** 0.1.2  
 **Canonical source:** `https://github.com/awdemos/loopsandgraphs`  
 **Site:** `https://loopsandgraphs.dev`
 
