@@ -125,4 +125,4 @@ Releases follow semantic versioning. The control rules in `AGENTS.md` are the st
 
 ## Version
 
-0.1.6 — clarified "a check" as concrete pass-fail checks like tests or type checks.
+0.1.7 — redesigned the planned-graph diagram for clarity and added a legend; clarified the surrounding explanation of what a planned graph is and why it matters.

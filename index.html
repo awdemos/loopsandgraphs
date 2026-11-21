@@ -502,13 +502,28 @@
 
       <h2>The graph is the layer above</h2>
 
-      <p>A graph is the shape of the work: what runs, what runs at the same time, what waits, what never runs at all, and where results go back.</p>
+      <p>A loop makes one unit of work better, but it cannot see the whole task. It does not know which units exist, which can run at the same time, or where results should feed back. That wider view is the job of the graph.</p>
 
-      <p>Two things and nothing else. A node is a unit of work: one bounded job, one input in, one output out. An edge is a dependency: this node's output feeds that node's input. A planned graph is simply that map drawn before the work starts.</p>
+      <p>A graph is just the shape of the work. It says what runs, what runs in parallel, what waits, and where results go back. It is made of only two things: nodes and edges.</p>
+
+      <p>A <strong>node</strong> is one bounded unit of work: one input in, one output out, and one clear owner. An <strong>edge</strong> is a real dependency: the next step actually reads the previous step's output. If nothing crosses from one step to the next, there is no edge, which means the steps do not need to wait for each other.</p>
+
+      <p>A <strong>planned graph</strong> is that map drawn before the work starts. You plan it so the agent does not have to invent the structure while it is also doing the work. The plan keeps parallel steps parallel, keeps failures local, and keeps accepted results from being forgotten.</p>
 
       <figure class="diagram" aria-labelledby="diagram-caption">
-        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: splitter divides work, two workers run in parallel, a code node merges results, a gate checks them, and outputs either return for correction or continue to the merge.">
+        <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: a splitter divides work, workers run in parallel, a code node merges their outputs, a gate checks the result, and feedback loops send failures back for correction or accepted results back as future constraints.">
           <defs>
+            <linearGradient id="nodeGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e1e28"/>
+              <stop offset="100%" stop-color="#17171f"/>
+            </linearGradient>
+            <linearGradient id="accentGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2a1f24"/>
+              <stop offset="100%" stop-color="#1f171b"/>
+            </linearGradient>
+            <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/>
+            </filter>
             <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
               <path d="M0,0 L0,6 L9,3 z" fill="#a2a1ad"/>
             </marker>
@@ -518,55 +533,66 @@
             <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
               <path d="M0,0 L0,6 L9,3 z" fill="#f87171"/>
             </marker>
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-            </filter>
           </defs>
 
           <!-- title -->
-          <text x="450" y="40" text-anchor="middle" fill="#eceaf0" font-size="22" font-weight="600">A planned graph</text>
+          <text x="450" y="40" text-anchor="middle" fill="#eceaf0" font-size="24" font-weight="650">A planned graph</text>
+          <text x="450" y="66" text-anchor="middle" fill="#8b8896" font-size="14">The map drawn before the work starts</text>
 
           <!-- nodes -->
-          <rect x="60" y="90" width="130" height="50" rx="10" fill="#17171f" stroke="#ff5c38" stroke-width="2"/>
-          <text x="125" y="121" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Splitter</text>
+          <g filter="url(#softShadow)">
+            <rect x="60" y="120" width="130" height="54" rx="12" fill="url(#accentGradient)" stroke="#ff5c38" stroke-width="2"/>
+            <text x="125" y="152" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="650">Splitter</text>
 
-          <rect x="280" y="70" width="130" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
-          <text x="345" y="101" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Worker A</text>
+            <rect x="300" y="90" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
+            <text x="365" y="122" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Worker A</text>
 
-          <rect x="280" y="150" width="130" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
-          <text x="345" y="181" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Worker B</text>
+            <rect x="300" y="190" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
+            <text x="365" y="222" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Worker B</text>
 
-          <rect x="500" y="110" width="130" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
-          <text x="565" y="141" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Code node</text>
+            <rect x="530" y="140" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
+            <text x="595" y="172" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Code node</text>
 
-          <rect x="720" y="110" width="110" height="50" rx="10" fill="#17171f" stroke="#ff5c38" stroke-width="2"/>
-          <text x="775" y="141" text-anchor="middle" fill="#eceaf0" font-size="14" font-weight="600">Gate</text>
+            <rect x="750" y="140" width="110" height="54" rx="12" fill="url(#accentGradient)" stroke="#ff5c38" stroke-width="2"/>
+            <text x="805" y="172" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="650">Gate</text>
 
-          <rect x="720" y="240" width="110" height="50" rx="10" fill="#17171f" stroke="#232330" stroke-width="1.5"/>
-          <text x="775" y="271" text-anchor="middle" fill="#a2a1ad" font-size="14" font-weight="600">Merge</text>
+            <rect x="750" y="290" width="110" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
+            <text x="805" y="322" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Merge</text>
+          </g>
 
-          <!-- edges -->
-          <line x1="190" y1="115" x2="280" y2="95" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="190" y1="115" x2="280" y2="175" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="410" y1="95" x2="500" y2="135" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="410" y1="175" x2="500" y2="135" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="630" y1="135" x2="720" y2="135" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="775" y1="160" x2="775" y2="240" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- forward edges -->
+          <path d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 660 167 L 750 167" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
 
           <!-- correction edge -->
-          <path d="M 720 145 Q 620 145 620 175 L 410 175" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-red)"/>
-          <text x="560" y="210" text-anchor="middle" fill="#f87171" font-size="12">Correction edge</text>
+          <path d="M 750 167 C 660 167 660 217 430 217" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <rect x="490" y="225" width="118" height="22" rx="6" fill="#1a1214" stroke="#f87171" stroke-width="1" opacity="0.9"/>
+          <text x="549" y="240" text-anchor="middle" fill="#f87171" font-size="12" font-weight="600">Correction edge</text>
 
           <!-- learning edge -->
-          <path d="M 775 110 Q 775 60 125 60 L 125 90" fill="none" stroke="#ff7a5c" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-accent)"/>
-          <text x="450" y="55" text-anchor="middle" fill="#ff7a5c" font-size="12">Learning edge</text>
+          <path d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#ff7a5c" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+          <rect x="390" y="52" width="104" height="22" rx="6" fill="#1f1816" stroke="#ff7a5c" stroke-width="1" opacity="0.9"/>
+          <text x="442" y="67" text-anchor="middle" fill="#ff7a5c" font-size="12" font-weight="600">Learning edge</text>
 
           <!-- annotations -->
-          <text x="235" y="85" text-anchor="middle" fill="#8b8896" font-size="11">runs in parallel</text>
-          <text x="775" y="320" text-anchor="middle" fill="#8b8896" font-size="12">Only opens if the gate passes</text>
+          <text x="235" y="98" text-anchor="middle" fill="#8b8896" font-size="12">runs in parallel</text>
+          <text x="805" y="370" text-anchor="middle" fill="#8b8896" font-size="12">only opens after the gate passes</text>
+
+          <!-- legend -->
+          <line x1="110" y1="420" x2="200" y2="420" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <text x="220" y="425" fill="#a2a1ad" font-size="13">Forward edge: output feeds the next step</text>
+
+          <line x1="110" y1="450" x2="200" y2="450" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <text x="220" y="455" fill="#f87171" font-size="13">Correction edge: send one unit back to fix itself</text>
+
+          <line x1="110" y1="480" x2="200" y2="480" stroke="#ff7a5c" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+          <text x="220" y="485" fill="#ff7a5c" font-size="13">Learning edge: accepted result becomes a future constraint</text>
         </svg>
-        <figcaption id="diagram-caption">The splitter divides work into bounded units. Independent workers run at the same time. The code node merges their outputs. The gate runs a deterministic check. If it fails, only that unit loops back. If it passes, the result feeds forward and may also feed back as a constraint for future splits.</figcaption>
+        <figcaption id="diagram-caption">A planned graph is the map you draw before any work starts. The splitter cuts the task into bounded units. Independent workers run at the same time. The code node merges their outputs with one correct answer. The gate runs a deterministic check. If the check fails, only that unit loops back along a correction edge. If it passes, the result continues to the merge and may also travel back along a learning edge, becoming a constraint the splitter uses next time.</figcaption>
       </figure>
 
       <div class="callout">

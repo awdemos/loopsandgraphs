@@ -2,6 +2,29 @@
 
 Semantic versioning: the control rules in `AGENTS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.7] — 2026-11-21
+
+- Redesigned the planned-graph diagram with smoother layout, consistent node styling, and a legend explaining forward, correction, and learning edges.
+- Clarified the explanation of what a planned graph is and why you draw it before the work starts.
+- Expanded the SBOM to include all release files with SHA-256 checksums.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  AGENTS.md
+a56dbd83e558683da0722c995b5767fa46e76e9af3cbfd212f80afe57860caa3  SKILL.md
+d210cc7f3eb5300e3c7d63e010ec6180c43dc5e9ffdea2d7f82083211a4b718d  index.html
+ede4229f32a7fbb9acc5bb4e5bed9946298522bf457e7aed8ce4caa97b0ff061  README.md
+65cdb6eca1685348452ebfef5db008878a1961e6da25acb6a14e62b52947cb7d  sbom.spdx.json
+d210cc7f3eb5300e3c7d63e010ec6180c43dc5e9ffdea2d7f82083211a4b718d  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+```
+
+Verify the release with `git tag -v v0.1.7`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.6] — 2026-11-21
 
 - Clarified what "a check" means in the hero and README: concrete, pass-fail checks like a test suite or type check.

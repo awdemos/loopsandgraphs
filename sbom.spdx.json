@@ -5,9 +5,9 @@
   "name": "loopsandgraphs.dev",
   "documentNamespace": "https://loopsandgraphs.dev/sbom.spdx.json",
   "creationInfo": {
-    "created": "2026-11-21T21:00:00Z",
+    "created": "2026-11-21T21:30:00Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.6",
+      "Tool: loopsandgraphs-release-process-0.1.7",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.6",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.7",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,12 +24,38 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "5b07011d947c95a830cec14fbfd257d28a4eede4e3b31469a9abe732450df12a"
+          "checksumValue": "d210cc7f3eb5300e3c7d63e010ec6180c43dc5e9ffdea2d7f82083211a4b718d"
         }
       ]
     }
   ],
   "files": [
+    {
+      "SPDXID": "SPDXRef-File-AGENTS",
+      "fileName": "./AGENTS.md",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-SKILL",
+      "fileName": "./SKILL.md",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "a56dbd83e558683da0722c995b5767fa46e76e9af3cbfd212f80afe57860caa3"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
     {
       "SPDXID": "SPDXRef-File-index",
       "fileName": "./index.html",
@@ -37,7 +63,59 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "5b07011d947c95a830cec14fbfd257d28a4eede4e3b31469a9abe732450df12a"
+          "checksumValue": "d210cc7f3eb5300e3c7d63e010ec6180c43dc5e9ffdea2d7f82083211a4b718d"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-README",
+      "fileName": "./README.md",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ede4229f32a7fbb9acc5bb4e5bed9946298522bf457e7aed8ce4caa97b0ff061"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-public-index",
+      "fileName": "./public/index.html",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d210cc7f3eb5300e3c7d63e010ec6180c43dc5e9ffdea2d7f82083211a4b718d"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-wrangler",
+      "fileName": "./wrangler.toml",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-deploy",
+      "fileName": "./deploy.sh",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248"
         }
       ],
       "licenseConcluded": "MIT",
@@ -65,7 +143,37 @@
     },
     {
       "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-AGENTS",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-SKILL",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
       "relatedSpdxElement": "SPDXRef-File-index",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-README",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-public-index",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-wrangler",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-deploy",
       "relationshipType": "CONTAINS"
     },
     {
