@@ -2,6 +2,30 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.12] — 2026-11-21
+
+- Replaced the orange/red color scheme with a deep navy and teal palette so the site is visually distinct from adversarial-review.
+- Updated all CSS variables, the hero glow, link underlines, terminal dot, and the planned-graph SVG to use the new palette.
+- Kept the correction edge in a reddish tone because red still signals "failure / send back" clearly.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  LOOPS_AND_GRAPHS.md
+82732670465821c10dafa1b72c54ad2777e7cdaf216f87262ef30ae4d85018e2  SKILL.md
+9bdda644d7e59b065903a6fdc68ad41e9f18ffa7743ee538f977f82c9d7b3f29  index.html
+b6b56d7a890ee7482d7ead4210900ad4ff35401c8c15b613ca760468337fc75b  README.md
+3778b287e3654dd85805bc1040a97659fa9a7a5ba7c1c45608e4ab4954212528  sbom.spdx.json
+9bdda644d7e59b065903a6fdc68ad41e9f18ffa7743ee538f977f82c9d7b3f29  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46  docs/DESIGN-v0.1.md
+```
+
+Verify the release with `git tag -v v0.1.12`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.11] — 2026-11-21
 
 - Added an explicit harness-engineering framing to the hero. It now says every agent system already has a harness, and Loops and Graphs makes that harness explicit, reusable, and inspectable.

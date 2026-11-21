@@ -20,18 +20,18 @@
 <style>
   :root {
     color-scheme: dark;
-    --bg:          #0a0a0d;
-    --bg-soft:     #0e0e13;
-    --surface:     #121218;
-    --surface-2:   #17171f;
-    --border:      #232330;
-    --border-soft: #1c1c26;
-    --text:        #eceaf0;
-    --muted:       #a2a1ad;
-    --faint:       #8b8896;
-    --accent:      #ff5c38;
-    --accent-soft: #ff7a5c;
-    --accent-dim:  rgba(255, 92, 56, .12);
+    --bg:          #08081a;
+    --bg-soft:     #0c0c24;
+    --surface:     #101030;
+    --surface-2:   #151538;
+    --border:      #202050;
+    --border-soft: #181840;
+    --text:        #e8e8f5;
+    --muted:       #9ca3af;
+    --faint:       #6b7280;
+    --accent:      #00d4aa;
+    --accent-soft: #5eead4;
+    --accent-dim:  rgba(0, 212, 170, .12);
     --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
     --space-1: .25rem;
@@ -57,7 +57,7 @@
   ::-webkit-scrollbar { inline-size: 10px; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; border: 2px solid var(--bg); }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::selection { background: var(--accent); color: #14060a; }
+  ::selection { background: var(--accent); color: #001a14; }
 
   body {
     margin: 0;
@@ -68,7 +68,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     background-image:
-      radial-gradient(60rem 32rem at 50% -12rem, rgba(255, 92, 56, .07), transparent 70%),
+      radial-gradient(60rem 32rem at 50% -12rem, rgba(0, 212, 170, .08), transparent 70%),
       linear-gradient(to right, rgba(255,255,255,.022) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255,255,255,.022) 1px, transparent 1px);
     background-size: auto, 4rem 4rem, 4rem 4rem;
@@ -88,7 +88,7 @@
 
   :where(a) {
     color: var(--text);
-    text-decoration-color: rgba(255, 92, 56, .55);
+    text-decoration-color: rgba(0, 212, 170, .55);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     transition: color .15s ease, text-decoration-color .15s ease;
@@ -187,7 +187,7 @@
     line-height: 1.05;
     margin-block-end: var(--space-5);
   }
-  .hero h1 .accent { color: var(--accent); text-shadow: 0 0 2.75rem rgba(255, 92, 56, .4); }
+  .hero h1 .accent { color: var(--accent); text-shadow: 0 0 2.75rem rgba(0, 212, 170, .4); }
   .pitch {
     font-size: clamp(1.25rem, 1rem + 1.5vw, 1.8rem);
     line-height: 1.45;
@@ -276,7 +276,7 @@
     background: rgba(255,255,255,.015);
   }
   .terminal-bar .dot { inline-size: .65rem; block-size: .65rem; border-radius: 50%; background: var(--border); }
-  .terminal-bar .dot:first-child { background: rgba(255, 92, 56, .75); }
+  .terminal-bar .dot:first-child { background: rgba(0, 212, 170, .75); }
   .terminal-bar .title {
     margin-inline-start: var(--space-2);
     font-family: var(--font-mono);
@@ -451,7 +451,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.11/LOOPS_AND_GRAPHS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.12/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -525,21 +525,21 @@
         <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: a splitter divides work, workers run in parallel, a code node merges their outputs, a gate checks the result, and feedback loops send failures back for correction or accepted results back as future constraints.">
           <defs>
             <linearGradient id="nodeGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#1e1e28"/>
-              <stop offset="100%" stop-color="#17171f"/>
+              <stop offset="0%" stop-color="#1a1a40"/>
+              <stop offset="100%" stop-color="#131330"/>
             </linearGradient>
             <linearGradient id="accentGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2a1f24"/>
-              <stop offset="100%" stop-color="#1f171b"/>
+              <stop offset="0%" stop-color="#0f2e28"/>
+              <stop offset="100%" stop-color="#0a1f1b"/>
             </linearGradient>
             <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
               <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/>
             </filter>
             <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#a2a1ad"/>
+              <path d="M0,0 L0,6 L9,3 z" fill="#9ca3af"/>
             </marker>
             <marker id="arrow-accent" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#ff7a5c"/>
+              <path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/>
             </marker>
             <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
               <path d="M0,0 L0,6 L9,3 z" fill="#f87171"/>
@@ -547,37 +547,37 @@
           </defs>
 
           <!-- title -->
-          <text x="450" y="40" text-anchor="middle" fill="#eceaf0" font-size="24" font-weight="650">A planned graph</text>
-          <text x="450" y="66" text-anchor="middle" fill="#8b8896" font-size="14">The map drawn before the work starts</text>
+          <text x="450" y="40" text-anchor="middle" fill="#e8e8f5" font-size="24" font-weight="650">A planned graph</text>
+          <text x="450" y="66" text-anchor="middle" fill="#6b7280" font-size="14">The map drawn before the work starts</text>
 
           <!-- nodes -->
           <g filter="url(#softShadow)">
-            <rect x="60" y="120" width="130" height="54" rx="12" fill="url(#accentGradient)" stroke="#ff5c38" stroke-width="2"/>
-            <text x="125" y="152" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="650">Splitter</text>
+            <rect x="60" y="120" width="130" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
+            <text x="125" y="152" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="650">Splitter</text>
 
             <rect x="300" y="90" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="365" y="122" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Worker A</text>
+            <text x="365" y="122" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Worker A</text>
 
             <rect x="300" y="190" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="365" y="222" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Worker B</text>
+            <text x="365" y="222" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Worker B</text>
 
             <rect x="530" y="140" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="595" y="172" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Code node</text>
+            <text x="595" y="172" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Code node</text>
 
-            <rect x="750" y="140" width="110" height="54" rx="12" fill="url(#accentGradient)" stroke="#ff5c38" stroke-width="2"/>
-            <text x="805" y="172" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="650">Gate</text>
+            <rect x="750" y="140" width="110" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
+            <text x="805" y="172" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="650">Gate</text>
 
             <rect x="750" y="290" width="110" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="805" y="322" text-anchor="middle" fill="#eceaf0" font-size="15" font-weight="600">Merge</text>
+            <text x="805" y="322" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Merge</text>
           </g>
 
           <!-- forward edges -->
-          <path d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 660 167 L 750 167" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 660 167 L 750 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
 
           <!-- correction edge -->
           <path d="M 750 167 C 660 167 660 217 430 217" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
@@ -585,23 +585,23 @@
           <text x="549" y="240" text-anchor="middle" fill="#f87171" font-size="12" font-weight="600">Correction edge</text>
 
           <!-- learning edge -->
-          <path d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#ff7a5c" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
-          <rect x="390" y="52" width="104" height="22" rx="6" fill="#1f1816" stroke="#ff7a5c" stroke-width="1" opacity="0.9"/>
-          <text x="442" y="67" text-anchor="middle" fill="#ff7a5c" font-size="12" font-weight="600">Learning edge</text>
+          <path d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+          <rect x="390" y="52" width="104" height="22" rx="6" fill="#0a1f1b" stroke="#5eead4" stroke-width="1" opacity="0.9"/>
+          <text x="442" y="67" text-anchor="middle" fill="#5eead4" font-size="12" font-weight="600">Learning edge</text>
 
           <!-- annotations -->
-          <text x="235" y="98" text-anchor="middle" fill="#8b8896" font-size="12">runs in parallel</text>
-          <text x="805" y="370" text-anchor="middle" fill="#8b8896" font-size="12">only opens after the gate passes</text>
+          <text x="235" y="98" text-anchor="middle" fill="#6b7280" font-size="12">runs in parallel</text>
+          <text x="805" y="370" text-anchor="middle" fill="#6b7280" font-size="12">only opens after the gate passes</text>
 
           <!-- legend -->
-          <line x1="110" y1="420" x2="200" y2="420" stroke="#a2a1ad" stroke-width="2" marker-end="url(#arrow)"/>
-          <text x="220" y="425" fill="#a2a1ad" font-size="13">Forward edge: output feeds the next step</text>
+          <line x1="110" y1="420" x2="200" y2="420" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <text x="220" y="425" fill="#9ca3af" font-size="13">Forward edge: output feeds the next step</text>
 
           <line x1="110" y1="450" x2="200" y2="450" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
           <text x="220" y="455" fill="#f87171" font-size="13">Correction edge: send one unit back to fix itself</text>
 
-          <line x1="110" y1="480" x2="200" y2="480" stroke="#ff7a5c" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
-          <text x="220" y="485" fill="#ff7a5c" font-size="13">Learning edge: accepted result becomes a future constraint</text>
+          <line x1="110" y1="480" x2="200" y2="480" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+          <text x="220" y="485" fill="#5eead4" font-size="13">Learning edge: accepted result becomes a future constraint</text>
         </svg>
         <figcaption id="diagram-caption">A planned graph is the map you draw before any work starts. The splitter cuts the task into bounded units. Independent workers run at the same time. The code node merges their outputs with one correct answer. The gate runs a deterministic check. If the check fails, only that unit loops back along a correction edge. If it passes, the result continues to the merge and may also travel back along a learning edge, becoming a constraint the splitter uses next time.</figcaption>
       </figure>
@@ -715,7 +715,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.11</span>
+  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.12</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">LOOPS_AND_GRAPHS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>
