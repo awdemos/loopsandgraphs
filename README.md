@@ -67,7 +67,9 @@ Confidence is the weakest gate input because it is the only one the model can in
 - `AGENTS.md` — the agent-readable control guide. Drop this into any repo to tell agents how to plan, split, check, gate, and return work.
 - `SKILL.md` — installable Kimi skill that activates the framework in any project.
 - `docs/DESIGN-v0.1.md` — the human-readable design spec behind `AGENTS.md`.
-- `index.html` — the landing page (served via GitHub Pages).
+- `index.html` — the landing page source.
+- `public/index.html` — the deployed landing page asset.
+- `wrangler.toml` — Cloudflare Workers deployment config.
 - `CHANGELOG.md` — version history and release checksums.
 - `sbom.spdx.json` — machine-readable SBOM for the static site.
 - `LICENSE` — MIT.
@@ -75,7 +77,7 @@ Confidence is the weakest gate input because it is the only one the model can in
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.1/AGENTS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.2/AGENTS.md
 ```
 
 Place `AGENTS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
@@ -87,6 +89,15 @@ cp SKILL.md ~/.kimi-code/skills/agent-control-guide.md
 ```
 
 Then say **"run this with loops and graphs"** or **"plan this as a graph"** in any project.
+
+## Deploy the site
+
+The site is served by a Cloudflare Worker. After editing `index.html`, copy it to `public/index.html` and deploy:
+
+```sh
+cp index.html public/index.html
+wrangler deploy
+```
 
 ## For AI agents reading this
 
