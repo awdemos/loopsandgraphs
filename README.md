@@ -4,17 +4,18 @@ A gentler way to run AI coding agents. It replaces per-step human approval with 
 
 ## Why this exists
 
-AI coding agents write code fast, but speed without structure still lands on your desk. They stop at every step waiting for you to check their work, and that does not scale. Loops and Graphs gives the agent a clear plan and a checklist instead. The agent verifies its own work, runs independent steps in parallel, and only brings you in for the highest-consequence decision.
+AI coding agents can draft code fast, but without checks and a plan they still need you to review every step. That means context switching, repeated interruptions, and the risk that something slips through while you are tired.
 
-This matters because a check that can fail is the only thing that lets an agent work without you watching. A planned graph is the only thing that keeps independent work from waiting in line. And a gate is not a judge voting on what to do next; it is just a pass-fail question based on evidence.
+Loops and Graphs changes the job description. You write the checklist once, and the agent verifies its own work. Independent tasks run in parallel, failures are corrected one piece at a time, and you only approve the final merge. The result: fewer interruptions, faster delivery, and fewer errors making it to production.
 
 ## What you gain
 
-- **Fewer interruptions.** A deterministic check fails the work while you are away, not a human eyeball.
-- **Faster execution.** Independent tasks run in parallel instead of waiting in a linear script.
-- **Local failures.** One failing unit does not force you to re-verify everything else.
-- **A system that learns.** Accepted results become constraints the splitter applies to future runs.
-- **Human attention where it matters.** You approve the merge, not every intermediate step.
+- **Fewer interruptions.** You see the final merge, not every intermediate step.
+- **Faster delivery.** Independent tasks run in parallel instead of waiting in a linear script.
+- **Fewer errors slip through.** Deterministic checks catch problems before they ship.
+- **Less rework.** One failing unit does not force you to re-verify everything else.
+- **A system that learns.** Accepted results become constraints for future runs.
+- **Control where it matters.** You keep the highest-consequence decision; the agent handles verification.
 
 ## Architecture
 
