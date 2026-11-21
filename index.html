@@ -439,6 +439,8 @@
     <p class="pitch">AI coding agents can draft code fast, but without tests and a plan they still need you to review every step. Loops and Graphs changes that. You write the checklist once: every task must pass a concrete check, like a test suite or type check, before it moves on. Independent tasks run in parallel, failures are corrected one piece at a time, and you only approve the final merge. The result: fewer interruptions, faster delivery, and fewer errors making it to production.</p>
     <p class="why">Why this works: a check that can actually fail replaces your eyes. If the only test is "does it look right?" the agent still needs you to look. A real check, like a test suite or a diff-scope guard, can say pass or fail on its own. A planned graph replaces your judgment about order. Without it, the agent guesses what depends on what and often runs steps one at a time that could have run together. A gate replaces your approval at every step. It asks one pass-fail question based on evidence, so the only thing left for you is the final merge.</p>
 
+    <p class="why">That is harness engineering. Every agent system already has a harness, whether it is hidden in the prompt, the tools, or the review process. Loops and Graphs makes the harness explicit, reusable, and inspectable, so the agent can do more while you watch less.</p>
+
     <div class="actions">
       <a class="btn btn-primary" href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">Read LOOPS_AND_GRAPHS.md</a>
       <a class="btn" href="#framework">How it works</a>
@@ -449,7 +451,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.10/LOOPS_AND_GRAPHS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.11/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -713,7 +715,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.10</span>
+  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.11</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">LOOPS_AND_GRAPHS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>
