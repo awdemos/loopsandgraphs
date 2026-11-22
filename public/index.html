@@ -19,24 +19,24 @@
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
-    color-scheme: light;
-    --bg: #fbfaf8;
-    --bg-warm: #f5f3ef;
-    --surface: #ffffff;
-    --text: #141414;
-    --muted: #55524e;
-    --faint: #8a8580;
-    --accent: #0c4f43;
-    --accent-soft: #147a66;
-    --accent-bg: #e8f3f0;
-    --red: #b42318;
-    --red-bg: #fef2f2;
-    --green: #156f1c;
-    --green-bg: #f0fdf1;
-    --border: #e2e0dc;
-    --border-soft: #edebe7;
-    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-serif: Georgia, "Times New Roman", serif;
+    color-scheme: dark;
+    --bg:          #0a0a0c;
+    --bg-soft:     #111114;
+    --surface:     #151519;
+    --surface-2:   #1b1b20;
+    --border:      #26262c;
+    --border-soft: #1e1e23;
+    --text:        #f2f2f5;
+    --muted:       #a1a1aa;
+    --faint:       #71717a;
+    --accent:      #f59e0b;
+    --accent-soft: #fbbf24;
+    --accent-dim:  rgba(245, 158, 11, .12);
+    --red:         #ef4444;
+    --red-bg:      rgba(239, 68, 68, .1);
+    --green:       #22c55e;
+    --green-bg:    rgba(34, 197, 94, .1);
+    --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
     --space-1: .25rem;
     --space-2: .5rem;
@@ -50,7 +50,7 @@
     --radius-s: 6px;
     --radius-m: 10px;
     --radius-l: 16px;
-    --content: 72rem;
+    --content: 70rem;
     --measure: 68ch;
   }
 
@@ -63,24 +63,28 @@
   ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; border: 2px solid var(--bg); }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::selection { background: var(--accent); color: #fff; }
+  ::selection { background: var(--accent); color: #1a1002; }
 
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-sans);
-    font-size: clamp(1rem, .96rem + .18vw, 1.125rem);
+    font-size: clamp(1rem, .95rem + .2vw, 1.075rem);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(70rem 35rem at 50% -14rem, rgba(245, 158, 11, .08), transparent 65%),
+      radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: auto, 2.25rem 2.25rem;
+    background-attachment: fixed, fixed;
   }
 
   :where(h1, h2, h3) {
     margin: 0;
-    font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: 650;
     letter-spacing: -.02em;
-    line-height: 1.15;
+    line-height: 1.12;
     text-wrap: balance;
   }
 
@@ -88,44 +92,63 @@
   :where(p) { margin: 0 0 var(--space-4); max-width: var(--measure); }
 
   :where(a) {
-    color: var(--accent);
+    color: var(--accent-soft);
     text-decoration: underline;
-    text-decoration-color: rgba(12, 79, 67, .35);
+    text-decoration-color: rgba(245, 158, 11, .45);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     transition: color .15s ease, text-decoration-color .15s ease;
   }
-  :where(a:hover) { color: var(--accent-soft); text-decoration-color: var(--accent); }
+  :where(a:hover) { color: var(--accent); text-decoration-color: var(--accent); }
   :where(a:focus-visible) {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  :where(code, pre) { font-family: var(--font-mono); font-size: .9em; }
+  :where(code, pre) { font-family: var(--font-mono); font-size: .875em; }
   :where(code) {
-    background: var(--bg-warm);
+    background: var(--surface-2);
     border: 1px solid var(--border);
     border-radius: var(--radius-s);
     padding: .12em .35em;
   }
   .file { font-family: var(--font-mono); font-size: .92em; color: var(--accent-soft); }
 
+  /* skip link */
+  .skip {
+    position: fixed;
+    top: 0;
+    left: var(--space-4);
+    z-index: 20;
+    padding: .55rem 1rem;
+    background: var(--accent);
+    color: #1a1002;
+    font-weight: 600;
+    font-size: .9rem;
+    text-decoration: none;
+    border-end-start-radius: var(--radius-m);
+    border-end-end-radius: var(--radius-m);
+    transform: translateY(-100%);
+    transition: transform .15s ease;
+  }
+  .skip:focus-visible { transform: translateY(0); outline: none; }
+
   /* header */
   .topbar {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(251, 250, 248, .92);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(10, 10, 12, .82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-soft);
   }
   .topbar-inner {
     max-width: var(--content);
     margin-inline: auto;
     padding-inline: var(--space-5);
-    height: 4rem;
+    height: 3.75rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -146,7 +169,7 @@
   .nav {
     display: flex;
     align-items: center;
-    gap: clamp(var(--space-4), 2vw, var(--space-6));
+    gap: clamp(var(--space-3), 2vw, var(--space-5));
     font-size: .9rem;
   }
   .nav a {
@@ -154,61 +177,59 @@
     color: var(--muted);
   }
   .nav a:hover { color: var(--text); }
-  .btn {
+  .nav-cta {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    padding: .55rem 1rem;
-    border-radius: var(--radius-m);
-    font-size: .9rem;
-    font-weight: 550;
-    text-decoration: none;
+    padding: .4rem .95rem;
     border: 1px solid var(--border);
-    color: var(--text);
+    border-radius: 999px;
     background: var(--surface);
-    transition: border-color .15s ease, background .15s ease;
+    color: var(--text);
   }
-  .btn:hover { border-color: var(--accent); background: var(--accent-bg); }
-  .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: #fff; }
+  .nav-cta:hover { border-color: var(--accent); background: var(--accent-dim); color: var(--text); }
 
   /* hero */
   .hero {
     max-width: var(--content);
     margin-inline: auto;
-    padding: clamp(var(--space-7), 7vw, var(--space-9)) var(--space-5) var(--space-8);
+    padding: clamp(var(--space-7), 8vw, var(--space-9)) var(--space-5) var(--space-8);
   }
-  .kicker {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: .75rem;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-block-end: var(--space-3);
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-5);
+    padding: .4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: .85rem;
+    color: var(--muted);
+  }
+  .eyebrow::before {
+    content: "";
+    width: .45rem;
+    height: .45rem;
+    border-radius: 50%;
+    background: var(--accent);
   }
   .hero h1 {
-    font-size: clamp(2.6rem, 1.6rem + 4vw, 5rem);
-    line-height: 1.05;
-    margin-block-end: var(--space-5);
+    font-size: clamp(2.4rem, 1.4rem + 4.2vw, 5rem);
     max-width: 14ch;
+    margin-block-end: var(--space-5);
   }
-  .hero h1 .accent { color: var(--accent-soft); font-style: italic; }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
   .pitch {
-    font-size: clamp(1.2rem, 1rem + .9vw, 1.55rem);
+    font-size: clamp(1.2rem, 1rem + 1.2vw, 1.65rem);
     line-height: 1.45;
     font-weight: 450;
-    max-width: 58ch;
-    margin-block-end: var(--space-5);
+    max-width: 56ch;
+    margin-block-end: var(--space-6);
   }
   .why {
     color: var(--muted);
-    max-width: 60ch;
+    max-width: 58ch;
     margin-block-end: var(--space-5);
   }
   .actions {
@@ -217,10 +238,31 @@
     gap: var(--space-3);
     margin-block: var(--space-6) var(--space-7);
   }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: .65rem 1.25rem;
+    border-radius: var(--radius-m);
+    font-size: .95rem;
+    font-weight: 550;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .btn:hover { border-color: var(--accent); background: var(--accent-dim); color: var(--text); }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1002;
+  }
+  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: #1a1002; }
 
   /* terminal */
   .terminal {
-    max-width: 44rem;
+    max-width: 46rem;
     border: 1px solid var(--border);
     border-radius: var(--radius-l);
     background: var(--surface);
@@ -231,12 +273,12 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    padding: .65rem var(--space-4);
+    padding: .7rem var(--space-4);
     border-bottom: 1px solid var(--border-soft);
-    background: var(--bg-warm);
+    background: var(--surface-2);
   }
   .terminal-bar .dot { width: .65rem; height: .65rem; border-radius: 50%; background: var(--border); }
-  .terminal-bar .dot:first-child { background: var(--accent-soft); }
+  .terminal-bar .dot:first-child { background: var(--accent); }
   .terminal-bar .title {
     margin-inline-start: var(--space-2);
     font-family: var(--font-mono);
@@ -246,7 +288,7 @@
   .terminal pre {
     margin: 0;
     padding: var(--space-5);
-    font-size: clamp(.82rem, .78rem + .2vw, .92rem);
+    font-size: clamp(.82rem, .78rem + .25vw, .92rem);
     line-height: 1.7;
     background: transparent;
     border: 0;
@@ -257,44 +299,109 @@
   .terminal .prompt { color: var(--accent); user-select: none; }
   .terminal .comment { color: var(--faint); }
 
-  /* article */
-  .article {
+  /* sections */
+  .section {
     max-width: var(--content);
     margin-inline: auto;
-    padding: 0 var(--space-5) var(--space-9);
-  }
-  .article-inner { max-width: var(--measure); }
-  .article h2 {
-    font-size: clamp(1.4rem, 1.15rem + 1vw, 1.9rem);
-    margin-block-start: var(--space-8);
-    margin-block-end: var(--space-4);
-    padding-block-start: var(--space-6);
+    padding: var(--space-8) var(--space-5);
     border-top: 1px solid var(--border-soft);
   }
-  .article h2:first-of-type { margin-block-start: 0; padding-block-start: 0; border-top: 0; }
-  .article h3 {
-    font-size: 1.15rem;
-    margin-block-start: var(--space-6);
+  .section-head { margin-block-end: var(--space-6); }
+  .kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-block-end: var(--space-2);
+  }
+  .section h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.2rem); }
+  .lede {
+    font-size: clamp(1.02rem, .98rem + .3vw, 1.15rem);
+    color: var(--muted);
+    margin-block-start: var(--space-3);
+  }
+
+  /* steps */
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: var(--space-4);
+    counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: var(--space-5);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-l);
+    background: var(--surface);
+    font-size: .97rem;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+  }
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--accent);
     margin-block-end: var(--space-3);
-    color: var(--text);
   }
-  .article ul, .article ol {
-    margin: 0 0 var(--space-5);
-    padding-inline-start: var(--space-5);
+  .steps li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity .2s ease;
   }
-  .article li { margin-block-end: var(--space-2); }
-  .article li::marker { color: var(--accent); }
+  .steps li:hover { border-color: var(--border); }
+  .steps li:hover::after { opacity: 1; }
+  .steps strong { color: var(--text); }
 
-  .callout {
-    border-left: 3px solid var(--accent);
-    background: var(--accent-bg);
-    padding: var(--space-4) var(--space-5);
-    margin-block-end: var(--space-6);
-    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  /* args */
+  .args {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+    gap: var(--space-4);
   }
-  .callout p { max-width: none; }
-  .callout p:last-child { margin-block-end: 0; }
+  .args li {
+    padding: var(--space-5);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-l);
+    background: var(--surface);
+    transition: border-color .2s ease;
+  }
+  .args li:hover { border-color: var(--border); }
+  .args .icon {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-m);
+    border: 1px solid var(--border);
+    background: var(--accent-dim);
+    color: var(--accent);
+    margin-block-end: var(--space-4);
+  }
+  .args h3 { font-size: 1.08rem; margin-block-end: var(--space-2); }
+  .args p { margin: 0; font-size: .95rem; color: var(--muted); }
+  .args strong { color: var(--text); }
 
+  /* check grid */
   .check-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
@@ -302,7 +409,7 @@
     margin-block-end: var(--space-6);
   }
   .check-card {
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-soft);
     border-radius: var(--radius-m);
     background: var(--surface);
     padding: var(--space-4);
@@ -323,28 +430,6 @@
   .check-card.green .badge { background: var(--green-bg); color: var(--green); }
   .check-card.red { border-left: 3px solid var(--red); }
   .check-card.red .badge { background: var(--red-bg); color: var(--red); }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-block-end: var(--space-6);
-    font-size: .95rem;
-  }
-  th, td {
-    text-align: start;
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--border);
-    vertical-align: top;
-  }
-  th {
-    background: var(--bg-warm);
-    font-weight: 600;
-    font-family: var(--font-mono);
-    font-size: .8rem;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-  }
-  td:first-child { font-weight: 600; }
 
   /* diagram */
   .diagram {
@@ -371,32 +456,75 @@
     margin-inline: auto;
   }
 
+  /* table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block-end: var(--space-6);
+    font-size: .95rem;
+  }
+  th, td {
+    text-align: start;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--surface-2);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  td:first-child { font-weight: 600; }
+
+  /* callout */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-dim);
+    padding: var(--space-4) var(--space-5);
+    margin-block-end: var(--space-6);
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  }
+  .callout p { max-width: none; }
+  .callout p:last-child { margin-block-end: 0; }
+
   /* footer */
   .footer {
     max-width: var(--content);
     margin-inline: auto;
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-6) var(--space-5) var(--space-7);
     border-top: 1px solid var(--border-soft);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--space-4);
-    font-size: .9rem;
-    color: var(--muted);
+    font-size: .88rem;
+    color: var(--faint);
   }
-  .footer nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
+  .footer .file { font-size: .95em; }
+  .footer a { color: var(--muted); }
+  .footer nav { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+
+  @media (max-width: 30rem) {
+    .topbar-inner { padding-inline: var(--space-4); }
+    .nav a:not(.nav-cta) { display: none; }
+    .hero, .section { padding-inline: var(--space-4); }
+    .actions { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+    .terminal-bar .title { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   }
 </style>
 </head>
 <body>
+
+<a class="skip" href="#top">Skip to content</a>
 
 <header class="topbar">
   <div class="topbar-inner">
@@ -405,16 +533,16 @@
       <span>loopsandgraphs.dev</span>
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="https://github.com/awdemos/loopsandgraphs">GitHub</a>
-      <a class="btn" href="#get">Get LOOPS_AND_GRAPHS.md</a>
+      <a href="#framework">How it works</a>
+      <a class="nav-cta" href="#get">Get the file</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="top">
 
   <section class="hero">
-    <span class="kicker">Agent execution framework</span>
+    <p class="eyebrow">Agent execution framework</p>
     <h1>Loops and <span class="accent">Graphs</span></h1>
     <p class="pitch">AI agents write code fast, but they still need you to check every step. This framework fixes that. You write the checklist once. Every task must pass a real check before it moves on. Independent tasks run in parallel. You approve the final merge.</p>
     <p class="why">Three pieces make it work. A check replaces your eyes. A graph replaces your judgment about order. A gate replaces your approval at every step. What is left for you is the final merge.</p>
@@ -422,7 +550,7 @@
 
     <div class="actions">
       <a class="btn btn-primary" href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">Read LOOPS_AND_GRAPHS.md</a>
-      <a class="btn" href="#framework">How it works</a>
+      <a class="btn" href="#framework">See how it works</a>
     </div>
 
     <div class="terminal" id="get" role="region" aria-label="Quickstart command">
@@ -435,263 +563,287 @@
     </div>
   </section>
 
-  <article class="article" id="framework">
-    <div class="article-inner">
-
-      <p>You check every step your agent takes. Not because you want to. Because if you do not, mistakes get through. This framework moves that checking into the system.</p>
-
+  <section class="section" id="framework">
+    <div class="section-head">
+      <span class="kicker">The problem</span>
       <h2>Most loops are not loops</h2>
-
-      <p>In August, researchers from Heidelberg and Singapore Management University searched 36,487 maintained repositories for agents running in autonomous loops. They confirmed 217.</p>
-
-      <p>Nearly all of them had the trigger. After that, the numbers fall off a cliff.</p>
-
-      <ul>
-        <li>101 had a spending or turn limit.</li>
-        <li>76 had a verifier.</li>
-        <li>55 had a goal or stop rule.</li>
-        <li>35 kept state between runs.</li>
-        <li>10 recorded what it cost.</li>
-      </ul>
-
-      <p>One triage loop logged 6,290 runs. In every run the researchers checked, the agent never fired. A trigger is not a loop. It is a cron job with your credit card attached.</p>
-
-      <p>The study found no systematic evidence for the promised 10x yet. This framework does not promise one either. The parts everyone skips, the check, the state, the gate, are the parts that decide whether a loop is worth running. <a href="https://arxiv.org/html/2608.21884">Research paper</a>.</p>
-
-      <h2>A loop checks its own work</h2>
-
-      <p>A loop is a job that checks its own work and fixes itself when it is wrong. Like a student with an answer key. No teacher needed.</p>
-
-      <p>Four steps:</p>
-
-      <ol>
-        <li><strong>Do the work.</strong> Write the code, run the search, build the report.</li>
-        <li><strong>Check it.</strong> Against something that can say no.</li>
-        <li><strong>Fix what the check caught.</strong></li>
-        <li><strong>Repeat until it passes.</strong></li>
-      </ol>
-
-      <p>Three exits: green (the check passes), budget (runs or dollars run out), or stall (the same failure twice). No fixed retry count. A count cannot tell slow progress from a stuck loop, and a repeated failure is not a retry problem. It means the agent cannot see what it needs, or the task is wrong. Both are yours.</p>
-
-      <p>The check is the whole point. If it cannot fail, it is not checking. Tests pass. Type checker reports zero errors. Those are checks. "Looks right," "model is confident," "no errors raised": not checks.</p>
-
-      <p>For unattended or wide changes, the worker cannot be the only verifier. A separate gate reviews the evidence, and real checks still run. Without that independence, a human keeps the gate. No panel of judges votes on what happens next.</p>
-
-      <div class="check-grid">
-        <div class="check-card green">
-          <span class="badge">Green</span>
-          <p>The test suite exits 0.</p>
-        </div>
-        <div class="check-card green">
-          <span class="badge">Green</span>
-          <p>Every claim carries a source line.</p>
-        </div>
-        <div class="check-card green">
-          <span class="badge">Green</span>
-          <p>The diff touches only files listed in the plan.</p>
-        </div>
-        <div class="check-card red">
-          <span class="badge">Not a check</span>
-          <p>The output looks good.</p>
-        </div>
-        <div class="check-card red">
-          <span class="badge">Not a check</span>
-          <p>The model says it is confident.</p>
-        </div>
-        <div class="check-card red">
-          <span class="badge">Not a check</span>
-          <p>No errors were raised.</p>
-        </div>
-      </div>
-
-      <p>A loop with a real check runs while you are somewhere else. A loop without one repeats the same mistake until it runs out of money, with a clean log.</p>
-
-      <h2>One loop cannot see the whole job</h2>
-
-      <p>A loop makes one job correct. It cannot decide which jobs exist or what order to run them. An agent can write five perfect functions in the wrong order, or run step four while step three waits for nothing. Every loop did its job. The plan did not.</p>
-
-      <h2>The graph is the layer above</h2>
-
-      <p>The graph holds that wider view. It is the shape of the work: what runs, what runs in parallel, what waits, where results go back. Two things: nodes and edges.</p>
-
-      <p>A <strong>node</strong> is one job: one input, one output, one owner. An <strong>edge</strong> is a real dependency: the next step reads the previous step's output. If nothing crosses, there is no edge. The steps can run at the same time.</p>
-
-      <p>A <strong>planned graph</strong> is that map drawn before work starts. You draw it so the agent does not invent the structure while doing the work.</p>
-
-      <figure class="diagram" aria-labelledby="diagram-caption">
-        <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: a splitter divides work, workers run in parallel, a code node merges their outputs, a gate checks the result, and feedback loops send failures back for correction or accepted results back as future constraints.">
-          <defs>
-            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#55524e"/>
-            </marker>
-            <marker id="arrow-accent" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#0c4f43"/>
-            </marker>
-            <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#b42318"/>
-            </marker>
-          </defs>
-
-          <text x="450" y="40" text-anchor="middle" fill="#141414" font-size="24" font-family="Georgia, serif" font-weight="500">A planned graph</text>
-          <text x="450" y="66" text-anchor="middle" fill="#8a8580" font-size="14">The map drawn before the work starts</text>
-
-          <g>
-            <rect x="60" y="120" width="130" height="54" rx="12" fill="#e8f3f0" stroke="#0c4f43" stroke-width="2"/>
-            <text x="125" y="152" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Splitter</text>
-
-            <rect x="300" y="90" width="130" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
-            <text x="365" y="122" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Worker A</text>
-
-            <rect x="300" y="190" width="130" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
-            <text x="365" y="222" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Worker B</text>
-
-            <rect x="530" y="140" width="130" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
-            <text x="595" y="172" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Code node</text>
-
-            <rect x="750" y="140" width="110" height="54" rx="12" fill="#e8f3f0" stroke="#0c4f43" stroke-width="2"/>
-            <text x="805" y="172" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Gate</text>
-
-            <rect x="750" y="290" width="110" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
-            <text x="805" y="316" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Merge</text>
-            <text x="805" y="333" text-anchor="middle" fill="#8a8580" font-size="10" font-family="ui-sans-serif, system-ui, sans-serif">human approves</text>
-          </g>
-
-          <path d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 660 167 L 750 167" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
-
-          <path d="M 750 160 C 640 160 640 117 435 117" fill="none" stroke="#b42318" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
-          <path d="M 750 174 C 640 174 640 217 435 217" fill="none" stroke="#b42318" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
-          <rect x="490" y="250" width="150" height="22" rx="6" fill="#fef2f2" stroke="#b42318" stroke-width="1"/>
-          <text x="565" y="265" text-anchor="middle" fill="#b42318" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">back to the unit that failed</text>
-
-          <path d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#0c4f43" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
-          <rect x="390" y="52" width="104" height="22" rx="6" fill="#e8f3f0" stroke="#0c4f43" stroke-width="1"/>
-          <text x="442" y="67" text-anchor="middle" fill="#0c4f43" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Learning edge</text>
-
-          <text x="235" y="98" text-anchor="middle" fill="#8a8580" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">runs in parallel</text>
-          <text x="805" y="370" text-anchor="middle" fill="#8a8580" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">only opens after the gate passes</text>
-
-          <line x1="110" y1="420" x2="200" y2="420" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
-          <text x="220" y="425" fill="#55524e" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Forward edge: output feeds the next step</text>
-
-          <line x1="110" y1="450" x2="200" y2="450" stroke="#b42318" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
-          <text x="220" y="455" fill="#b42318" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Correction edge: send one unit back to fix itself</text>
-
-          <line x1="110" y1="480" x2="200" y2="480" stroke="#0c4f43" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
-          <text x="220" y="485" fill="#0c4f43" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Learning edge: accepted result becomes a future constraint</text>
-        </svg>
-        <figcaption id="diagram-caption">A planned graph is the map you draw before any work starts. The splitter cuts the task into bounded units. Independent workers run at the same time. The code node merges their outputs with one correct answer. The gate runs a deterministic check. If the check fails, only the unit that failed loops back to the worker that produced it. If it passes, the result continues to the merge, where a human approves it, and may also travel back along a learning edge as a constraint the splitter uses next time.</figcaption>
-      </figure>
-
-      <div class="callout">
-        <p>Treating "and then" as an edge is the mistake behind every unnecessary wait. <em>Summarize the file and then check the weather.</em> No edge. The weather does not read the summary. A linear script chained them because of the order you typed them.</p>
-      </div>
-
-      <p>Test every arrow in a pipeline you already have: does the next step actually read the previous step's output? If you cannot name what crosses, there is no edge. The wait is waste.</p>
-
-      <h2>Four kinds of node</h2>
-
-      <table>
-        <thead>
-          <tr><th>Type</th><th>Role</th><th>Example</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Splitter</td><td>Cuts the work into units and writes each brief.</td><td>Divide a refactor into slices by blast radius.</td></tr>
-          <tr><td>Worker</td><td>Does one unit with one lens, in its own context.</td><td>Audit one slice for race conditions.</td></tr>
-          <tr><td>Code node</td><td>Applies a transformation with one correct answer.</td><td>Merge, rank, deduplicate, compare exports.</td></tr>
-          <tr><td>Gate</td><td>Decides whether a unit's output may continue.</td><td>Open only if tests pass and scope is clean.</td></tr>
-        </tbody>
-      </table>
-
-      <p>The code node is the one people forget. Merging, ranking, deduplicating: one correct answer, a few lines of code. A model adds cost, latency, and variance to a step that had none.</p>
-
-      <p>If you can describe it without saying judge, decide, assess, or summarize, it is code.</p>
-
-      <h2>Where the loop actually lives</h2>
-
-      <p><strong>The loop lives inside a node. The graph lives between them.</strong></p>
-
-      <p>Inside one unit: produce, check, correct. Between units: split, fan out, merge, gate, send back.</p>
-
-      <p>You do not choose between them. A graph without loops makes unverified work in parallel. A loop without a graph is one good step in a queue nobody designed.</p>
-
-      <h2>The two return paths</h2>
-
-      <p>A graph without a way back is a pipeline. It produces output and forgets.</p>
-
-      <p>Two return paths, two jobs. A correction edge rejects one unit back to the step that made it. Fixes this run. A learning edge sends an accepted result back to the splitter as a constraint. Fixes every run after.</p>
-
-      <p>Almost everyone builds the first. The tell is a system that is fast and never gets smarter.</p>
-
-      <div class="callout">
-        <p>The learning edge does not carry the output, it carries a constraint derived from it. <strong>Accepted:</strong> utils slice ported, green on first pass. <strong>Derived:</strong> adapters preserve keyword args exactly. <strong>Lands in:</strong> a stored constraint file that every later splitter reads. If that file cannot persist, the learning lasts for this session only.</p>
-      </div>
-
-      <h2>Return the unit, not the batch</h2>
-
-      <p>Four slices ported. One fails. Send the whole batch back and three correct slices get rewritten into different, not better, versions. Now you re-verify all four. One failure became four uncertain outcomes.</p>
-
-      <p>Every return carries five things:</p>
-
-      <ul>
-        <li><strong>UNIT:</strong> handlers slice.</li>
-        <li><strong>VERDICT:</strong> red.</li>
-        <li><strong>REASON:</strong> test_auth_redirect failed.</li>
-        <li><strong>EVIDENCE:</strong> expected 302, got 200, handlers/auth.py:88.</li>
-        <li><strong>SCOPE:</strong> fix this file only, do not touch other slices.</li>
-      </ul>
-
-      <p>The scope line matters most. Without it a returned unit grows: the agent notices two adjacent issues, fixes those too, and your one-slice correction becomes a four-file diff nobody reviewed.</p>
-
-      <h2>Open the gate on blast radius, not on confidence</h2>
-
-      <p>Most systems gate on a confidence score. Wrong variable. Confidence is the only input the model can influence.</p>
-
-      <table>
-        <thead>
-          <tr><th>Lane</th><th>Reversibility</th><th>Gate rule</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Open first</td><td>Reversible and contained</td><td>Copy changes, tests, isolated functions with coverage. One bad merge costs a revert.</td></tr>
-          <tr><td>Open second</td><td>Reversible but wide</td><td>Shared utilities, schema additions, anything a dozen callers touch. Gate on deterministic checks plus a clean trajectory.</td></tr>
-          <tr><td>Never open</td><td>Hard to reverse</td><td>Migrations, deletions, anything writing to production data or moving money. This lane does not open, regardless of score.</td></tr>
-        </tbody>
-      </table>
-
-      <p>The third row is not a high threshold. It is a closed lane. Thresholds get adjusted. Closed lanes do not.</p>
-
-      <h2>A skill is not a runtime</h2>
-
-      <p>The skill tells the current agent how to plan, check, route, record, and escalate. It does not turn that agent into an unattended system.</p>
-
-      <p>A real runtime must start scheduled or event-driven runs, preserve state after a restart, isolate parallel writers, enforce budgets, provide a kill switch, and keep execution logs. If one of those mechanisms is missing, say so and reduce autonomy.</p>
-
-      <p>The four node types and gate rules are this project's design, not a standard proved by the paper. The <a href="https://github.com/awdemos/loopsandgraphs/blob/main/docs/TRACEABILITY.md">traceability matrix</a> shows exactly which ideas came from research, which are ours, and which need a runtime.</p>
-
-      <h2>Where to start</h2>
-
-      <p>Pick one thing you do repeatedly. Draw the splitter, the lanes, the merge, one gate, one back edge.</p>
-
-      <p>Build the gate first. A graph without a gate is a faster way to produce unverified output. Then the lanes. Then the learning edge, because you cannot learn from accepted results until something accepts them.</p>
-
-      <p>Put the human on one step: the merge. Approve it. Nothing else.</p>
-
-      <h2>Three lines hold the whole discipline</h2>
-
-      <ul>
-        <li>Measure the path, not only the answer it landed on.</li>
-        <li>A verdict that does not change what runs next is a report.</li>
-        <li>Any failure you do not turn into a permanent constraint, you will meet again.</li>
-      </ul>
-
-      <p>Most people tune one loop and call it a system. The ones who draw the graph around it run a fleet.</p>
-
+      <p class="lede">In August, researchers from Heidelberg and Singapore Management University searched 36,487 maintained repositories for agents running in autonomous loops. They confirmed 217.</p>
     </div>
-  </article>
+
+    <p>Nearly all of them had the trigger. After that, the numbers fall off a cliff.</p>
+
+    <ul>
+      <li>101 had a spending or turn limit.</li>
+      <li>76 had a verifier.</li>
+      <li>55 had a goal or stop rule.</li>
+      <li>35 kept state between runs.</li>
+      <li>10 recorded what it cost.</li>
+    </ul>
+
+    <p>One triage loop logged 6,290 runs. In every run the researchers checked, the agent never fired. A trigger is not a loop. It is a cron job with your credit card attached.</p>
+
+    <p>The study found no systematic evidence for the promised 10x yet. This framework does not promise one either. The parts everyone skips, the check, the state, the gate, are the parts that decide whether a loop is worth running. <a href="https://arxiv.org/html/2608.21884">Research paper</a>.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">A loop checks its own work</span>
+      <h2>Produce, check, correct, repeat</h2>
+      <p class="lede">A loop is a job that checks its own work and fixes itself when it is wrong. Like a student with an answer key. No teacher needed.</p>
+    </div>
+
+    <ol class="steps">
+      <li><strong>Do the work.</strong> Write the code, run the search, build the report.</li>
+      <li><strong>Check it.</strong> Against something that can say no.</li>
+      <li><strong>Fix what the check caught.</strong></li>
+      <li><strong>Repeat until it passes.</strong></li>
+    </ol>
+
+    <p>Three exits: green (the check passes), budget (runs or dollars run out), or stall (the same failure twice). No fixed retry count. A count cannot tell slow progress from a stuck loop, and a repeated failure is not a retry problem. It means the agent cannot see what it needs, or the task is wrong. Both are yours.</p>
+
+    <p>The check is the whole point. If it cannot fail, it is not checking. Tests pass. Type checker reports zero errors. Those are checks. "Looks right," "model is confident," "no errors raised": not checks.</p>
+
+    <p>For unattended or wide changes, the worker cannot be the only verifier. A separate gate reviews the evidence, and real checks still run. Without that independence, a human keeps the gate. No panel of judges votes on what happens next.</p>
+
+    <div class="check-grid">
+      <div class="check-card green">
+        <span class="badge">Green</span>
+        <p>The test suite exits 0.</p>
+      </div>
+      <div class="check-card green">
+        <span class="badge">Green</span>
+        <p>Every claim carries a source line.</p>
+      </div>
+      <div class="check-card green">
+        <span class="badge">Green</span>
+        <p>The diff touches only files listed in the plan.</p>
+      </div>
+      <div class="check-card red">
+        <span class="badge">Not a check</span>
+        <p>The output looks good.</p>
+      </div>
+      <div class="check-card red">
+        <span class="badge">Not a check</span>
+        <p>The model says it is confident.</p>
+      </div>
+      <div class="check-card red">
+        <span class="badge">Not a check</span>
+        <p>No errors were raised.</p>
+      </div>
+    </div>
+
+    <p>A loop with a real check runs while you are somewhere else. A loop without one repeats the same mistake until it runs out of money, with a clean log.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">The graph is the layer above</span>
+      <h2>One loop cannot see the whole job</h2>
+      <p class="lede">A loop makes one job correct. It cannot decide which jobs exist or what order to run them.</p>
+    </div>
+
+    <p>The graph holds that wider view. It is the shape of the work: what runs, what runs in parallel, what waits, where results go back. Two things: nodes and edges.</p>
+
+    <p>A <strong>node</strong> is one job: one input, one output, one owner. An <strong>edge</strong> is a real dependency: the next step reads the previous step's output. If nothing crosses, there is no edge. The steps can run at the same time.</p>
+
+    <p>A <strong>planned graph</strong> is that map drawn before work starts. You draw it so the agent does not invent the structure while doing the work.</p>
+
+    <figure class="diagram" aria-labelledby="diagram-caption">
+      <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: a splitter divides work, workers run in parallel, a code node merges their outputs, a gate checks the result, and feedback loops send failures back for correction or accepted results back as future constraints.">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#a1a1aa"/>
+          </marker>
+          <marker id="arrow-accent" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#f59e0b"/>
+          </marker>
+          <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
+          </marker>
+        </defs>
+
+        <text x="450" y="40" text-anchor="middle" fill="#f2f2f5" font-size="24" font-weight="600">A planned graph</text>
+        <text x="450" y="66" text-anchor="middle" fill="#71717a" font-size="14">The map drawn before the work starts</text>
+
+        <g>
+          <rect x="60" y="120" width="130" height="54" rx="12" fill="rgba(245,158,11,.12)" stroke="#f59e0b" stroke-width="2"/>
+          <text x="125" y="152" text-anchor="middle" fill="#f2f2f5" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Splitter</text>
+
+          <rect x="300" y="90" width="130" height="54" rx="12" fill="#151519" stroke="#26262c" stroke-width="1.5"/>
+          <text x="365" y="122" text-anchor="middle" fill="#f2f2f5" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Worker A</text>
+
+          <rect x="300" y="190" width="130" height="54" rx="12" fill="#151519" stroke="#26262c" stroke-width="1.5"/>
+          <text x="365" y="222" text-anchor="middle" fill="#f2f2f5" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Worker B</text>
+
+          <rect x="530" y="140" width="130" height="54" rx="12" fill="#151519" stroke="#26262c" stroke-width="1.5"/>
+          <text x="595" y="172" text-anchor="middle" fill="#f2f2f5" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Code node</text>
+
+          <rect x="750" y="140" width="110" height="54" rx="12" fill="rgba(245,158,11,.12)" stroke="#f59e0b" stroke-width="2"/>
+          <text x="805" y="172" text-anchor="middle" fill="#f2f2f5" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Gate</text>
+
+          <rect x="750" y="290" width="110" height="54" rx="12" fill="#151519" stroke="#26262c" stroke-width="1.5"/>
+          <text x="805" y="316" text-anchor="middle" fill="#f2f2f5" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Merge</text>
+          <text x="805" y="333" text-anchor="middle" fill="#71717a" font-size="10" font-family="ui-sans-serif, system-ui, sans-serif">human approves</text>
+        </g>
+
+        <path d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#a1a1aa" stroke-width="2" marker-end="url(#arrow)"/>
+        <path d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#a1a1aa" stroke-width="2" marker-end="url(#arrow)"/>
+        <path d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#a1a1aa" stroke-width="2" marker-end="url(#arrow)"/>
+        <path d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#a1a1aa" stroke-width="2" marker-end="url(#arrow)"/>
+        <path d="M 660 167 L 750 167" fill="none" stroke="#a1a1aa" stroke-width="2" marker-end="url(#arrow)"/>
+        <path d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#a1a1aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <path d="M 750 160 C 640 160 640 117 435 117" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+        <path d="M 750 174 C 640 174 640 217 435 217" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+        <rect x="490" y="250" width="150" height="22" rx="6" fill="rgba(239,68,68,.1)" stroke="#ef4444" stroke-width="1"/>
+        <text x="565" y="265" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">back to the unit that failed</text>
+
+        <path d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+        <rect x="390" y="52" width="104" height="22" rx="6" fill="rgba(245,158,11,.12)" stroke="#f59e0b" stroke-width="1"/>
+        <text x="442" y="67" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Learning edge</text>
+
+        <text x="235" y="98" text-anchor="middle" fill="#71717a" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">runs in parallel</text>
+        <text x="805" y="370" text-anchor="middle" fill="#71717a" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">only opens after the gate passes</text>
+
+        <line x1="110" y1="420" x2="200" y2="420" stroke="#a1a1aa" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="220" y="425" fill="#a1a1aa" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Forward edge: output feeds the next step</text>
+
+        <line x1="110" y1="450" x2="200" y2="450" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+        <text x="220" y="455" fill="#ef4444" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Correction edge: send one unit back to fix itself</text>
+
+        <line x1="110" y1="480" x2="200" y2="480" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+        <text x="220" y="485" fill="#f59e0b" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Learning edge: accepted result becomes a future constraint</text>
+      </svg>
+      <figcaption id="diagram-caption">A planned graph is the map you draw before any work starts. The splitter cuts the task into bounded units. Independent workers run at the same time. The code node merges their outputs with one correct answer. The gate runs a deterministic check. If the check fails, only the unit that failed loops back to the worker that produced it. If it passes, the result continues to the merge, where a human approves it, and may also travel back along a learning edge as a constraint the splitter uses next time.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>Treating "and then" as an edge is the mistake behind every unnecessary wait. <em>Summarize the file and then check the weather.</em> No edge. The weather does not read the summary. A linear script chained them because of the order you typed them.</p>
+    </div>
+
+    <p>Test every arrow in a pipeline you already have: does the next step actually read the previous step's output? If you cannot name what crosses, there is no edge. The wait is waste.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Four kinds of node</span>
+      <h2>Splitter, worker, code node, gate</h2>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Type</th><th>Role</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Splitter</td><td>Cuts the work into units and writes each brief.</td><td>Divide a refactor into slices by blast radius.</td></tr>
+        <tr><td>Worker</td><td>Does one unit with one lens, in its own context.</td><td>Audit one slice for race conditions.</td></tr>
+        <tr><td>Code node</td><td>Applies a transformation with one correct answer.</td><td>Merge, rank, deduplicate, compare exports.</td></tr>
+        <tr><td>Gate</td><td>Decides whether a unit's output may continue.</td><td>Open only if tests pass and scope is clean.</td></tr>
+      </tbody>
+    </table>
+
+    <p>The code node is the one people forget. Merging, ranking, deduplicating: one correct answer, a few lines of code. A model adds cost, latency, and variance to a step that had none.</p>
+
+    <p>If you can describe it without saying judge, decide, assess, or summarize, it is code.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Where the loop lives</span>
+      <h2>The loop lives inside a node. The graph lives between them.</h2>
+    </div>
+
+    <p>Inside one unit: produce, check, correct. Between units: split, fan out, merge, gate, send back.</p>
+
+    <p>You do not choose between them. A graph without loops makes unverified work in parallel. A loop without a graph is one good step in a queue nobody designed.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">The two return paths</span>
+      <h2>Return failures to the unit. Return accepted results as constraints.</h2>
+    </div>
+
+    <p>A graph without a way back is a pipeline. It produces output and forgets.</p>
+
+    <p>Two return paths, two jobs. A correction edge rejects one unit back to the step that made it. Fixes this run. A learning edge sends an accepted result back to the splitter as a constraint. Fixes every run after.</p>
+
+    <p>Almost everyone builds the first. The tell is a system that is fast and never gets smarter.</p>
+
+    <div class="callout">
+      <p>The learning edge does not carry the output, it carries a constraint derived from it. <strong>Accepted:</strong> utils slice ported, green on first pass. <strong>Derived:</strong> adapters preserve keyword args exactly. <strong>Lands in:</strong> a stored constraint file that every later splitter reads. If that file cannot persist, the learning lasts for this session only.</p>
+    </div>
+
+    <p>Four slices ported. One fails. Send the whole batch back and three correct slices get rewritten into different, not better, versions. Now you re-verify all four. One failure became four uncertain outcomes.</p>
+
+    <p>Every return carries five things:</p>
+
+    <ul>
+      <li><strong>UNIT:</strong> handlers slice.</li>
+      <li><strong>VERDICT:</strong> red.</li>
+      <li><strong>REASON:</strong> test_auth_redirect failed.</li>
+      <li><strong>EVIDENCE:</strong> expected 302, got 200, handlers/auth.py:88.</li>
+      <li><strong>SCOPE:</strong> fix this file only, do not touch other slices.</li>
+    </ul>
+
+    <p>The scope line matters most. Without it a returned unit grows: the agent notices two adjacent issues, fixes those too, and your one-slice correction becomes a four-file diff nobody reviewed.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Open the gate on evidence</span>
+      <h2>Blast radius, not confidence</h2>
+    </div>
+
+    <p>Most systems gate on a confidence score. Wrong variable. Confidence is the only input the model can influence.</p>
+
+    <table>
+      <thead>
+        <tr><th>Lane</th><th>Reversibility</th><th>Gate rule</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Open first</td><td>Reversible and contained</td><td>Copy changes, tests, isolated functions with coverage. One bad merge costs a revert.</td></tr>
+        <tr><td>Open second</td><td>Reversible but wide</td><td>Shared utilities, schema additions, anything a dozen callers touch. Gate on deterministic checks plus a clean trajectory.</td></tr>
+        <tr><td>Never open</td><td>Hard to reverse</td><td>Migrations, deletions, anything writing to production data or moving money. This lane does not open, regardless of score.</td></tr>
+      </tbody>
+    </table>
+
+    <p>The third row is not a high threshold. It is a closed lane. Thresholds get adjusted. Closed lanes do not.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">A skill is not a runtime</span>
+      <h2>The skill instructs the agent. The runtime executes unattended.</h2>
+    </div>
+
+    <p>The skill tells the current agent how to plan, check, route, record, and escalate. It does not turn that agent into an unattended system.</p>
+
+    <p>A real runtime must start scheduled or event-driven runs, preserve state after a restart, isolate parallel writers, enforce budgets, provide a kill switch, and keep execution logs. If one of those mechanisms is missing, say so and reduce autonomy.</p>
+
+    <p>The four node types and gate rules are this project's design, not a standard proved by the paper. The <a href="https://github.com/awdemos/loopsandgraphs/blob/main/docs/TRACEABILITY.md">traceability matrix</a> shows exactly which ideas came from research, which are ours, and which need a runtime.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Where to start</span>
+      <h2>Build the gate first</h2>
+    </div>
+
+    <p>Pick one thing you do repeatedly. Draw the splitter, the lanes, the merge, one gate, one back edge.</p>
+
+    <p>Build the gate first. A graph without a gate is a faster way to produce unverified output. Then the lanes. Then the learning edge, because you cannot learn from accepted results until something accepts them.</p>
+
+    <p>Put the human on one step: the merge. Approve it. Nothing else.</p>
+
+    <ul>
+      <li>Measure the path, not only the answer it landed on.</li>
+      <li>A verdict that does not change what runs next is a report.</li>
+      <li>Any failure you do not turn into a permanent constraint, you will meet again.</li>
+    </ul>
+
+    <p>Most people tune one loop and call it a system. The ones who draw the graph around it run a fleet.</p>
+  </section>
 
 </main>
 
