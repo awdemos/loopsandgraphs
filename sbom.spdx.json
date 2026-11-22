@@ -7,7 +7,7 @@
   "creationInfo": {
     "created": "2026-11-21T22:00:00Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.15",
+      "Tool: loopsandgraphs-release-process-0.1.16",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.15",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.16",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8"
+          "checksumValue": "18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f"
         }
       ]
     }
@@ -63,7 +63,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8"
+          "checksumValue": "18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f"
         }
       ],
       "licenseConcluded": "MIT",
@@ -76,7 +76,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "58bbd6a4fda58dfbf470cad6845451d45444188a2b7c84498b2a6a35e0315cda"
+          "checksumValue": "c8b20bfc4f848fb5e5217205d9b14433e73bb5d488f4e52387e4626328a500c5"
         }
       ],
       "licenseConcluded": "MIT",
@@ -89,7 +89,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8"
+          "checksumValue": "18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f"
         }
       ],
       "licenseConcluded": "MIT",

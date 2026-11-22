@@ -82,7 +82,7 @@ Confidence is the weakest gate input because it is the only one the model can in
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.15/LOOPS_AND_GRAPHS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.16/LOOPS_AND_GRAPHS.md
 ```
 
 Place `LOOPS_AND_GRAPHS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
@@ -116,7 +116,7 @@ If no `LOOPS_AND_GRAPHS.md` is present but the user asks you to apply Loops and 
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.15
+git tag -v v0.1.16
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -125,4 +125,4 @@ Releases follow semantic versioning. The control rules in `LOOPS_AND_GRAPHS.md` 
 
 ## Version
 
-0.1.15 — added a HARD TRIGGER to SKILL.md: the skill must self-invoke when a task touches more than two files, has more than one verification step, contains a hard-to-reverse step, or has parallelizable units. No longer relies on model judgment.
+0.1.16 — added a "Most loops are not loops" section to the site citing the Heidelberg / SMU study of 217 autonomous loops (36,487 repos searched): 101 had limits, 76 a verifier, 55 a stop rule, 35 kept state, 10 recorded cost.

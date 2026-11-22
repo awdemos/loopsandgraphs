@@ -2,6 +2,28 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.16] — 2026-11-22
+
+- Added a "Most loops are not loops" section to the site, citing the Heidelberg / Singapore Management University study of autonomous loops in the wild: 36,487 repos searched, 217 confirmed loops, and the attrition (101 limits, 76 verifiers, 55 stop rules, 35 keeping state, 10 recording cost). Links to the source.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  LOOPS_AND_GRAPHS.md
+60f78d78ce236828462f915f26187cca4c4bf86123031521f9aa7c22aff9fc17  SKILL.md
+18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f  index.html
+c8b20bfc4f848fb5e5217205d9b14433e73bb5d488f4e52387e4626328a500c5  README.md
+ef45000d1ee05c750b54fbfb2403b32e66519b36fa11bc579a97aa93f047e3be  sbom.spdx.json
+18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46  docs/DESIGN-v0.1.md
+```
+
+Verify the release with `git tag -v v0.1.16`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.15] — 2026-11-22
 
 - Added a HARD TRIGGER section to SKILL.md. The skill must self-invoke when a task touches more than two files, has more than one verification step, contains a hard-to-reverse step, or has parallelizable units. Invocation no longer relies on model judgment.
