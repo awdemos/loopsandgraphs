@@ -19,20 +19,24 @@
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
-    color-scheme: dark;
-    --bg:          #08081a;
-    --bg-soft:     #0c0c24;
-    --surface:     #101030;
-    --surface-2:   #151538;
-    --border:      #202050;
-    --border-soft: #181840;
-    --text:        #e8e8f5;
-    --muted:       #9ca3af;
-    --faint:       #6b7280;
-    --accent:      #00d4aa;
-    --accent-soft: #5eead4;
-    --accent-dim:  rgba(0, 212, 170, .12);
-    --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+    --bg: #fbfaf8;
+    --bg-warm: #f5f3ef;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #55524e;
+    --faint: #8a8580;
+    --accent: #0c4f43;
+    --accent-soft: #147a66;
+    --accent-bg: #e8f3f0;
+    --red: #b42318;
+    --red-bg: #fef2f2;
+    --green: #156f1c;
+    --green-bg: #f0fdf1;
+    --border: #e2e0dc;
+    --border-soft: #edebe7;
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-serif: Georgia, "Times New Roman", serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
     --space-1: .25rem;
     --space-2: .5rem;
@@ -46,38 +50,35 @@
     --radius-s: 6px;
     --radius-m: 10px;
     --radius-l: 16px;
-    --content: 70rem;
-    --measure: 72ch;
+    --content: 72rem;
+    --measure: 68ch;
   }
+
+  *, *::before, *::after { box-sizing: border-box; }
 
   html {
     scroll-behavior: smooth;
     scrollbar-color: var(--border) var(--bg);
   }
-  ::-webkit-scrollbar { inline-size: 10px; }
+  ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; border: 2px solid var(--bg); }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::selection { background: var(--accent); color: #001a14; }
+  ::selection { background: var(--accent); color: #fff; }
 
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-sans);
-    font-size: clamp(1rem, .95rem + .2vw, 1.075rem);
+    font-size: clamp(1rem, .96rem + .18vw, 1.125rem);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    background-image:
-      radial-gradient(60rem 32rem at 50% -12rem, rgba(0, 212, 170, .08), transparent 70%),
-      linear-gradient(to right, rgba(255,255,255,.022) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,.022) 1px, transparent 1px);
-    background-size: auto, 4rem 4rem, 4rem 4rem;
-    background-attachment: fixed, fixed, fixed;
   }
 
   :where(h1, h2, h3) {
     margin: 0;
-    font-weight: 650;
+    font-family: var(--font-serif);
+    font-weight: 500;
     letter-spacing: -.02em;
     line-height: 1.15;
     text-wrap: balance;
@@ -87,8 +88,9 @@
   :where(p) { margin: 0 0 var(--space-4); max-width: var(--measure); }
 
   :where(a) {
-    color: var(--text);
-    text-decoration-color: rgba(0, 212, 170, .55);
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(12, 79, 67, .35);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     transition: color .15s ease, text-decoration-color .15s ease;
@@ -100,33 +102,30 @@
     border-radius: 2px;
   }
 
-  :where(code, pre) {
-    font-family: var(--font-mono);
-    font-size: .875em;
-  }
+  :where(code, pre) { font-family: var(--font-mono); font-size: .9em; }
   :where(code) {
-    background: var(--surface-2);
-    border: 1px solid var(--border-soft);
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
     border-radius: var(--radius-s);
-    padding: .12em .4em;
+    padding: .12em .35em;
   }
   .file { font-family: var(--font-mono); font-size: .92em; color: var(--accent-soft); }
 
-  /* ---------- top bar ---------- */
+  /* header */
   .topbar {
     position: sticky;
-    inset-block-start: 0;
+    top: 0;
     z-index: 10;
-    background: rgba(10, 10, 13, .78);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-block-end: 1px solid var(--border-soft);
+    background: rgba(251, 250, 248, .92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
   }
   .topbar-inner {
     max-width: var(--content);
     margin-inline: auto;
     padding-inline: var(--space-5);
-    block-size: 3.75rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -139,75 +138,219 @@
     font-family: var(--font-mono);
     font-size: .95rem;
     font-weight: 600;
-    letter-spacing: -.01em;
     text-decoration: none;
     color: var(--text);
   }
-  .wordmark:hover { color: var(--text); }
-  .wordmark .mark { color: var(--accent); flex: none; transition: color .15s ease; }
-  .wordmark:hover .mark { color: var(--accent-soft); }
+  .wordmark:hover { color: var(--text); text-decoration: none; }
+  .wordmark .mark { color: var(--accent); }
   .nav {
     display: flex;
     align-items: center;
-    gap: clamp(var(--space-3), 2vw, var(--space-5));
+    gap: clamp(var(--space-4), 2vw, var(--space-6));
     font-size: .9rem;
   }
   .nav a {
     text-decoration: none;
     color: var(--muted);
-    background-image: linear-gradient(to right, var(--accent-soft), var(--accent-soft));
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    background-size: 0% 1px;
-    padding-block-end: 2px;
-    transition: color .15s ease, background-size .2s ease;
   }
-  .nav a:hover { color: var(--text); background-size: 100% 1px; }
+  .nav a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: .55rem 1rem;
+    border-radius: var(--radius-m);
+    font-size: .9rem;
+    font-weight: 550;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .btn:hover { border-color: var(--accent); background: var(--accent-bg); }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: #fff; }
 
-  /* ---------- hero ---------- */
+  /* hero */
   .hero {
     max-width: var(--content);
     margin-inline: auto;
-    padding: clamp(var(--space-7), 8vw, var(--space-9)) var(--space-5) var(--space-8);
+    padding: clamp(var(--space-7), 7vw, var(--space-9)) var(--space-5) var(--space-8);
   }
   .kicker {
     display: block;
     font-family: var(--font-mono);
-    font-size: .78rem;
+    font-size: .75rem;
     font-weight: 600;
-    letter-spacing: .18em;
+    letter-spacing: .14em;
     text-transform: uppercase;
     color: var(--accent);
     margin-block-end: var(--space-3);
   }
   .hero h1 {
-    font-family: var(--font-mono);
-    font-size: clamp(2rem, 1.2rem + 3.4vw, 4.25rem);
-    letter-spacing: -.04em;
+    font-size: clamp(2.6rem, 1.6rem + 4vw, 5rem);
     line-height: 1.05;
     margin-block-end: var(--space-5);
+    max-width: 14ch;
   }
-  .hero h1 .accent { color: var(--accent); text-shadow: 0 0 2.75rem rgba(0, 212, 170, .4); }
+  .hero h1 .accent { color: var(--accent-soft); font-style: italic; }
   .pitch {
-    font-size: clamp(1.25rem, 1rem + 1.5vw, 1.8rem);
+    font-size: clamp(1.2rem, 1rem + .9vw, 1.55rem);
     line-height: 1.45;
     font-weight: 450;
-    color: var(--text);
-    max-width: 60ch;
-    margin-block-end: var(--space-6);
+    max-width: 58ch;
+    margin-block-end: var(--space-5);
   }
   .why {
-    font-size: clamp(1rem, .9rem + .4vw, 1.15rem);
-    line-height: 1.6;
     color: var(--muted);
-    max-width: 65ch;
-    margin-block-end: var(--space-6);
+    max-width: 60ch;
+    margin-block-end: var(--space-5);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block: var(--space-6) var(--space-7);
   }
 
+  /* terminal */
+  .terminal {
+    max-width: 44rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    background: var(--surface);
+    overflow: hidden;
+    margin-block-end: var(--space-5);
+  }
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: .65rem var(--space-4);
+    border-bottom: 1px solid var(--border-soft);
+    background: var(--bg-warm);
+  }
+  .terminal-bar .dot { width: .65rem; height: .65rem; border-radius: 50%; background: var(--border); }
+  .terminal-bar .dot:first-child { background: var(--accent-soft); }
+  .terminal-bar .title {
+    margin-inline-start: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    color: var(--faint);
+  }
+  .terminal pre {
+    margin: 0;
+    padding: var(--space-5);
+    font-size: clamp(.82rem, .78rem + .2vw, .92rem);
+    line-height: 1.7;
+    background: transparent;
+    border: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .terminal pre code { display: block; padding: 0; background: none; border: 0; color: var(--text); }
+  .terminal .prompt { color: var(--accent); user-select: none; }
+  .terminal .comment { color: var(--faint); }
+
+  /* article */
+  .article {
+    max-width: var(--content);
+    margin-inline: auto;
+    padding: 0 var(--space-5) var(--space-9);
+  }
+  .article-inner { max-width: var(--measure); }
+  .article h2 {
+    font-size: clamp(1.4rem, 1.15rem + 1vw, 1.9rem);
+    margin-block-start: var(--space-8);
+    margin-block-end: var(--space-4);
+    padding-block-start: var(--space-6);
+    border-top: 1px solid var(--border-soft);
+  }
+  .article h2:first-of-type { margin-block-start: 0; padding-block-start: 0; border-top: 0; }
+  .article h3 {
+    font-size: 1.15rem;
+    margin-block-start: var(--space-6);
+    margin-block-end: var(--space-3);
+    color: var(--text);
+  }
+  .article ul, .article ol {
+    margin: 0 0 var(--space-5);
+    padding-inline-start: var(--space-5);
+  }
+  .article li { margin-block-end: var(--space-2); }
+  .article li::marker { color: var(--accent); }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-bg);
+    padding: var(--space-4) var(--space-5);
+    margin-block-end: var(--space-6);
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  }
+  .callout p { max-width: none; }
+  .callout p:last-child { margin-block-end: 0; }
+
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-4);
+    margin-block-end: var(--space-6);
+  }
+  .check-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    background: var(--surface);
+    padding: var(--space-4);
+  }
+  .check-card p { margin: 0; max-width: none; }
+  .check-card .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .2rem .5rem;
+    border-radius: 999px;
+    margin-block-end: var(--space-3);
+  }
+  .check-card.green { border-left: 3px solid var(--green); }
+  .check-card.green .badge { background: var(--green-bg); color: var(--green); }
+  .check-card.red { border-left: 3px solid var(--red); }
+  .check-card.red .badge { background: var(--red-bg); color: var(--red); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block-end: var(--space-6);
+    font-size: .95rem;
+  }
+  th, td {
+    text-align: start;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--bg-warm);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  td:first-child { font-weight: 600; }
+
+  /* diagram */
   .diagram {
     border: 1px solid var(--border);
     border-radius: var(--radius-l);
-    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    background: var(--surface);
     padding: var(--space-5);
     margin-block-end: var(--space-6);
   }
@@ -228,218 +371,12 @@
     margin-inline: auto;
   }
 
-  /* diagram animation */
-  .edge-flow {
-    stroke-dasharray: 2 22;
-    animation: edgeFlow 2.2s linear infinite;
-  }
-  .edge-pulse-red {
-    animation: edgePulseRed 2.8s ease-in-out infinite;
-  }
-  .edge-pulse-teal {
-    animation: edgePulseTeal 2.8s ease-in-out infinite;
-  }
-  .node-accent {
-    animation: nodeGlow 2.8s ease-in-out infinite;
-  }
-
-  @keyframes edgeFlow {
-    from { stroke-dashoffset: 24; }
-    to { stroke-dashoffset: 0; }
-  }
-  @keyframes edgePulseRed {
-    0%, 100% { stroke-opacity: 0.55; }
-    50% { stroke-opacity: 1; }
-  }
-  @keyframes edgePulseTeal {
-    0%, 100% { stroke-opacity: 0.55; }
-    50% { stroke-opacity: 1; }
-  }
-  @keyframes nodeGlow {
-    0%, 100% { stroke-opacity: 0.7; filter: drop-shadow(0 0 0 transparent); }
-    50% { stroke-opacity: 1; filter: drop-shadow(0 0 0.5rem rgba(0, 212, 170, .45)); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .edge-flow, .edge-pulse-red, .edge-pulse-teal, .node-accent {
-      animation: none;
-    }
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-block: var(--space-6) var(--space-7);
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: .65rem 1.25rem;
-    border-radius: var(--radius-m);
-    font-size: .95rem;
-    font-weight: 550;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    color: var(--text);
-    background: var(--surface);
-    transition: border-color .15s ease, background .15s ease, transform .15s ease;
-  }
-  .btn:hover { border-color: var(--accent); background: var(--accent-dim); color: var(--text); }
-  .btn:active { transform: translateY(1px); }
-  .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #14060a;
-  }
-  .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: #14060a; }
-
-  /* ---------- terminal ---------- */
-  .terminal {
-    max-width: 46rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-l);
-    background: linear-gradient(180deg, var(--surface-2), var(--surface));
-    overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 1.5rem 4rem -2rem rgba(0,0,0,.7);
-    margin-block-end: var(--space-5);
-  }
-  .terminal-bar {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: .7rem var(--space-4);
-    border-block-end: 1px solid var(--border-soft);
-    background: rgba(255,255,255,.015);
-  }
-  .terminal-bar .dot { inline-size: .65rem; block-size: .65rem; border-radius: 50%; background: var(--border); }
-  .terminal-bar .dot:first-child { background: rgba(0, 212, 170, .75); }
-  .terminal-bar .title {
-    margin-inline-start: var(--space-2);
-    font-family: var(--font-mono);
-    font-size: .78rem;
-    color: var(--faint);
-  }
-  .terminal pre {
-    margin: 0;
-    padding: var(--space-5);
-    font-size: clamp(.82rem, .78rem + .3vw, .95rem);
-    line-height: 1.7;
-    background: transparent;
-    border: 0;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  .terminal pre code {
-    display: block;
-    padding: 0;
-    background: none;
-    border: 0;
-    color: var(--text);
-  }
-  .terminal .prompt { color: var(--accent); user-select: none; }
-  .terminal .comment { color: var(--faint); }
-
-  /* ---------- article ---------- */
-  .article {
-    max-width: var(--content);
-    margin-inline: auto;
-    padding: 0 var(--space-5) var(--space-9);
-  }
-  .article-inner {
-    max-width: var(--measure);
-  }
-  .article h2 {
-    font-size: clamp(1.35rem, 1.1rem + 1.2vw, 1.85rem);
-    margin-block-start: var(--space-8);
-    margin-block-end: var(--space-4);
-    padding-block-start: var(--space-6);
-    border-block-start: 1px solid var(--border-soft);
-  }
-  .article h2:first-of-type {
-    margin-block-start: 0;
-    padding-block-start: 0;
-    border-block-start: 0;
-  }
-  .article h3 {
-    font-size: 1.15rem;
-    margin-block-start: var(--space-6);
-    margin-block-end: var(--space-3);
-    color: var(--text);
-  }
-  .article ul, .article ol {
-    margin: 0 0 var(--space-5);
-    padding-inline-start: var(--space-5);
-  }
-  .article li { margin-block-end: var(--space-2); }
-  .article li::marker { color: var(--accent); }
-
-  .callout {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-l);
-    background: linear-gradient(180deg, var(--surface-2), var(--surface));
-    padding: var(--space-5);
-    margin-block-end: var(--space-6);
-  }
-  .callout p:last-child { margin-block-end: 0; }
-
-  .check-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    gap: var(--space-4);
-    margin-block-end: var(--space-6);
-  }
-  .check-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-m);
-    background: var(--surface);
-    padding: var(--space-4);
-  }
-  .check-card .badge {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    padding: .25rem .55rem;
-    border-radius: 999px;
-    margin-block-end: var(--space-3);
-  }
-  .check-card.green { border-color: rgba(74, 222, 128, .25); }
-  .check-card.green .badge { background: rgba(74, 222, 128, .12); color: #86efac; }
-  .check-card.red { border-color: rgba(248, 113, 113, .25); }
-  .check-card.red .badge { background: rgba(248, 113, 113, .12); color: #fca5a5; }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-block-end: var(--space-6);
-    font-size: .95rem;
-  }
-  th, td {
-    text-align: start;
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--border);
-    vertical-align: top;
-  }
-  th {
-    background: var(--surface-2);
-    font-weight: 600;
-    font-family: var(--font-mono);
-    font-size: .85rem;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-  }
-  td:first-child { font-weight: 600; }
-
-  /* ---------- footer ---------- */
+  /* footer */
   .footer {
     max-width: var(--content);
     margin-inline: auto;
     padding: var(--space-6) var(--space-5);
-    border-block-start: 1px solid var(--border-soft);
+    border-top: 1px solid var(--border-soft);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -451,6 +388,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   }
 </style>
 </head>
@@ -488,7 +430,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.19/LOOPS_AND_GRAPHS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.20/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -579,86 +521,68 @@
       <figure class="diagram" aria-labelledby="diagram-caption">
         <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: a splitter divides work, workers run in parallel, a code node merges their outputs, a gate checks the result, and feedback loops send failures back for correction or accepted results back as future constraints.">
           <defs>
-            <linearGradient id="nodeGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#1a1a40"/>
-              <stop offset="100%" stop-color="#131330"/>
-            </linearGradient>
-            <linearGradient id="accentGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#0f2e28"/>
-              <stop offset="100%" stop-color="#0a1f1b"/>
-            </linearGradient>
-            <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/>
-            </filter>
             <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#9ca3af"/>
+              <path d="M0,0 L0,6 L9,3 z" fill="#55524e"/>
             </marker>
             <marker id="arrow-accent" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/>
+              <path d="M0,0 L0,6 L9,3 z" fill="#0c4f43"/>
             </marker>
             <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#f87171"/>
+              <path d="M0,0 L0,6 L9,3 z" fill="#b42318"/>
             </marker>
           </defs>
 
-          <!-- title -->
-          <text x="450" y="40" text-anchor="middle" fill="#e8e8f5" font-size="24" font-weight="650">A planned graph</text>
-          <text x="450" y="66" text-anchor="middle" fill="#6b7280" font-size="14">The map drawn before the work starts</text>
+          <text x="450" y="40" text-anchor="middle" fill="#141414" font-size="24" font-family="Georgia, serif" font-weight="500">A planned graph</text>
+          <text x="450" y="66" text-anchor="middle" fill="#8a8580" font-size="14">The map drawn before the work starts</text>
 
-          <!-- nodes -->
-          <g filter="url(#softShadow)">
-            <rect class="node-accent" x="60" y="120" width="130" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
-            <text x="125" y="152" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="650">Splitter</text>
+          <g>
+            <rect x="60" y="120" width="130" height="54" rx="12" fill="#e8f3f0" stroke="#0c4f43" stroke-width="2"/>
+            <text x="125" y="152" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Splitter</text>
 
-            <rect x="300" y="90" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="365" y="122" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Worker A</text>
+            <rect x="300" y="90" width="130" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
+            <text x="365" y="122" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Worker A</text>
 
-            <rect x="300" y="190" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="365" y="222" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Worker B</text>
+            <rect x="300" y="190" width="130" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
+            <text x="365" y="222" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Worker B</text>
 
-            <rect x="530" y="140" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="595" y="172" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Code node</text>
+            <rect x="530" y="140" width="130" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
+            <text x="595" y="172" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Code node</text>
 
-            <rect class="node-accent" x="750" y="140" width="110" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
-            <text x="805" y="172" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="650">Gate</text>
+            <rect x="750" y="140" width="110" height="54" rx="12" fill="#e8f3f0" stroke="#0c4f43" stroke-width="2"/>
+            <text x="805" y="172" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Gate</text>
 
-            <rect x="750" y="290" width="110" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="805" y="316" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Merge</text>
-            <text x="805" y="333" text-anchor="middle" fill="#6b7280" font-size="10">human approves</text>
+            <rect x="750" y="290" width="110" height="54" rx="12" fill="#ffffff" stroke="#e2e0dc" stroke-width="1.5"/>
+            <text x="805" y="316" text-anchor="middle" fill="#141414" font-size="15" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Merge</text>
+            <text x="805" y="333" text-anchor="middle" fill="#8a8580" font-size="10" font-family="ui-sans-serif, system-ui, sans-serif">human approves</text>
           </g>
 
-          <!-- forward edges -->
-          <path class="edge-flow" d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path class="edge-flow" d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path class="edge-flow" d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path class="edge-flow" d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path class="edge-flow" d="M 660 167 L 750 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path class="edge-flow" d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 660 167 L 750 167" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
 
-          <!-- correction edges: back to whichever worker produced the failing unit -->
-          <path class="edge-pulse-red" d="M 750 160 C 640 160 640 117 435 117" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
-          <path class="edge-pulse-red" d="M 750 174 C 640 174 640 217 435 217" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
-          <rect x="490" y="250" width="150" height="22" rx="6" fill="#1a1214" stroke="#f87171" stroke-width="1" opacity="0.9"/>
-          <text x="565" y="265" text-anchor="middle" fill="#f87171" font-size="12" font-weight="600">back to the unit that failed</text>
+          <path d="M 750 160 C 640 160 640 117 435 117" fill="none" stroke="#b42318" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <path d="M 750 174 C 640 174 640 217 435 217" fill="none" stroke="#b42318" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <rect x="490" y="250" width="150" height="22" rx="6" fill="#fef2f2" stroke="#b42318" stroke-width="1"/>
+          <text x="565" y="265" text-anchor="middle" fill="#b42318" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">back to the unit that failed</text>
 
-          <!-- learning edge -->
-          <path class="edge-pulse-teal" d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
-          <rect x="390" y="52" width="104" height="22" rx="6" fill="#0a1f1b" stroke="#5eead4" stroke-width="1" opacity="0.9"/>
-          <text x="442" y="67" text-anchor="middle" fill="#5eead4" font-size="12" font-weight="600">Learning edge</text>
+          <path d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#0c4f43" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+          <rect x="390" y="52" width="104" height="22" rx="6" fill="#e8f3f0" stroke="#0c4f43" stroke-width="1"/>
+          <text x="442" y="67" text-anchor="middle" fill="#0c4f43" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Learning edge</text>
 
-          <!-- annotations -->
-          <text x="235" y="98" text-anchor="middle" fill="#6b7280" font-size="12">runs in parallel</text>
-          <text x="805" y="370" text-anchor="middle" fill="#6b7280" font-size="12">only opens after the gate passes</text>
+          <text x="235" y="98" text-anchor="middle" fill="#8a8580" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">runs in parallel</text>
+          <text x="805" y="370" text-anchor="middle" fill="#8a8580" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">only opens after the gate passes</text>
 
-          <!-- legend -->
-          <line x1="110" y1="420" x2="200" y2="420" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <text x="220" y="425" fill="#9ca3af" font-size="13">Forward edge: output feeds the next step</text>
+          <line x1="110" y1="420" x2="200" y2="420" stroke="#55524e" stroke-width="2" marker-end="url(#arrow)"/>
+          <text x="220" y="425" fill="#55524e" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Forward edge: output feeds the next step</text>
 
-          <line x1="110" y1="450" x2="200" y2="450" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
-          <text x="220" y="455" fill="#f87171" font-size="13">Correction edge: send one unit back to fix itself</text>
+          <line x1="110" y1="450" x2="200" y2="450" stroke="#b42318" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <text x="220" y="455" fill="#b42318" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Correction edge: send one unit back to fix itself</text>
 
-          <line x1="110" y1="480" x2="200" y2="480" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
-          <text x="220" y="485" fill="#5eead4" font-size="13">Learning edge: accepted result becomes a future constraint</text>
+          <line x1="110" y1="480" x2="200" y2="480" stroke="#0c4f43" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+          <text x="220" y="485" fill="#0c4f43" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">Learning edge: accepted result becomes a future constraint</text>
         </svg>
         <figcaption id="diagram-caption">A planned graph is the map you draw before any work starts. The splitter cuts the task into bounded units. Independent workers run at the same time. The code node merges their outputs with one correct answer. The gate runs a deterministic check. If the check fails, only the unit that failed loops back to the worker that produced it. If it passes, the result continues to the merge, where a human approves it, and may also travel back along a learning edge as a constraint the splitter uses next time.</figcaption>
       </figure>
@@ -714,11 +638,11 @@
       <p>Every return carries five things:</p>
 
       <ul>
-        <li><strong>UNIT</strong> — handlers slice.</li>
-        <li><strong>VERDICT</strong> — red.</li>
-        <li><strong>REASON</strong> — test_auth_redirect failed.</li>
-        <li><strong>EVIDENCE</strong> — expected 302, got 200, handlers/auth.py:88.</li>
-        <li><strong>SCOPE</strong> — fix this file only, do not touch other slices.</li>
+        <li><strong>UNIT:</strong> handlers slice.</li>
+        <li><strong>VERDICT:</strong> red.</li>
+        <li><strong>REASON:</strong> test_auth_redirect failed.</li>
+        <li><strong>EVIDENCE:</strong> expected 302, got 200, handlers/auth.py:88.</li>
+        <li><strong>SCOPE:</strong> fix this file only, do not touch other slices.</li>
       </ul>
 
       <p>The scope line matters most. Without it a returned unit grows: the agent notices two adjacent issues, fixes those too, and your one-slice correction becomes a four-file diff nobody reviewed.</p>
@@ -772,7 +696,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.19</span>
+  <span><span class="file">LOOPS_AND_GRAPHS.md</span> <span aria-hidden="true">//</span> Loops and Graphs v0.1.20</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">LOOPS_AND_GRAPHS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>
