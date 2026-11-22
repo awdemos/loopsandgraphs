@@ -2,6 +2,32 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.13] — 2026-11-21
+
+- Added a CSS/SVG animation to the planned-graph diagram.
+  - Forward edges show flowing dots that travel from Splitter to Workers to Code node to Gate to Merge.
+  - Correction and learning edges pulse to draw attention to the two return paths.
+  - Splitter and Gate accent nodes glow on the same rhythm.
+  - Respects `prefers-reduced-motion`.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  LOOPS_AND_GRAPHS.md
+82732670465821c10dafa1b72c54ad2777e7cdaf216f87262ef30ae4d85018e2  SKILL.md
+dfc5ccd061fb62e75d0ff28ee883ec21182975f8d4602a55ea0361bddee551a0  index.html
+152deb585cbf31bea625502f92aa1821541318b6c83c7aea44451717e4dc7899  README.md
+7f1b7f085ab44fbea4998ae620cb884be50682974b7c164190c841cabce067cd  sbom.spdx.json
+dfc5ccd061fb62e75d0ff28ee883ec21182975f8d4602a55ea0361bddee551a0  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46  docs/DESIGN-v0.1.md
+```
+
+Verify the release with `git tag -v v0.1.13`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.12] — 2026-11-21
 
 - Replaced the orange/red color scheme with a deep navy and teal palette so the site is visually distinct from adversarial-review.

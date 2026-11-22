@@ -228,6 +228,44 @@
     margin-inline: auto;
   }
 
+  /* diagram animation */
+  .edge-flow {
+    stroke-dasharray: 2 22;
+    animation: edgeFlow 2.2s linear infinite;
+  }
+  .edge-pulse-red {
+    animation: edgePulseRed 2.8s ease-in-out infinite;
+  }
+  .edge-pulse-teal {
+    animation: edgePulseTeal 2.8s ease-in-out infinite;
+  }
+  .node-accent {
+    animation: nodeGlow 2.8s ease-in-out infinite;
+  }
+
+  @keyframes edgeFlow {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes edgePulseRed {
+    0%, 100% { stroke-opacity: 0.55; }
+    50% { stroke-opacity: 1; }
+  }
+  @keyframes edgePulseTeal {
+    0%, 100% { stroke-opacity: 0.55; }
+    50% { stroke-opacity: 1; }
+  }
+  @keyframes nodeGlow {
+    0%, 100% { stroke-opacity: 0.7; filter: drop-shadow(0 0 0 transparent); }
+    50% { stroke-opacity: 1; filter: drop-shadow(0 0 0.5rem rgba(0, 212, 170, .45)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .edge-flow, .edge-pulse-red, .edge-pulse-teal, .node-accent {
+      animation: none;
+    }
+  }
+
   .actions {
     display: flex;
     flex-wrap: wrap;
@@ -451,7 +489,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.12/LOOPS_AND_GRAPHS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.13/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -552,7 +590,7 @@
 
           <!-- nodes -->
           <g filter="url(#softShadow)">
-            <rect x="60" y="120" width="130" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
+            <rect class="node-accent" x="60" y="120" width="130" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
             <text x="125" y="152" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="650">Splitter</text>
 
             <rect x="300" y="90" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
@@ -564,7 +602,7 @@
             <rect x="530" y="140" width="130" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
             <text x="595" y="172" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Code node</text>
 
-            <rect x="750" y="140" width="110" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
+            <rect class="node-accent" x="750" y="140" width="110" height="54" rx="12" fill="url(#accentGradient)" stroke="#00d4aa" stroke-width="2"/>
             <text x="805" y="172" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="650">Gate</text>
 
             <rect x="750" y="290" width="110" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
@@ -572,20 +610,20 @@
           </g>
 
           <!-- forward edges -->
-          <path d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 660 167 L 750 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path class="edge-flow" d="M 190 147 C 240 147 250 117 300 117" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path class="edge-flow" d="M 190 147 C 240 147 250 217 300 217" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path class="edge-flow" d="M 430 117 C 480 117 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path class="edge-flow" d="M 430 217 C 480 217 480 167 530 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path class="edge-flow" d="M 660 167 L 750 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+          <path class="edge-flow" d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
 
           <!-- correction edge -->
-          <path d="M 750 167 C 660 167 660 217 430 217" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <path class="edge-pulse-red" d="M 750 167 C 660 167 660 217 430 217" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
           <rect x="490" y="225" width="118" height="22" rx="6" fill="#1a1214" stroke="#f87171" stroke-width="1" opacity="0.9"/>
           <text x="549" y="240" text-anchor="middle" fill="#f87171" font-size="12" font-weight="600">Correction edge</text>
 
           <!-- learning edge -->
-          <path d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
+          <path class="edge-pulse-teal" d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
           <rect x="390" y="52" width="104" height="22" rx="6" fill="#0a1f1b" stroke="#5eead4" stroke-width="1" opacity="0.9"/>
           <text x="442" y="67" text-anchor="middle" fill="#5eead4" font-size="12" font-weight="600">Learning edge</text>
 
@@ -715,7 +753,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.12</span>
+  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.13</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">LOOPS_AND_GRAPHS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>
