@@ -108,7 +108,7 @@ If a mechanism is missing, disclose it and reduce autonomy. An interactive skill
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.20/LOOPS_AND_GRAPHS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.21/LOOPS_AND_GRAPHS.md
 ```
 
 Place `LOOPS_AND_GRAPHS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
@@ -142,7 +142,7 @@ If no `LOOPS_AND_GRAPHS.md` is present but the user asks you to apply Loops and 
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.20
+git tag -v v0.1.21
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -151,4 +151,4 @@ Releases follow semantic versioning. The control rules in `LOOPS_AND_GRAPHS.md` 
 
 ## Version
 
-0.1.20: added formal proof obligations and an optional Lean 4 verification scaffold; removed the self-referential changelog hash from the release verification block; tightened deploy reliability and cross-link accuracy.
+0.1.21: addressed adversarial-review findings by aligning hero copy with the guide, tracing the external performance claim, improving terminal accessibility, and expanding release verification to all tracked deploy files.

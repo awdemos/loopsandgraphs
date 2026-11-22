@@ -51,6 +51,12 @@ Section references below point to that paper. "Guide" means `LOOPS_AND_GRAPHS.md
 
 The paper mentions an LLM-as-judge only for scoring a simulated developer's agreement with recorded human responses in its proposed experiment. That is not a graph-routing vote.
 
+## External claims
+
+| Claim | Source | Location in this project | Status |
+|-------|--------|--------------------------|--------|
+| Combining Loops and Graphs with adversarial review is reported to improve prompting performance by up to 35%, especially for software bugs. | https://adversarial-review.com/ (external project site) | `index.html` related-tool callout | Attributed to the external source; not independently measured by this project. |
+
 ## Guide-to-skill coverage
 
 Every normative part of the guide has a skill destination or an explicitly marked runtime dependency.

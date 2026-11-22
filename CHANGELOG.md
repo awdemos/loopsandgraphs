@@ -2,6 +2,38 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.21] - 2026-11-22
+
+- Softened the hero copy so the gate is described as guided by checkable contracts that can be written as Lean proof obligations, matching `LOOPS_AND_GRAPHS.md`.
+- Added a `## External claims` row to `docs/TRACEABILITY.md` tracing the adversarial-review performance claim to its source site.
+- Added a visible `:focus-visible` style to the clickable terminal and made the copy-feedback element an `aria-live` region.
+- Removed unused `.terminal-copy` CSS rules.
+- Expanded the v0.1.21 release verification block and SBOM to include `ADVERSARIAL_REVIEW.md`, `package.json`, and `package-lock.json`.
+
+Verification (`sha256sum`):
+
+```
+35b94f9874a376d652d5385b98f238bcc9fa95b53617945f532e949038bff1af  .gitignore
+d9f4fc2346d9bc311ef922604462d103710b29fefc215382bd751b0061d7d8c7  ADVERSARIAL_REVIEW.md
+1301b69df230cf8da61430dc351c850f937c9b0e2788ce19f95b5e417e100340  LICENSE
+560bfe9c6be8e1bbbce061418fbcb5ded828061af73fa594762ba442cc003e68  LOOPS_AND_GRAPHS.md
+504ae6b340f079daf099318900dc0bda1ab30362d8af128fdd77791de8373450  README.md
+23acceb3e6ce02d46d730a6f5e36e6320c1fdfe7218a0ffe7c74566fa9d9152a  SKILL.md
+8782f4d465643d56e35cc1ae5448c24714a160329e8282993889ad96936070d2  deploy.sh
+2859491ca11be06be57f47a674291d7f42e0fb8b7f5440bc8051283897feb33c  docs/DESIGN-v0.1.md
+642632fd083ab6fd952f9d0f28dc5cefa1ac4370a43d1df7f36108e4d91afe05  docs/TRACEABILITY.md
+8b02b7b39be771dfea2895b6f3ad652cdaec24035c02fc48606f70cad62dcf8d  index.html
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+1dbb4a22baab76e886b548f9c84308254a278e324848737a787a92c3bfafd606  package.json
+6384d164763db985aa30184df000b184db664396bf98cba972e93cc01aba5f7b  package-lock.json
+8b02b7b39be771dfea2895b6f3ad652cdaec24035c02fc48606f70cad62dcf8d  public/index.html
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  public/og-image.png
+92c4bd71696002bfaf8a52a44ed2e757585583f71e375345752972ec892ffed8  sbom.spdx.json
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+```
+
+Verify the release with `git tag -v v0.1.21`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.20] - 2026-11-22
 
 - Updated `SKILL.md` to keep the rationale for every control rule while adding a formal proof obligation for each stage.

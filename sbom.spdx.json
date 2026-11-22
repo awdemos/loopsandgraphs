@@ -5,9 +5,9 @@
   "name": "loopsandgraphs.dev",
   "documentNamespace": "https://loopsandgraphs.dev/sbom.spdx.json",
   "creationInfo": {
-    "created": "2026-11-22T05:56:14Z",
+    "created": "2026-11-22T19:08:10Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.20",
+      "Tool: loopsandgraphs-release-process-0.1.21",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.20",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.21",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84"
+          "checksumValue": "8b02b7b39be771dfea2895b6f3ad652cdaec24035c02fc48606f70cad62dcf8d"
         }
       ]
     }
@@ -72,7 +72,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84"
+          "checksumValue": "8b02b7b39be771dfea2895b6f3ad652cdaec24035c02fc48606f70cad62dcf8d"
         }
       ],
       "licenseConcluded": "MIT",
@@ -88,7 +88,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "522e12f2755f079e0ea26e109f1e1a6e9c0f7197e2ad3347b30cd9e946491857"
+          "checksumValue": "504ae6b340f079daf099318900dc0bda1ab30362d8af128fdd77791de8373450"
         }
       ],
       "licenseConcluded": "MIT",
@@ -104,7 +104,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84"
+          "checksumValue": "8b02b7b39be771dfea2895b6f3ad652cdaec24035c02fc48606f70cad62dcf8d"
         }
       ],
       "licenseConcluded": "MIT",
@@ -136,7 +136,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "e8ba9e311772cd310ccacf61d65a9e0c0f7f6013bae1513f0e9adf68f1047be4"
+          "checksumValue": "642632fd083ab6fd952f9d0f28dc5cefa1ac4370a43d1df7f36108e4d91afe05"
         }
       ],
       "licenseConcluded": "MIT",
@@ -184,6 +184,51 @@
         {
           "algorithm": "SHA256",
           "checksumValue": "0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-adversarial-review",
+      "fileName": "./ADVERSARIAL_REVIEW.md",
+      "fileTypes": [
+        "TEXT"
+      ],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d9f4fc2346d9bc311ef922604462d103710b29fefc215382bd751b0061d7d8c7"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-package-json",
+      "fileName": "./package.json",
+      "fileTypes": [
+        "TEXT"
+      ],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1dbb4a22baab76e886b548f9c84308254a278e324848737a787a92c3bfafd606"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-package-lock",
+      "fileName": "./package-lock.json",
+      "fileTypes": [
+        "TEXT"
+      ],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6384d164763db985aa30184df000b184db664396bf98cba972e93cc01aba5f7b"
         }
       ],
       "licenseConcluded": "MIT",
@@ -244,6 +289,21 @@
     {
       "spdxElementId": "SPDXRef-Package-website",
       "relatedSpdxElement": "SPDXRef-File-ogimage",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-adversarial-review",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-package-json",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-package-lock",
       "relationshipType": "CONTAINS"
     }
   ]
