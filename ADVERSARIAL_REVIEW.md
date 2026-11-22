@@ -114,10 +114,10 @@ metadata (`CHANGELOG.md`).
   - `package.json`, `package-lock.json`, and `deploy.sh` stay in sync after any Wrangler update.
 - Extra lenses or out-of-scope areas:
   - `docs` lens: every factual claim in `index.html` or `README.md` must match `LOOPS_AND_GRAPHS.md` or `docs/TRACEABILITY.md`.
-  - `deploy` lens: any change to deployable assets must be exercised with `./deploy.sh` or its `npm run deploy` equivalent.
+  - `deploy` lens: any change to deployable assets must be exercised with `npx wrangler deploy --dry-run` (reviewers must not run live deploys).
   - `a11y` lens: HTML must parse, skip links must work, and focus states must remain visible.
 - Commands the reviewer must run before reporting:
   - `diff index.html public/index.html` returns empty.
   - `python3 -m html.parser` parses both `index.html` and `public/index.html` without error.
   - `grep -R '—' index.html public/index.html README.md` finds no em-dashes in user-facing copy.
-  - For site changes: `./deploy.sh` deploys successfully to the staging/workers.dev URL.
+  - For site changes: `npx wrangler deploy --dry-run` completes without errors.

@@ -8,24 +8,29 @@ Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable A
 - Added an optional Lean 4 verification scaffold that checks structural invariants of the control graph, such as dependency disclosure and gate correctness.
 - Tightened the skill description in the front matter to reflect the formal-obligation version.
 - Removed conversational padding from the skill to reduce token length without losing the reasoning behind each rule.
+- Updated `LOOPS_AND_GRAPHS.md` with a `## Formal obligations` section explaining checkable contracts and the optional Lean scaffold.
+- Fixed the site copy to attribute the adversarial-review performance report to its source site instead of stating an unsupported claim.
+- Hardened `deploy.sh` to run `npm ci` when `node_modules` is missing.
+- Updated `README.md` version references, quickstart command, and deploy instructions.
+- Removed the self-referential `CHANGELOG.md` hash from the v0.1.20 verification block and refreshed all release checksums.
+- Updated `ADVERSARIAL_REVIEW.md` repo-specific rules to require `npx wrangler deploy --dry-run` for reviewers instead of a live deploy.
 
 Verification (`sha256sum`):
 
 ```
-c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
-4836e42b2669e6af592b5c6fe9d1f605cc40e9c828613b8c158247ecfdc5520e  CHANGELOG.md
+35b94f9874a376d652d5385b98f238bcc9fa95b53617945f532e949038bff1af  .gitignore
 1301b69df230cf8da61430dc351c850f937c9b0e2788ce19f95b5e417e100340  LICENSE
-49bb507b05a5e44ecd52b730c93e58bf9230cfba9ff8df525f80574aa12a23fa  LOOPS_AND_GRAPHS.md
-12c4dfc2c88223c55718473a0fdaa91b0f0c1d019dec0eda3a2a2b1b34baa21f  README.md
+560bfe9c6be8e1bbbce061418fbcb5ded828061af73fa594762ba442cc003e68  LOOPS_AND_GRAPHS.md
+522e12f2755f079e0ea26e109f1e1a6e9c0f7197e2ad3347b30cd9e946491857  README.md
 23acceb3e6ce02d46d730a6f5e36e6320c1fdfe7218a0ffe7c74566fa9d9152a  SKILL.md
-49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+8782f4d465643d56e35cc1ae5448c24714a160329e8282993889ad96936070d2  deploy.sh
 2859491ca11be06be57f47a674291d7f42e0fb8b7f5440bc8051283897feb33c  docs/DESIGN-v0.1.md
 e8ba9e311772cd310ccacf61d65a9e0c0f7f6013bae1513f0e9adf68f1047be4  docs/TRACEABILITY.md
-d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195  index.html
+c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84  index.html
 0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
-d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195  public/index.html
+c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84  public/index.html
 0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  public/og-image.png
-f03539146f60b4b52961e3c70f9ab422090849f49d4516078a916903723fe713  sbom.spdx.json
+5cba3900f3eb9b0b94657153544b7583ce2992b52ec982293d1a875a6ccb27c0  sbom.spdx.json
 68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
 ```
 

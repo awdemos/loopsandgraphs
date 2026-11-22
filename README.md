@@ -108,7 +108,7 @@ If a mechanism is missing, disclose it and reduce autonomy. An interactive skill
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.19/LOOPS_AND_GRAPHS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.20/LOOPS_AND_GRAPHS.md
 ```
 
 Place `LOOPS_AND_GRAPHS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
@@ -129,7 +129,7 @@ The site is served by a Cloudflare Worker. Run the deploy script after editing `
 ./deploy.sh
 ```
 
-This copies `index.html` to `public/index.html` and runs `wrangler deploy`.
+This copies `index.html` to `public/index.html`, installs pinned dependencies with `npm ci` if `node_modules` is missing, and runs `wrangler deploy`.
 
 ## For AI agents reading this
 
@@ -142,7 +142,7 @@ If no `LOOPS_AND_GRAPHS.md` is present but the user asks you to apply Loops and 
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.19
+git tag -v v0.1.20
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -151,4 +151,4 @@ Releases follow semantic versioning. The control rules in `LOOPS_AND_GRAPHS.md` 
 
 ## Version
 
-0.1.19: reconciled the guide, design spec, and skill; added independent verification, persistent learning, and explicit runtime boundaries; added the source-to-skill traceability matrix.
+0.1.20: added formal proof obligations and an optional Lean 4 verification scaffold; removed the self-referential changelog hash from the release verification block; tightened deploy reliability and cross-link accuracy.

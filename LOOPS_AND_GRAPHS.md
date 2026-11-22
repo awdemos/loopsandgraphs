@@ -152,6 +152,19 @@ An external runtime must provide:
 
 Before calling a run autonomous, name the mechanism for each capability it uses. If a mechanism is missing, mark it missing and reduce autonomy. An interactive skill invocation is only a trigger for the current run. An advisory budget is not an enforced budget.
 
+## Formal obligations
+
+Every control rule above can be paired with a checkable contract. The contract states what the agent must produce and what invariant must hold before the result moves on. A contract is not a proof of full program semantics; it is a precise, reviewable statement that a failing condition exists and that the agent can be held to it.
+
+For example:
+
+- A check must be able to fail the work while no human is watching.
+- A split must declare every unit's touched files and dependencies.
+- A graph must be acyclic and its edges must map real data flow.
+- A gate must route on deterministic evidence first and confidence last.
+
+Optionally, these contracts can be written in a proof assistant such as Lean so that another process can verify the control structure is internally consistent. The contracts guide the agent's behavior and give a human reviewer a concrete place to look when something is wrong.
+
 ## Where to start
 
 Do not build the whole graph at once. Start with one repeated task and draw:

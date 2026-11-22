@@ -7,7 +7,7 @@
   "creationInfo": {
     "created": "2026-11-22T05:56:14Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.19",
+      "Tool: loopsandgraphs-release-process-0.1.20",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.19",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.20",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195"
+          "checksumValue": "c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84"
         }
       ]
     }
@@ -33,11 +33,14 @@
     {
       "SPDXID": "SPDXRef-File-Guide",
       "fileName": "./LOOPS_AND_GRAPHS.md",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "49bb507b05a5e44ecd52b730c93e58bf9230cfba9ff8df525f80574aa12a23fa"
+          "checksumValue": "560bfe9c6be8e1bbbce061418fbcb5ded828061af73fa594762ba442cc003e68"
         }
       ],
       "licenseConcluded": "MIT",
@@ -46,11 +49,14 @@
     {
       "SPDXID": "SPDXRef-File-SKILL",
       "fileName": "./SKILL.md",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "7e99b24f6468ed77e8b420aa79f231bd3747ab0994923439c784e717175acf52"
+          "checksumValue": "23acceb3e6ce02d46d730a6f5e36e6320c1fdfe7218a0ffe7c74566fa9d9152a"
         }
       ],
       "licenseConcluded": "MIT",
@@ -59,11 +65,14 @@
     {
       "SPDXID": "SPDXRef-File-index",
       "fileName": "./index.html",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195"
+          "checksumValue": "c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84"
         }
       ],
       "licenseConcluded": "MIT",
@@ -72,11 +81,14 @@
     {
       "SPDXID": "SPDXRef-File-README",
       "fileName": "./README.md",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "12c4dfc2c88223c55718473a0fdaa91b0f0c1d019dec0eda3a2a2b1b34baa21f"
+          "checksumValue": "522e12f2755f079e0ea26e109f1e1a6e9c0f7197e2ad3347b30cd9e946491857"
         }
       ],
       "licenseConcluded": "MIT",
@@ -85,11 +97,14 @@
     {
       "SPDXID": "SPDXRef-File-public-index",
       "fileName": "./public/index.html",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195"
+          "checksumValue": "c061cebc77c4cda44794f406ddeab4824764c1661f1fcecb2ab4a89b6fe8ab84"
         }
       ],
       "licenseConcluded": "MIT",
@@ -98,7 +113,10 @@
     {
       "SPDXID": "SPDXRef-File-design",
       "fileName": "./docs/DESIGN-v0.1.md",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
@@ -111,7 +129,10 @@
     {
       "SPDXID": "SPDXRef-File-traceability",
       "fileName": "./docs/TRACEABILITY.md",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
@@ -124,7 +145,10 @@
     {
       "SPDXID": "SPDXRef-File-wrangler",
       "fileName": "./wrangler.toml",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
@@ -137,11 +161,14 @@
     {
       "SPDXID": "SPDXRef-File-deploy",
       "fileName": "./deploy.sh",
-      "fileTypes": ["TEXT", "SOURCE"],
+      "fileTypes": [
+        "TEXT",
+        "SOURCE"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248"
+          "checksumValue": "8782f4d465643d56e35cc1ae5448c24714a160329e8282993889ad96936070d2"
         }
       ],
       "licenseConcluded": "MIT",
@@ -150,7 +177,9 @@
     {
       "SPDXID": "SPDXRef-File-ogimage",
       "fileName": "./og-image.png",
-      "fileTypes": ["BINARY"],
+      "fileTypes": [
+        "BINARY"
+      ],
       "checksums": [
         {
           "algorithm": "SHA256",
