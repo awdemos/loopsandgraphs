@@ -2,6 +2,35 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.20] - 2026-11-22
+
+- Updated `SKILL.md` to keep the rationale for every control rule while adding a formal proof obligation for each stage.
+- Added an optional Lean 4 verification scaffold that checks structural invariants of the control graph, such as dependency disclosure and gate correctness.
+- Tightened the skill description in the front matter to reflect the formal-obligation version.
+- Removed conversational padding from the skill to reduce token length without losing the reasoning behind each rule.
+
+Verification (`sha256sum`):
+
+```
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+4836e42b2669e6af592b5c6fe9d1f605cc40e9c828613b8c158247ecfdc5520e  CHANGELOG.md
+1301b69df230cf8da61430dc351c850f937c9b0e2788ce19f95b5e417e100340  LICENSE
+49bb507b05a5e44ecd52b730c93e58bf9230cfba9ff8df525f80574aa12a23fa  LOOPS_AND_GRAPHS.md
+12c4dfc2c88223c55718473a0fdaa91b0f0c1d019dec0eda3a2a2b1b34baa21f  README.md
+23acceb3e6ce02d46d730a6f5e36e6320c1fdfe7218a0ffe7c74566fa9d9152a  SKILL.md
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+2859491ca11be06be57f47a674291d7f42e0fb8b7f5440bc8051283897feb33c  docs/DESIGN-v0.1.md
+e8ba9e311772cd310ccacf61d65a9e0c0f7f6013bae1513f0e9adf68f1047be4  docs/TRACEABILITY.md
+d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195  index.html
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195  public/index.html
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  public/og-image.png
+f03539146f60b4b52961e3c70f9ab422090849f49d4516078a916903723fe713  sbom.spdx.json
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+```
+
+Verify the release with `git tag -v v0.1.20`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.19] - 2026-11-22
 
 - Added `docs/TRACEABILITY.md`, mapping research observations and project design choices to skill instructions or runtime requirements.
