@@ -488,7 +488,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.17/LOOPS_AND_GRAPHS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.18/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -621,7 +621,8 @@
             <text x="805" y="172" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="650">Gate</text>
 
             <rect x="750" y="290" width="110" height="54" rx="12" fill="url(#nodeGradient)" stroke="#3a3a4d" stroke-width="1.5"/>
-            <text x="805" y="322" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Merge</text>
+            <text x="805" y="316" text-anchor="middle" fill="#e8e8f5" font-size="15" font-weight="600">Merge</text>
+            <text x="805" y="333" text-anchor="middle" fill="#6b7280" font-size="10">human approves</text>
           </g>
 
           <!-- forward edges -->
@@ -632,10 +633,11 @@
           <path class="edge-flow" d="M 660 167 L 750 167" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
           <path class="edge-flow" d="M 805 194 C 805 240 805 240 805 290" fill="none" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
 
-          <!-- correction edge -->
-          <path class="edge-pulse-red" d="M 750 167 C 660 167 660 217 430 217" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
-          <rect x="490" y="225" width="118" height="22" rx="6" fill="#1a1214" stroke="#f87171" stroke-width="1" opacity="0.9"/>
-          <text x="549" y="240" text-anchor="middle" fill="#f87171" font-size="12" font-weight="600">Correction edge</text>
+          <!-- correction edges: back to whichever worker produced the failing unit -->
+          <path class="edge-pulse-red" d="M 750 160 C 640 160 640 117 435 117" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <path class="edge-pulse-red" d="M 750 174 C 640 174 640 217 435 217" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-red)"/>
+          <rect x="490" y="250" width="150" height="22" rx="6" fill="#1a1214" stroke="#f87171" stroke-width="1" opacity="0.9"/>
+          <text x="565" y="265" text-anchor="middle" fill="#f87171" font-size="12" font-weight="600">back to the unit that failed</text>
 
           <!-- learning edge -->
           <path class="edge-pulse-teal" d="M 805 140 C 805 70 125 70 125 120" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
@@ -656,7 +658,7 @@
           <line x1="110" y1="480" x2="200" y2="480" stroke="#5eead4" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrow-accent)"/>
           <text x="220" y="485" fill="#5eead4" font-size="13">Learning edge: accepted result becomes a future constraint</text>
         </svg>
-        <figcaption id="diagram-caption">A planned graph is the map you draw before any work starts. The splitter cuts the task into bounded units. Independent workers run at the same time. The code node merges their outputs with one correct answer. The gate runs a deterministic check. If the check fails, only that unit loops back along a correction edge. If it passes, the result continues to the merge and may also travel back along a learning edge, becoming a constraint the splitter uses next time.</figcaption>
+        <figcaption id="diagram-caption">A planned graph is the map you draw before any work starts. The splitter cuts the task into bounded units. Independent workers run at the same time. The code node merges their outputs with one correct answer. The gate runs a deterministic check. If the check fails, only the unit that failed loops back to the worker that produced it. If it passes, the result continues to the merge, where a human approves it, and may also travel back along a learning edge as a constraint the splitter uses next time.</figcaption>
       </figure>
 
       <div class="callout">
@@ -760,7 +762,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.17</span>
+  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.18</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">LOOPS_AND_GRAPHS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>

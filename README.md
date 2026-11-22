@@ -82,7 +82,7 @@ Confidence is the weakest gate input because it is the only one the model can in
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.17/LOOPS_AND_GRAPHS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.18/LOOPS_AND_GRAPHS.md
 ```
 
 Place `LOOPS_AND_GRAPHS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
@@ -116,7 +116,7 @@ If no `LOOPS_AND_GRAPHS.md` is present but the user asks you to apply Loops and 
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.17
+git tag -v v0.1.18
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -125,4 +125,4 @@ Releases follow semantic versioning. The control rules in `LOOPS_AND_GRAPHS.md` 
 
 ## Version
 
-0.1.17 — replaced the fixed "cap retries at three" rule with three evidence-based exits (green, budget, stall) across the guide, skill, site, README, and design doc. A count cannot tell slow progress from a stuck loop.
+0.1.18 — fixed the planned-graph diagram: correction edges now return to whichever worker produced the failing unit (not only Worker B), and the Merge node shows the human approval step.

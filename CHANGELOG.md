@@ -2,6 +2,28 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.18] — 2026-11-22
+
+- Fixed the planned-graph diagram accuracy. Correction edges now return to whichever worker produced the failing unit (both workers), not just Worker B. The Merge node now shows "human approves" since the framework puts the human on the merge.
+
+Verification (`sha256sum`):
+
+```
+b74d4b93cd8d8e2e4c3bc7f9bc9a9b9c51d74342490b6ca25a46ee3be97cbacc  LOOPS_AND_GRAPHS.md
+39989a59f0b225b019bad21a1c09634ab606c5e1a88254eba21526234715ff9e  SKILL.md
+aa139e5d2c2fd23cd83730e43af92ffa0a7068987e4c6d8d5606cb2b270bfb37  index.html
+a74d84b784b5665acfab8696ab277329f9b756b9aef13de7ad971b5f113ef972  README.md
+9db4a4255fc20decc13c7140c609f0a4c7315fe7dd2c018880ba437c46b9d567  sbom.spdx.json
+aa139e5d2c2fd23cd83730e43af92ffa0a7068987e4c6d8d5606cb2b270bfb37  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+d6f4cea99d83c69b36719a20f93d18281a3e11fedfb6e8983600cc1627afd8d3  docs/DESIGN-v0.1.md
+```
+
+Verify the release with `git tag -v v0.1.18`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.17] — 2026-11-22
 
 - Replaced the fixed "cap retries at three" rule with three evidence-based exits: green (check passes), budget (runs or dollars exhausted), stall (same failure twice). A fixed count cannot tell slow progress from a stuck loop. Applied across `LOOPS_AND_GRAPHS.md`, `SKILL.md`, the site, `README.md`, and `docs/DESIGN-v0.1.md`.
