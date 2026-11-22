@@ -1,6 +1,6 @@
 # Agent Control Guide: Loops and Graphs
 
-**Version:** 0.1.2  
+**Version:** 0.1.3
 **Canonical source:** `https://github.com/awdemos/loopsandgraphs`  
 **Site:** `https://loopsandgraphs.dev`
 
@@ -9,6 +9,12 @@
 This is a control guide for coding agents. It tells you how to plan and execute non-trivial work so that a human only has to approve the final step, not babysit every intermediate one.
 
 The core idea: a **loop** makes one unit of work correct without a human, and a **graph** decides which units exist and how they connect. You need both. A graph without loops produces unverified work in parallel. A loop without a graph is one excellent step in a queue nobody designed.
+
+## Provenance and status
+
+This framework is inspired by loop engineering research and practitioner sources. The four node types, two return paths, gate evidence order, and green/budget/stall exits are design choices made by this project, not a standard defined by the research.
+
+The cited research finds common practices, not systematic evidence that they improve results. Treat claimed benefits as hypotheses to measure. See `docs/TRACEABILITY.md` for the source of each rule.
 
 ## The one rule
 
@@ -21,12 +27,13 @@ Absence of an error is not evidence of correctness. Build accordingly.
 1. **Write the check first.** Before producing anything, define what "green" means in a way a program can evaluate.
 2. **Split the work.** Use a splitter node to cut the task into bounded units. Split by blast radius, not by folder or file count.
 3. **Draw the graph.** Connect units only when one's output is consumed by the next. "And then" is not an edge.
-4. **Run independent units in parallel.** If two nodes have no edge between them, do not run them serially.
+4. **Run independent units in parallel.** If two nodes have no edge between them, do not run them serially. Use isolated contexts or worktrees when available. Without isolation, run serially and disclose the limitation.
 5. **Loop inside every node.** Produce, check, correct, repeat until green. Exit on green, on budget, or on stall (the same failure twice). Never on a fixed count: a count cannot tell slow progress from a stuck loop.
-6. **Gate on evidence, not confidence.** Open the gate when deterministic results, trajectory, and reversibility allow it.
-7. **Return failures to the unit that produced them.** Never return the whole batch for one failing unit.
-8. **Write learning edges.** Every accepted result becomes a constraint the splitter applies to future runs.
-9. **Put the human on the merge.** The human approves the highest-consequence, lowest-reversibility step. Nothing else.
+6. **Verify independently.** Unattended and wide-lane work needs a gate outside the worker that produced it. Use executable checks plus a separate context for judgment. A second model's review never replaces executable checks. Without independent verification, keep the result human-gated.
+7. **Gate on evidence, not confidence.** Open the gate when deterministic results, trajectory, and reversibility allow it.
+8. **Return failures to the unit that produced them.** Never return the whole batch for one failing unit.
+9. **Write learning edges.** Every accepted result becomes a constraint the splitter applies to future runs. Persist it outside the conversation or label it session-only.
+10. **Put the human on the merge.** The human approves the highest-consequence, lowest-reversibility step. Nothing else.
 
 ## What counts as a check
 
@@ -44,6 +51,8 @@ These are not checks:
 - NOT A CHECK: no errors were raised.
 
 If your check cannot be expressed as a failing condition, rewrite it until it can.
+
+A model reviewing its own work is not independent verification. A panel of models voting is not a deterministic check either. Gates route work from evidence; they do not elect the next action by majority vote.
 
 ## Node types
 
@@ -80,13 +89,21 @@ Cap correction by evidence, not count. If the same failure repeats, the problem 
 
 An accepted result goes back to the splitter as a constraint, not as raw output. This fixes every run after the current one.
 
+Read the project's constraint store when splitting. By default, append to `.loops-and-graphs/constraints.md`; never overwrite existing entries. Each record carries:
+
+- ACCEPTED: the result that passed.
+- DERIVED: the constraint future units must follow.
+- EVIDENCE: the check output or source that justifies it.
+- SCOPE: where and when the constraint applies.
+
 Example:
 
 - ACCEPTED: `utils` slice ported, green on first pass.
 - DERIVED: adapters must preserve keyword args exactly.
-- LANDS IN: the splitter's brief for every later slice.
+- EVIDENCE: adapter contract tests exit 0.
+- SCOPE: every later adapter slice.
 
-A confirmed cause becomes a rule. The next run starts where this one ended.
+A confirmed cause becomes a rule. The next run starts where this one ended. If durable storage is unavailable, keep the constraint in the current run and label it session-only. Do not claim the system learned across runs.
 
 ## Return the unit, not the batch
 
@@ -110,6 +127,30 @@ Inside an open lane, the gate reads evidence in this order:
 2. Trajectory of this run (repeated failures, drift, new warnings).
 3. Historical rollback rate from this node.
 4. The model's own assessment. Last.
+
+If rollback history is unavailable, mark it unknown. Never invent it. Unknown history cannot open a wide lane by itself.
+
+## Skill instructions and runtime requirements
+
+A Markdown skill can instruct the current agent. It cannot enforce an unattended system by itself.
+
+The skill can direct the agent to:
+
+- write checks, splitter briefs, dependencies, and unit scopes;
+- use available parallel contexts, independent verifiers, and state files;
+- route failures, derive constraints, stop on budget or stall, and escalate;
+- keep hard-to-reverse work behind a human gate.
+
+An external runtime must provide:
+
+- scheduled or event-based triggers;
+- durable state across processes and restarts;
+- isolated workers or worktrees for safe parallel writes;
+- enforced time, token, run, or spending limits;
+- a documented pause or kill switch;
+- external-system connectors and execution logs.
+
+Before calling a run autonomous, name the mechanism for each capability it uses. If a mechanism is missing, mark it missing and reduce autonomy. An interactive skill invocation is only a trigger for the current run. An advisory budget is not an enforced budget.
 
 ## Where to start
 
@@ -144,4 +185,4 @@ If you cannot answer question 1, stop and write the check first.
 
 ## Version and governance
 
-This is version 0.1.0. The rules above are the stable control surface. Add examples, tighten language, or add node subtypes in later versions, but do not weaken the one rule, the four node types, the two return paths, or the gate ordering.
+This is version 0.1.3. The rules above are the stable control surface. Add examples, tighten language, or add node subtypes in later versions, but do not weaken the one rule, the four node types, the two return paths, or the gate ordering.

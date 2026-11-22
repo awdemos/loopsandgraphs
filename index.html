@@ -488,7 +488,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.18/LOOPS_AND_GRAPHS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.19/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -514,7 +514,7 @@
 
       <p>One triage loop logged 6,290 runs. In every run the researchers checked, the agent never fired. A trigger is not a loop. It is a cron job with your credit card attached.</p>
 
-      <p>The study found no systematic evidence for the promised 10x yet. This framework does not promise one either. The parts everyone skips, the check, the state, the gate, are the parts that decide whether a loop is worth running. <a href="https://x.com/iiiichigo_chan/status/2118397992239571196">Source</a>.</p>
+      <p>The study found no systematic evidence for the promised 10x yet. This framework does not promise one either. The parts everyone skips, the check, the state, the gate, are the parts that decide whether a loop is worth running. <a href="https://arxiv.org/html/2608.21884">Research paper</a>.</p>
 
       <h2>A loop checks its own work</h2>
 
@@ -532,6 +532,8 @@
       <p>Three exits: green (the check passes), budget (runs or dollars run out), or stall (the same failure twice). No fixed retry count. A count cannot tell slow progress from a stuck loop, and a repeated failure is not a retry problem. It means the agent cannot see what it needs, or the task is wrong. Both are yours.</p>
 
       <p>The check is the whole point. If it cannot fail, it is not checking. Tests pass. Type checker reports zero errors. Those are checks. "Looks right," "model is confident," "no errors raised": not checks.</p>
+
+      <p>For unattended or wide changes, the worker cannot be the only verifier. A separate gate reviews the evidence, and real checks still run. Without that independence, a human keeps the gate. No panel of judges votes on what happens next.</p>
 
       <div class="check-grid">
         <div class="check-card green">
@@ -702,7 +704,7 @@
       <p>Almost everyone builds the first. The tell is a system that is fast and never gets smarter.</p>
 
       <div class="callout">
-        <p>The learning edge does not carry the output, it carries a constraint derived from it. <strong>Accepted:</strong> utils slice ported, green on first pass. <strong>Derived:</strong> adapters preserve keyword args exactly. <strong>Lands in:</strong> the splitter's brief for every later slice.</p>
+        <p>The learning edge does not carry the output, it carries a constraint derived from it. <strong>Accepted:</strong> utils slice ported, green on first pass. <strong>Derived:</strong> adapters preserve keyword args exactly. <strong>Lands in:</strong> a stored constraint file that every later splitter reads. If that file cannot persist, the learning lasts for this session only.</p>
       </div>
 
       <h2>Return the unit, not the batch</h2>
@@ -738,6 +740,14 @@
 
       <p>The third row is not a high threshold. It is a closed lane. Thresholds get adjusted. Closed lanes do not.</p>
 
+      <h2>A skill is not a runtime</h2>
+
+      <p>The skill tells the current agent how to plan, check, route, record, and escalate. It does not turn that agent into an unattended system.</p>
+
+      <p>A real runtime must start scheduled or event-driven runs, preserve state after a restart, isolate parallel writers, enforce budgets, provide a kill switch, and keep execution logs. If one of those mechanisms is missing, say so and reduce autonomy.</p>
+
+      <p>The four node types and gate rules are this project's design, not a standard proved by the paper. The <a href="https://github.com/awdemos/loopsandgraphs/blob/main/docs/TRACEABILITY.md">traceability matrix</a> shows exactly which ideas came from research, which are ours, and which need a runtime.</p>
+
       <h2>Where to start</h2>
 
       <p>Pick one thing you do repeatedly. Draw the splitter, the lanes, the merge, one gate, one back edge.</p>
@@ -762,7 +772,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.18</span>
+  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.19</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">LOOPS_AND_GRAPHS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>

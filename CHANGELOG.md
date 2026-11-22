@@ -2,6 +2,34 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.19] - 2026-11-22
+
+- Added `docs/TRACEABILITY.md`, mapping research observations and project design choices to skill instructions or runtime requirements.
+- Reconciled the guide, design spec, and skill. Removed the remaining fixed retry-cap text and made parallel execution and gate evidence ordering explicit.
+- Required independent verification for unattended and wide-lane work. Clarified that judge panels do not vote on graph routing.
+- Made learning edges persistent through `.loops-and-graphs/constraints.md`, with session-only labeling when durable storage is unavailable.
+- Documented the runtime boundary for triggers, restart-safe state, isolation, enforced budgets, kill switches, connectors, and execution logs.
+- Updated the README and site to identify claimed benefits as design goals rather than measured guarantees.
+
+Verification (`sha256sum`):
+
+```
+49bb507b05a5e44ecd52b730c93e58bf9230cfba9ff8df525f80574aa12a23fa  LOOPS_AND_GRAPHS.md
+7e99b24f6468ed77e8b420aa79f231bd3747ab0994923439c784e717175acf52  SKILL.md
+d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195  index.html
+12c4dfc2c88223c55718473a0fdaa91b0f0c1d019dec0eda3a2a2b1b34baa21f  README.md
+f03539146f60b4b52961e3c70f9ab422090849f49d4516078a916903723fe713  sbom.spdx.json
+d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+2859491ca11be06be57f47a674291d7f42e0fb8b7f5440bc8051283897feb33c  docs/DESIGN-v0.1.md
+e8ba9e311772cd310ccacf61d65a9e0c0f7f6013bae1513f0e9adf68f1047be4  docs/TRACEABILITY.md
+```
+
+Verify the release with `git tag -v v0.1.19`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.18] — 2026-11-22
 
 - Fixed the planned-graph diagram accuracy. Correction edges now return to whichever worker produced the failing unit (both workers), not just Worker B. The Merge node now shows "human approves" since the framework puts the human on the merge.

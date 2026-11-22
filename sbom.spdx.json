@@ -5,9 +5,9 @@
   "name": "loopsandgraphs.dev",
   "documentNamespace": "https://loopsandgraphs.dev/sbom.spdx.json",
   "creationInfo": {
-    "created": "2026-11-21T22:00:00Z",
+    "created": "2026-11-22T05:56:14Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.18",
+      "Tool: loopsandgraphs-release-process-0.1.19",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.18",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.19",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "aa139e5d2c2fd23cd83730e43af92ffa0a7068987e4c6d8d5606cb2b270bfb37"
+          "checksumValue": "d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195"
         }
       ]
     }
@@ -37,7 +37,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "b74d4b93cd8d8e2e4c3bc7f9bc9a9b9c51d74342490b6ca25a46ee3be97cbacc"
+          "checksumValue": "49bb507b05a5e44ecd52b730c93e58bf9230cfba9ff8df525f80574aa12a23fa"
         }
       ],
       "licenseConcluded": "MIT",
@@ -50,7 +50,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "39989a59f0b225b019bad21a1c09634ab606c5e1a88254eba21526234715ff9e"
+          "checksumValue": "7e99b24f6468ed77e8b420aa79f231bd3747ab0994923439c784e717175acf52"
         }
       ],
       "licenseConcluded": "MIT",
@@ -63,7 +63,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "aa139e5d2c2fd23cd83730e43af92ffa0a7068987e4c6d8d5606cb2b270bfb37"
+          "checksumValue": "d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195"
         }
       ],
       "licenseConcluded": "MIT",
@@ -76,7 +76,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "a74d84b784b5665acfab8696ab277329f9b756b9aef13de7ad971b5f113ef972"
+          "checksumValue": "12c4dfc2c88223c55718473a0fdaa91b0f0c1d019dec0eda3a2a2b1b34baa21f"
         }
       ],
       "licenseConcluded": "MIT",
@@ -89,7 +89,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "aa139e5d2c2fd23cd83730e43af92ffa0a7068987e4c6d8d5606cb2b270bfb37"
+          "checksumValue": "d8a2b7d37fffe860366ba0e0fcb1728362e1283054470be9e1d8b220142cc195"
         }
       ],
       "licenseConcluded": "MIT",
@@ -102,7 +102,20 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "d6f4cea99d83c69b36719a20f93d18281a3e11fedfb6e8983600cc1627afd8d3"
+          "checksumValue": "2859491ca11be06be57f47a674291d7f42e0fb8b7f5440bc8051283897feb33c"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-File-traceability",
+      "fileName": "./docs/TRACEABILITY.md",
+      "fileTypes": ["TEXT", "SOURCE"],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e8ba9e311772cd310ccacf61d65a9e0c0f7f6013bae1513f0e9adf68f1047be4"
         }
       ],
       "licenseConcluded": "MIT",
@@ -182,6 +195,11 @@
     {
       "spdxElementId": "SPDXRef-Package-website",
       "relatedSpdxElement": "SPDXRef-File-design",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-website",
+      "relatedSpdxElement": "SPDXRef-File-traceability",
       "relationshipType": "CONTAINS"
     },
     {

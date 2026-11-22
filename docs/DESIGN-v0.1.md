@@ -1,7 +1,7 @@
 # Loops and Graphs: Agent Execution Framework
 
-**Version:** 0.1.0  
-**Status:** design spec / first pass  
+**Version:** 0.1.3
+**Status:** design spec
 **Companion:** `LOOPS_AND_GRAPHS.md` in the repo root is the agent-facing control guide derived from this document.
 
 ---
@@ -18,6 +18,8 @@ The framework has two layers:
 Most agent systems today build only one of the two. A strong loop without a graph produces excellent individual steps in an unplanned sequence. A graph without loops in every node produces unverified work faster than a human can catch it. This framework requires both.
 
 In one sentence: **agents must execute bounded, verifiable units inside a planned graph, with gates that ship only reversible or human-approved changes.**
+
+This is an original control framework inspired by loop engineering research. The research supplies common practices and open questions, not a canonical four-node specification or proof of benefit. `docs/TRACEABILITY.md` separates research observations, project design choices, and runtime requirements.
 
 ## 2. Goals and non-goals
 
@@ -44,7 +46,7 @@ A loop is four parts repeated:
 1. **Produce** the output.
 2. **Check** the output against a failing condition.
 3. **Correct** if the check failed.
-4. **Repeat** until green or until a retry cap is hit.
+4. **Repeat** until green, an enforced budget is exhausted, or the same failure repeats. Never use a fixed retry count.
 
 The check is the whole thing. Without a check that can fail the work while no human is present, there is no loop, only a scheduler.
 
@@ -60,6 +62,8 @@ Invalid checks:
 - Output looks good.
 - No errors were raised.
 - Model confidence is high.
+
+Unattended and wide-lane work also requires an independent verifier outside the implementing worker's context. Executable checks remain mandatory; a second model's review does not replace them. Without independent verification, the result stays human-gated. No panel of judges or majority vote is required.
 
 ### 3.2 The graph
 
@@ -103,13 +107,16 @@ Loop exits: green (check passes), budget (runs or dollars exhausted), or stall (
 
 ### 4.2 Learning edge
 
-The learning edge is long. An accepted result flows back to the splitter as a derived constraint, not as raw output. This improves every future run.
+The learning edge is long. An accepted result flows back to the splitter as a derived constraint, not as raw output. This improves every future run only when the constraint persists outside the conversation.
 
-Example:
+The splitter reads `.loops-and-graphs/constraints.md` before dividing work. Each accepted result appends four fields without overwriting earlier entries:
 
 - Accepted result: the `utils` slice ported cleanly.
 - Derived constraint: adapters must preserve keyword arguments exactly.
-- Effect: the splitter adds this constraint to the brief for every later slice.
+- Evidence: adapter contract tests exit 0.
+- Scope: every later adapter slice.
+
+If durable storage is unavailable, the constraint is session-only and the system must not claim learning across runs.
 
 ## 5. Gate semantics
 
@@ -131,6 +138,8 @@ Inside an open lane, the gate evaluates evidence in this order:
 2. Trajectory of the current run.
 3. Historical rollback rate from this node.
 4. The model's own assessment.
+
+Missing rollback history is unknown, never zero. Unknown history cannot open a wide lane by itself.
 
 ## 6. System context
 
@@ -172,6 +181,21 @@ External outputs:
 - Updated constraints for future splits.
 - Audit log of checks, gates, and returns.
 
+### 6.1 Skill instructions versus runtime requirements
+
+`SKILL.md` can instruct the current agent to plan, split, check, route, record, and escalate. It cannot enforce an unattended system by itself.
+
+An external runtime must supply any of these capabilities claimed by a deployment:
+
+- Scheduled or event-based triggers.
+- Durable state across processes and restarts.
+- Isolated workers or worktrees for parallel writes.
+- Enforced time, token, run, or spending limits.
+- A documented pause or kill switch.
+- External-system connectors and execution logs.
+
+An interactive skill invocation triggers only the current run. An advisory budget is not an enforced budget. Missing mechanisms must be disclosed and must reduce autonomy.
+
 ## 7. Process model
 
 ### Starting from one repeated task
@@ -193,8 +217,10 @@ produce -> check -> (green?) -> output
              |
          correct
              |
-          repeat (max 3)
+          repeat until green, budget, or stall
 ```
+
+Parallel units require isolated contexts or worktrees. Without isolation, run them serially and disclose the limitation.
 
 ### On batch failure
 
@@ -211,14 +237,16 @@ Return the failing unit only. Do not return the whole batch. Re-verify only the 
 
 ## 9. Open questions for v0.2
 
-- Concrete schema for splitter briefs and learning-edge constraints.
+- Reference runtime for triggers, isolation, enforced budgets, kill switches, and restart-safe state.
 - Retry-backoff policy when a worker hits deterministic flake versus real failure.
 - Audit log format and where it is stored.
 - Whether gates should be implemented as code nodes or as a distinct runtime primitive.
 - How to express "hard to reverse" in repository-specific terms so agents can classify lanes automatically.
+- Controlled measurement of task success, code quality, resource use, and review effort against a baseline without this framework.
 
 ## 10. Companion documents
 
 - `LOOPS_AND_GRAPHS.md`: the agent-readable control guide derived from this spec.
 - `SKILL.md`: installable Kimi skill that activates this guide in any repo.
+- `docs/TRACEABILITY.md`: source-to-skill matrix separating research, project choices, and runtime requirements.
 - `CHANGELOG.md`: version history.
