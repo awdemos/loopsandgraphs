@@ -22,7 +22,7 @@ Absence of an error is not evidence of correctness. Build accordingly.
 2. **Split the work.** Use a splitter node to cut the task into bounded units. Split by blast radius, not by folder or file count.
 3. **Draw the graph.** Connect units only when one's output is consumed by the next. "And then" is not an edge.
 4. **Run independent units in parallel.** If two nodes have no edge between them, do not run them serially.
-5. **Loop inside every node.** Produce, check, correct, repeat until green. Cap retries at three per unit.
+5. **Loop inside every node.** Produce, check, correct, repeat until green. Exit on green, on budget, or on stall (the same failure twice). Never on a fixed count: a count cannot tell slow progress from a stuck loop.
 6. **Gate on evidence, not confidence.** Open the gate when deterministic results, trajectory, and reversibility allow it.
 7. **Return failures to the unit that produced them.** Never return the whole batch for one failing unit.
 8. **Write learning edges.** Every accepted result becomes a constraint the splitter applies to future runs.
@@ -74,7 +74,7 @@ What travels with the return:
 - **EVIDENCE:** command output, path, line number.
 - **SCOPE:** fix this file only; do not touch other slices.
 
-Cap correction at three attempts per unit. If a unit still fails, the problem is in the splitter's plan, not the worker. Escalate to the human.
+Cap correction by evidence, not count. If the same failure repeats, the problem is in the splitter's plan or the task itself, not the worker. Escalate to the human. A hard budget caps everything else.
 
 ### Learning edge (long)
 

@@ -99,7 +99,7 @@ A returned correction must carry:
 - the evidence (command output, path, line),
 - the scope (fix this unit only).
 
-Retry cap: three attempts per unit. If a unit still fails after three corrections, the problem is in the splitter's plan, not the worker.
+Loop exits: green (check passes), budget (runs or dollars exhausted), or stall (the same failure twice). A stall means the problem is in the splitter's plan or the task itself, not the worker. Escalate to the human. A fixed retry count is a proxy that cannot tell slow progress from a stuck loop, so the framework does not use one.
 
 ### 4.2 Learning edge
 

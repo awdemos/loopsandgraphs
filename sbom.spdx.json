@@ -7,7 +7,7 @@
   "creationInfo": {
     "created": "2026-11-21T22:00:00Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.16",
+      "Tool: loopsandgraphs-release-process-0.1.17",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.16",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.17",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f"
+          "checksumValue": "2a30651ae2574d42c2d8fb936a6b75c0b71425b391e4e1f7787c21f0b922f309"
         }
       ]
     }
@@ -37,7 +37,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8"
+          "checksumValue": "b74d4b93cd8d8e2e4c3bc7f9bc9a9b9c51d74342490b6ca25a46ee3be97cbacc"
         }
       ],
       "licenseConcluded": "MIT",
@@ -50,7 +50,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "60f78d78ce236828462f915f26187cca4c4bf86123031521f9aa7c22aff9fc17"
+          "checksumValue": "39989a59f0b225b019bad21a1c09634ab606c5e1a88254eba21526234715ff9e"
         }
       ],
       "licenseConcluded": "MIT",
@@ -63,7 +63,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f"
+          "checksumValue": "2a30651ae2574d42c2d8fb936a6b75c0b71425b391e4e1f7787c21f0b922f309"
         }
       ],
       "licenseConcluded": "MIT",
@@ -76,7 +76,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "c8b20bfc4f848fb5e5217205d9b14433e73bb5d488f4e52387e4626328a500c5"
+          "checksumValue": "2a06b83d780b684f00fa96c7a274fa921310e595aa8b86d5f69276ea389a2371"
         }
       ],
       "licenseConcluded": "MIT",
@@ -89,7 +89,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "18ce56f014ba0d8c4e1d10efd40270061490fe9a423be2b12ea550be6cbb876f"
+          "checksumValue": "2a30651ae2574d42c2d8fb936a6b75c0b71425b391e4e1f7787c21f0b922f309"
         }
       ],
       "licenseConcluded": "MIT",
@@ -102,7 +102,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46"
+          "checksumValue": "d6f4cea99d83c69b36719a20f93d18281a3e11fedfb6e8983600cc1627afd8d3"
         }
       ],
       "licenseConcluded": "MIT",

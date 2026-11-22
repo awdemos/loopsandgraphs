@@ -28,7 +28,7 @@ A loop is four steps repeated until green:
 1. Produce the output.
 2. Check it against a failing condition.
 3. Correct it if the check failed.
-4. Repeat, capping retries at three.
+4. Repeat until green, out of budget, or the same failure repeats. No fixed retry count.
 
 The check is the whole point. A test suite that exits 0 is a check. A diff contained to planned files is a check. "No errors were raised" is not a check. A check must be able to fail the work while no human is watching.
 
@@ -82,7 +82,7 @@ Confidence is the weakest gate input because it is the only one the model can in
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.16/LOOPS_AND_GRAPHS.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.17/LOOPS_AND_GRAPHS.md
 ```
 
 Place `LOOPS_AND_GRAPHS.md` at the root of any repository where you want agents to follow the Loops and Graphs discipline.
@@ -116,7 +116,7 @@ If no `LOOPS_AND_GRAPHS.md` is present but the user asks you to apply Loops and 
 Every release is tagged and signed. Verify a release with:
 
 ```sh
-git tag -v v0.1.16
+git tag -v v0.1.17
 ```
 
 SHA-256 checksums for each release are published in `CHANGELOG.md`. A machine-readable SBOM is in `sbom.spdx.json`.
@@ -125,4 +125,4 @@ Releases follow semantic versioning. The control rules in `LOOPS_AND_GRAPHS.md` 
 
 ## Version
 
-0.1.16 — added a "Most loops are not loops" section to the site citing the Heidelberg / SMU study of 217 autonomous loops (36,487 repos searched): 101 had limits, 76 a verifier, 55 a stop rule, 35 kept state, 10 recorded cost.
+0.1.17 — replaced the fixed "cap retries at three" rule with three evidence-based exits (green, budget, stall) across the guide, skill, site, README, and design doc. A count cannot tell slow progress from a stuck loop.

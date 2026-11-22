@@ -30,7 +30,7 @@ Single edits to one file with one obvious check are exempt. Conversations and qu
 1. **Write the check first.** Before producing output, define a deterministic condition that can fail the work. Absence of an error is not a check.
 2. **Split by blast radius.** Use a splitter node to divide work into bounded units. Do not split by folder or file count alone.
 3. **Draw the graph.** Connect two nodes only if the second consumes the first's output. Remove false serialism.
-4. **Loop inside every node.** For each unit: produce, check, correct, repeat until green. Cap retries at three.
+4. **Loop inside every node.** For each unit: produce, check, correct, repeat until green. Exit on green, on budget, or on stall (same failure twice). Never on a fixed count.
 5. **Use four node types only:** splitter, worker, code node, gate. Prefer code nodes for transformations with one correct answer.
 6. **Return the unit, not the batch.** When one unit fails, send only that unit back with unit, verdict, reason, evidence, and scope.
 7. **Build two return paths:** the short correction edge back to the worker, and the long learning edge back to the splitter as a constraint.
