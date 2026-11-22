@@ -2,6 +2,28 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.14] — 2026-11-22
+
+- Rewrote all page copy to be short and direct. Cut wordy sentences, removed repetition, and kept only concrete examples.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  LOOPS_AND_GRAPHS.md
+82732670465821c10dafa1b72c54ad2777e7cdaf216f87262ef30ae4d85018e2  SKILL.md
+6ab5395ec4250479bd20564e3c4ad9b8e053d640f2575c0b90511f1cdd6d23b2  index.html
+414bd27cc2129bf50463312e1d0e144b034b81808c6c8afcf5f6aca40297b2d6  README.md
+3ad5d73735c2197edba2e51d3bcb9db881644430123cde36f68deb5e3695281e  sbom.spdx.json
+6ab5395ec4250479bd20564e3c4ad9b8e053d640f2575c0b90511f1cdd6d23b2  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46  docs/DESIGN-v0.1.md
+```
+
+Verify the release with `git tag -v v0.1.14`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.13] — 2026-11-21
 
 - Added a CSS/SVG animation to the planned-graph diagram.

@@ -474,10 +474,9 @@
   <section class="hero">
     <span class="kicker">Agent execution framework</span>
     <h1>Loops and <span class="accent">Graphs</span></h1>
-    <p class="pitch">AI coding agents can draft code fast, but without tests and a plan they still need you to review every step. Loops and Graphs changes that. You write the checklist once: every task must pass a concrete check, like a test suite or type check, before it moves on. Independent tasks run in parallel, failures are corrected one piece at a time, and you only approve the final merge. The result: fewer interruptions, faster delivery, and fewer errors making it to production.</p>
-    <p class="why">Why this works: a check that can actually fail replaces your eyes. If the only test is "does it look right?" the agent still needs you to look. A real check, like a test suite or a diff-scope guard, can say pass or fail on its own. A planned graph replaces your judgment about order. Without it, the agent guesses what depends on what and often runs steps one at a time that could have run together. A gate replaces your approval at every step. It asks one pass-fail question based on evidence, so the only thing left for you is the final merge.</p>
-
-    <p class="why">That is harness engineering. Every agent system already has a harness, whether it is hidden in the prompt, the tools, or the review process. Loops and Graphs makes the harness explicit, reusable, and inspectable, so the agent can do more while you watch less.</p>
+    <p class="pitch">AI agents write code fast, but they still need you to check every step. This framework fixes that. You write the checklist once. Every task must pass a real check before it moves on. Independent tasks run in parallel. You approve the final merge.</p>
+    <p class="why">Three pieces make it work. A check replaces your eyes. A graph replaces your judgment about order. A gate replaces your approval at every step. What is left for you is the final merge.</p>
+    <p class="why">That is harness engineering. Every agent system has one. This one is written down.</p>
 
     <div class="actions">
       <a class="btn btn-primary" href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">Read LOOPS_AND_GRAPHS.md</a>
@@ -489,7 +488,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
       </div>
-      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.13/LOOPS_AND_GRAPHS.md
+      <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.14/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
     </div>
   </section>
@@ -497,22 +496,22 @@
   <article class="article" id="framework">
     <div class="article-inner">
 
-      <p>Right now you check almost everything your agent does. Not because you want to, but because if you don't, mistakes get through. The whole point of this framework is to move that checking from your brain into the system, so you only step in at the end.</p>
+      <p>You check every step your agent takes. Not because you want to. Because if you do not, mistakes get through. This framework moves that checking into the system.</p>
 
       <h2>A loop checks its own work</h2>
 
-      <p>A loop is one small job that checks its own answer and fixes itself when the answer is wrong. Picture a student doing a math problem, checking the answer key, and redoing the problem if the answer is wrong. The student does not need the teacher standing there. The answer key does the checking.</p>
+      <p>A loop is a job that checks its own work and fixes itself when it is wrong. Like a student with an answer key. No teacher needed.</p>
 
-      <p>Every loop follows the same four steps:</p>
+      <p>Four steps:</p>
 
       <ol>
         <li><strong>Do the work.</strong> Write the code, run the search, build the report.</li>
-        <li><strong>Check the result.</strong> Compare it to something that can say yes or no.</li>
-        <li><strong>Fix it if the check fails.</strong> Change only what the check caught.</li>
-        <li><strong>Repeat until the check passes.</strong> Try again, up to three times.</li>
+        <li><strong>Check it.</strong> Against something that can say no.</li>
+        <li><strong>Fix what the check caught.</strong></li>
+        <li><strong>Repeat until it passes.</strong> Cap at three tries.</li>
       </ol>
 
-      <p>The check is the whole point. If the loop cannot fail on its own, it is not checking anything. It is just running steps. A real check is something like "the tests pass" or "the type checker reports no errors." "Does it look right?" is not a check. "The model feels confident" is not a check. "No error message appeared" is not a check either, because silence is not the same as correct.</p>
+      <p>The check is the whole point. If it cannot fail, it is not checking. Tests pass. Type checker reports zero errors. Those are checks. "Looks right," "model is confident," "no errors raised": not checks.</p>
 
       <div class="check-grid">
         <div class="check-card green">
@@ -541,23 +540,19 @@
         </div>
       </div>
 
-      <p>Why set it up this way? Because a loop with a real check can run while you are doing something else. A loop without one only looks automatic. It will happily repeat the same mistake until it runs out of time or money, leaving you a clean log of a wrong answer.</p>
+      <p>A loop with a real check runs while you are somewhere else. A loop without one repeats the same mistake until it runs out of money, with a clean log.</p>
 
       <h2>One loop cannot see the whole job</h2>
 
-      <p>A loop is great at making one small job correct. It cannot decide which jobs exist, which can run at the same time, or what order makes sense. That is a different problem.</p>
-
-      <p>For example, an agent might write five perfect functions in the wrong order, or redo step three five times while step four sits waiting for no reason. Every loop did its job. The overall plan did not. That is why loops need a graph above them.</p>
+      <p>A loop makes one job correct. It cannot decide which jobs exist or what order to run them. An agent can write five perfect functions in the wrong order, or run step four while step three waits for nothing. Every loop did its job. The plan did not.</p>
 
       <h2>The graph is the layer above</h2>
 
-      <p>A loop makes one unit of work better, but it cannot see the whole task. It does not know which units exist, which can run at the same time, or where results should feed back. That wider view is the job of the graph.</p>
+      <p>The graph holds that wider view. It is the shape of the work: what runs, what runs in parallel, what waits, where results go back. Two things: nodes and edges.</p>
 
-      <p>A graph is just the shape of the work. It says what runs, what runs in parallel, what waits, and where results go back. It is made of only two things: nodes and edges.</p>
+      <p>A <strong>node</strong> is one job: one input, one output, one owner. An <strong>edge</strong> is a real dependency: the next step reads the previous step's output. If nothing crosses, there is no edge. The steps can run at the same time.</p>
 
-      <p>A <strong>node</strong> is one bounded unit of work: one input in, one output out, and one clear owner. An <strong>edge</strong> is a real dependency: the next step actually reads the previous step's output. If nothing crosses from one step to the next, there is no edge, which means the steps do not need to wait for each other.</p>
-
-      <p>A <strong>planned graph</strong> is that map drawn before the work starts. You plan it so the agent does not have to invent the structure while it is also doing the work. The plan keeps parallel steps parallel, keeps failures local, and keeps accepted results from being forgotten.</p>
+      <p>A <strong>planned graph</strong> is that map drawn before work starts. You draw it so the agent does not invent the structure while doing the work.</p>
 
       <figure class="diagram" aria-labelledby="diagram-caption">
         <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A planned graph: a splitter divides work, workers run in parallel, a code node merges their outputs, a gate checks the result, and feedback loops send failures back for correction or accepted results back as future constraints.">
@@ -645,10 +640,10 @@
       </figure>
 
       <div class="callout">
-        <p>The mistake behind every unnecessary wait is treating "and then" as an edge. <em>Summarize the file and then check the weather</em> has no edge between them. The weather does not consume the summary. Those are two independent nodes that a linear script chained, and the chaining came from the order you typed them.</p>
+        <p>Treating "and then" as an edge is the mistake behind every unnecessary wait. <em>Summarize the file and then check the weather.</em> No edge. The weather does not read the summary. A linear script chained them because of the order you typed them.</p>
       </div>
 
-      <p>Run this on every arrow in a pipeline you already have: does the next step actually read the previous step's output? If you cannot name the variable that crosses, there is no edge, and the wait is pure waste.</p>
+      <p>Test every arrow in a pipeline you already have: does the next step actually read the previous step's output? If you cannot name what crosses, there is no edge. The wait is waste.</p>
 
       <h2>Four kinds of node</h2>
 
@@ -664,31 +659,25 @@
         </tbody>
       </table>
 
-      <p>The code node is the one people forget exists. Merging, ranking, deduplicating, comparing every export before and after: none of that is reasoning. Each has exactly one correct answer, each is a few lines of code, and running it through a model adds cost, latency, and variance to a step that had none.</p>
+      <p>The code node is the one people forget. Merging, ranking, deduplicating: one correct answer, a few lines of code. A model adds cost, latency, and variance to a step that had none.</p>
 
-      <p>If you can describe the transformation without using the words judge, decide, assess, or summarize, it is code.</p>
+      <p>If you can describe it without saying judge, decide, assess, or summarize, it is code.</p>
 
       <h2>Where the loop actually lives</h2>
 
-      <p>One sentence resolves the whole confusion. <strong>The loop lives inside a node. The graph lives between them.</strong></p>
+      <p><strong>The loop lives inside a node. The graph lives between them.</strong></p>
 
-      <p>Inside one unit: produce, check, correct, repeat until green. Between units: split, fan out, merge, gate, send back. None of the second list is expressible from inside a single unit.</p>
+      <p>Inside one unit: produce, check, correct. Between units: split, fan out, merge, gate, send back.</p>
 
-      <p>So you do not choose. A graph without loops in its nodes produces unverified work in parallel, which is worse than serially because there is more of it. A loop without a graph around it is one very good step in a queue nobody designed.</p>
+      <p>You do not choose between them. A graph without loops makes unverified work in parallel. A loop without a graph is one good step in a queue nobody designed.</p>
 
       <h2>The two return paths</h2>
 
-      <p>A graph without a way back is a pipeline. It produces output and forgets. Next week it starts from the same place with the same blind spots.</p>
+      <p>A graph without a way back is a pipeline. It produces output and forgets.</p>
 
-      <p>Working graphs have two return paths, doing different jobs.</p>
+      <p>Two return paths, two jobs. A correction edge rejects one unit back to the step that made it. Fixes this run. A learning edge sends an accepted result back to the splitter as a constraint. Fixes every run after.</p>
 
-      <h3>Correction edge (short)</h3>
-      <p>A gate rejects one unit back to the step that produced it, and it fixes the run you are in.</p>
-
-      <h3>Learning edge (long)</h3>
-      <p>An accepted result goes back to the splitter as a constraint, and it fixes every run after.</p>
-
-      <p>Almost everyone builds the first and skips the second. The tell is a system that is fast and never gets smarter.</p>
+      <p>Almost everyone builds the first. The tell is a system that is fast and never gets smarter.</p>
 
       <div class="callout">
         <p>The learning edge does not carry the output, it carries a constraint derived from it. <strong>Accepted:</strong> utils slice ported, green on first pass. <strong>Derived:</strong> adapters preserve keyword args exactly. <strong>Lands in:</strong> the splitter's brief for every later slice.</p>
@@ -696,9 +685,9 @@
 
       <h2>Return the unit, not the batch</h2>
 
-      <p>Four slices were ported. One fails its tests. If the whole batch goes back, three correct slices get rewritten. Their next version is different, not better, because nothing was wrong with them. Now you re-verify all four, and any of the three may fail this time for unrelated reasons. You converted one failure into four uncertain outcomes and paid for the privilege.</p>
+      <p>Four slices ported. One fails. Send the whole batch back and three correct slices get rewritten into different, not better, versions. Now you re-verify all four. One failure became four uncertain outcomes.</p>
 
-      <p>Four things travel with a return, and each is doing a job:</p>
+      <p>Every return carries five things:</p>
 
       <ul>
         <li><strong>UNIT</strong> — handlers slice.</li>
@@ -708,13 +697,11 @@
         <li><strong>SCOPE</strong> — fix this file only, do not touch other slices.</li>
       </ul>
 
-      <p>The scope line matters more than it looks. Without it a returned unit grows: the agent opens the file, notices two adjacent issues, fixes those too, and your one-slice correction becomes a four-file diff nobody reviewed.</p>
+      <p>The scope line matters most. Without it a returned unit grows: the agent notices two adjacent issues, fixes those too, and your one-slice correction becomes a four-file diff nobody reviewed.</p>
 
       <h2>Open the gate on blast radius, not on confidence</h2>
 
-      <p>Most write-ups build a confidence score, set a threshold, and let anything above it through. That is the wrong variable.</p>
-
-      <p>Confidence is the weakest input in that decision, for a reason that is easy to miss: it is the only one the model can influence.</p>
+      <p>Most systems gate on a confidence score. Wrong variable. Confidence is the only input the model can influence.</p>
 
       <table>
         <thead>
@@ -727,15 +714,15 @@
         </tbody>
       </table>
 
-      <p>That third row is not a threshold set very high. It is a lane that does not open, and the distinction matters because thresholds get adjusted and closed lanes do not.</p>
+      <p>The third row is not a high threshold. It is a closed lane. Thresholds get adjusted. Closed lanes do not.</p>
 
       <h2>Where to start</h2>
 
-      <p>Take one thing you do repeatedly. Draw the splitter, the lanes, the merge, one gate, one back edge.</p>
+      <p>Pick one thing you do repeatedly. Draw the splitter, the lanes, the merge, one gate, one back edge.</p>
 
-      <p>Build the gate first. Everything gets easier once something can fail loudly, and a graph without a gate is just a faster way to produce unverified output. Then the lanes. Then the learning edge, last, because you cannot derive constraints from accepted results until something is accepting results.</p>
+      <p>Build the gate first. A graph without a gate is a faster way to produce unverified output. Then the lanes. Then the learning edge, because you cannot learn from accepted results until something accepts them.</p>
 
-      <p>Put the human on one step, at the point of highest consequence and lowest reversibility. Approve the merge. Choose which fixes ship. Not reviewing intermediate output, not confirming each step.</p>
+      <p>Put the human on one step: the merge. Approve it. Nothing else.</p>
 
       <h2>Three lines hold the whole discipline</h2>
 
@@ -745,7 +732,7 @@
         <li>Any failure you do not turn into a permanent constraint, you will meet again.</li>
       </ul>
 
-      <p>Most people will keep tuning one loop and calling it a system. The ones who draw the graph around it will run a fleet, and never quite understand why everyone else finds it so hard to keep up.</p>
+      <p>Most people tune one loop and call it a system. The ones who draw the graph around it run a fleet.</p>
 
     </div>
   </article>
@@ -753,7 +740,7 @@
 </main>
 
 <footer class="footer">
-  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.13</span>
+  <span><span class="file">LOOPS_AND_GRAPHS.md</span> — Loops and Graphs v0.1.14</span>
   <nav aria-label="Footer">
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LOOPS_AND_GRAPHS.md">LOOPS_AND_GRAPHS.md source</a>
     <a href="https://github.com/awdemos/loopsandgraphs/blob/main/LICENSE">MIT License</a>
