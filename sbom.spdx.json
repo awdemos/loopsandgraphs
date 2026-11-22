@@ -7,7 +7,7 @@
   "creationInfo": {
     "created": "2026-11-21T22:00:00Z",
     "creators": [
-      "Tool: loopsandgraphs-release-process-0.1.14",
+      "Tool: loopsandgraphs-release-process-0.1.15",
       "Person: Andrew White <andrew@awdemos.com>"
     ]
   },
@@ -15,7 +15,7 @@
     {
       "SPDXID": "SPDXRef-Package-website",
       "name": "loopsandgraphs.dev-website",
-      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.14",
+      "downloadLocation": "https://github.com/awdemos/loopsandgraphs/releases/tag/v0.1.15",
       "filesAnalyzed": true,
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
@@ -24,7 +24,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "6ab5395ec4250479bd20564e3c4ad9b8e053d640f2575c0b90511f1cdd6d23b2"
+          "checksumValue": "0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8"
         }
       ]
     }
@@ -50,7 +50,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "82732670465821c10dafa1b72c54ad2777e7cdaf216f87262ef30ae4d85018e2"
+          "checksumValue": "60f78d78ce236828462f915f26187cca4c4bf86123031521f9aa7c22aff9fc17"
         }
       ],
       "licenseConcluded": "MIT",
@@ -63,7 +63,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "6ab5395ec4250479bd20564e3c4ad9b8e053d640f2575c0b90511f1cdd6d23b2"
+          "checksumValue": "0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8"
         }
       ],
       "licenseConcluded": "MIT",
@@ -76,7 +76,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "414bd27cc2129bf50463312e1d0e144b034b81808c6c8afcf5f6aca40297b2d6"
+          "checksumValue": "58bbd6a4fda58dfbf470cad6845451d45444188a2b7c84498b2a6a35e0315cda"
         }
       ],
       "licenseConcluded": "MIT",
@@ -89,7 +89,7 @@
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "6ab5395ec4250479bd20564e3c4ad9b8e053d640f2575c0b90511f1cdd6d23b2"
+          "checksumValue": "0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8"
         }
       ],
       "licenseConcluded": "MIT",

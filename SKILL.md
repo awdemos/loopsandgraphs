@@ -5,6 +5,19 @@ description: Use when planning or executing non-trivial agent work, designing au
 
 # Agent Control Guide: Loops and Graphs
 
+## HARD TRIGGER
+
+Invoke this skill automatically, without waiting for the user to ask, whenever the current task meets ANY of:
+
+- Touches more than two files.
+- Has more than one verification step (more than one check that must pass before the work is done).
+- Contains a step that is hard to reverse (deletions, migrations, force operations, releases).
+- Has units that could run in parallel.
+
+Do not rely on your own judgment of whether the task "feels" non-trivial. Judgment is the weakest trigger because it is the only one you can influence. Use the shape of the task.
+
+Single edits to one file with one obvious check are exempt. Conversations and questions are exempt.
+
 ## When to use
 
 - The user asks for a multi-step implementation, refactor, audit, or review.

@@ -2,6 +2,28 @@
 
 Semantic versioning: the control rules in `LOOPS_AND_GRAPHS.md` are the stable API of this framework. Examples, wording, and the design spec may tighten in patch releases.
 
+## [0.1.15] — 2026-11-22
+
+- Added a HARD TRIGGER section to SKILL.md. The skill must self-invoke when a task touches more than two files, has more than one verification step, contains a hard-to-reverse step, or has parallelizable units. Invocation no longer relies on model judgment.
+
+Verification (`sha256sum`):
+
+```
+c79e4639361d5e45ad297dc5c51a3788fb4397a8fcc9654708aee0a31b8ab2d8  LOOPS_AND_GRAPHS.md
+60f78d78ce236828462f915f26187cca4c4bf86123031521f9aa7c22aff9fc17  SKILL.md
+0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8  index.html
+58bbd6a4fda58dfbf470cad6845451d45444188a2b7c84498b2a6a35e0315cda  README.md
+1db79cc158fcac5fb4785a9303e63726f0927ad2c6ed4cdb89ef5664223dede3  sbom.spdx.json
+0ae162fe6e10e903a0a5c05af9fcde4a88e769c208bf2048f483ec70333379f8  public/index.html
+68bda51dd8b922c89bcccdd9c276b05a9802c75210d768aaad9e78f671dc4591  wrangler.toml
+49301dee30c7266030bf3bcda6f886a94ef24d507a1cd81aa24a61cdb084a248  deploy.sh
+c2bd35a835183aa0b5fcbfe63925f30482ce4739bfab5fc00c9be2bf759eaf8c  .gitignore
+0c3c42281140f913aba89c0b11f6a2d9c9eefe21aa81fbae7a7bfec29ed06fae  og-image.png
+1adfb693b951ca285ad43adb966742eb1052fb576ace5cb34341fa44d6ce2e46  docs/DESIGN-v0.1.md
+```
+
+Verify the release with `git tag -v v0.1.15`; the signed tag covers every file in the release, including this changelog.
+
 ## [0.1.14] — 2026-11-22
 
 - Rewrote all page copy to be short and direct. Cut wordy sentences, removed repetition, and kept only concrete examples.
