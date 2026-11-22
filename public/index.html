@@ -381,6 +381,34 @@
   .terminal .prompt { color: var(--accent); user-select: none; }
   .terminal .comment { color: var(--faint); }
 
+  .terminal-instruction {
+    font-size: .95rem;
+    color: var(--muted);
+    margin-block-end: var(--space-3);
+  }
+  .terminal-hint {
+    margin-inline-start: auto;
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    color: var(--faint);
+    user-select: none;
+  }
+  .terminal-copied {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(21, 21, 25, .95);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    border-radius: var(--radius-l);
+  }
+  .terminal-copied.show { opacity: 1; }
+
   /* bento */
   .bento {
     display: grid;
@@ -701,14 +729,17 @@
       <a class="btn" href="https://github.com/awdemos/loopsandgraphs">View on GitHub</a>
     </div>
 
-    <div class="terminal" id="get" role="region" aria-label="Quickstart command">
+    <p class="terminal-instruction">To get started, have your agent paste this command into your terminal:</p>
+
+    <div class="terminal" id="get" role="button" tabindex="0" aria-label="Copy quickstart command" data-copy="curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.20/LOOPS_AND_GRAPHS.md">
       <div class="terminal-bar">
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="title">LOOPS_AND_GRAPHS.md</span>
-        <button class="terminal-copy" type="button" aria-label="Copy command">Copy</button>
+        <span class="terminal-hint">Click to copy</span>
       </div>
       <pre><code><span class="prompt">$</span> curl -fsSL -O https://raw.githubusercontent.com/awdemos/loopsandgraphs/v0.1.20/LOOPS_AND_GRAPHS.md
 <span class="comment"># place at your repo root, next to README.md</span></code></pre>
+      <div class="terminal-copied" aria-hidden="true">Copied to clipboard</div>
     </div>
 
     <div class="bento" aria-label="The three core ideas">
@@ -1063,26 +1094,36 @@
       document.querySelectorAll('.section').forEach(s => s.classList.add('is-visible'));
     }
 
-    // copy command button
-    const copyBtn = document.querySelector('.terminal-copy');
+    // single-click copy on the whole terminal
     const terminal = document.querySelector('.terminal');
-    if (copyBtn && terminal) {
-      copyBtn.addEventListener('click', async () => {
-        const code = terminal.querySelector('code');
-        if (!code) return;
-        const text = code.textContent.replace(/^\$\s*/, '').trim();
-        try {
-          await navigator.clipboard.writeText(text);
-          const original = copyBtn.textContent;
-          copyBtn.textContent = 'Copied';
-          copyBtn.classList.add('copied');
+    const copiedOverlay = terminal ? terminal.querySelector('.terminal-copied') : null;
+    async function copyCommand() {
+      if (!terminal) return;
+      const text = terminal.dataset.copy || '';
+      try {
+        await navigator.clipboard.writeText(text);
+        if (copiedOverlay) {
+          copiedOverlay.classList.add('show');
+          setTimeout(() => copiedOverlay.classList.remove('show'), 1200);
+        }
+      } catch (err) {
+        if (copiedOverlay) {
+          copiedOverlay.textContent = 'Could not copy';
+          copiedOverlay.classList.add('show');
           setTimeout(() => {
-            copyBtn.textContent = original;
-            copyBtn.classList.remove('copied');
-          }, 1500);
-        } catch (err) {
-          copyBtn.textContent = 'Failed';
-          setTimeout(() => (copyBtn.textContent = 'Copy'), 1500);
+            copiedOverlay.classList.remove('show');
+            copiedOverlay.textContent = 'Copied to clipboard';
+          }, 1200);
+        }
+      }
+    }
+    if (terminal) {
+      terminal.style.cursor = 'pointer';
+      terminal.addEventListener('click', copyCommand);
+      terminal.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          copyCommand();
         }
       });
     }
