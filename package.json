@@ -1,0 +1,28 @@
+{
+  "name": "loopsandgraphs.dev",
+  "version": "1.0.0",
+  "description": "A control framework for AI coding agents. It uses deterministic checks inside a planned graph to reduce per-step approval. A supporting runtime is required for unattended execution.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "cp index.html public/index.html && cp og-image.png public/og-image.png && npx wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awdemos/loopsandgraphs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/awdemos/loopsandgraphs/issues"
+  },
+  "homepage": "https://github.com/awdemos/loopsandgraphs#readme",
+  "devDependencies": {
+    "wrangler": "^4.166.0"
+  }
+}

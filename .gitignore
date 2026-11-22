@@ -1,6 +1,12 @@
 # Wrangler local state
 .wrangler/
 
+# Node / npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # Secrets
 .env
 .env.*

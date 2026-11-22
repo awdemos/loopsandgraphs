@@ -5,4 +5,4 @@ set -euo pipefail
 cp index.html public/index.html
 cp og-image.png public/og-image.png
 
-wrangler deploy
+npx wrangler deploy
